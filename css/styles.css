@@ -1,0 +1,321 @@
+section {
+   width: 100%;
+   height: 90%;
+   display: block;
+   text-align: center;
+
+   margin-bottom: .5rem;
+   padding: 5rem;
+}
+
+header {
+   margin-top: 3em;
+   position: relative;
+   /* text-align: center; */
+}
+
+.bg{
+   width: 100%;
+   opacity: .5;
+   height: 500px;
+   background-image: url("../img/tv_shows_bg.jpg");
+   display: block;
+}
+
+header h1 {
+   top: 25%;
+   left: 5%;
+   right: 5%;
+   position: absolute;
+   text-align: center; 
+}
+
+.searchBox button i{
+   background-image: url("../img/favicon.png");
+   width: 25px;
+   height: 30px;
+}
+
+.fullscreen-vid-bg {
+   top:0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: auto;
+   overflow: hidden;
+   z-index: -100;
+}
+
+.fullscreen-vid {
+   position: absolute;
+   top: 0;
+   left: 0;
+   max-width: 100%;
+   height: auto;
+}
+
+.overlay {
+   position: relative;
+   text-align: center;
+   z-index: 1;
+   color: white;
+   font-size: 500%;
+}
+
+ul {
+   list-style: none;
+}
+
+#intro {
+   margin-top: 20em;
+   z-index: 3;
+}
+
+.profile {
+   max-width: 200px;
+   width: 50%;
+   margin-left: auto;
+   margin-right: auto;
+   display: block;
+}
+
+.poster-container {
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: space-around;
+}
+
+
+.poster-container img {
+   width: 150px;
+   height: 200px;
+
+}
+
+header a {
+   opacity: 0.2;
+   color: white;
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   text-align: right;
+}
+
+.customButtons {
+   margin-top: 2.5rem;
+}
+
+a > img:hover {
+   opacity: 0.5;
+ }
+
+
+#interests img {
+   width: 50%;
+}
+
+#interests img:hover {
+   transform: scale(1.2);
+}
+
+#interests > div {
+   display: flex;
+}
+
+#projects > div {
+   display: flex;
+}
+
+@media (min-width: 300px) {
+   nav {
+       padding: .75rem;
+       background-color: #36d391;
+       position: fixed;
+       width: 100%;
+       top: 0px;
+       left: 0px;
+       z-index: 2;
+       font-size: .75rem;
+       text-align: center;
+   }
+   
+   nav li, ul {
+       display: inline;
+       padding: 1rem;
+       margin: 0px;
+       padding-top: .5rem;
+       bottom: .65rem;
+   }
+   #chartContainer {
+       width: 100%;
+       height: 200px;
+       margin-left: 0;
+       margin-right: 0;
+   }
+
+   #interests img{
+       width: 40%;
+   }
+
+   #interests > div  {
+       flex-direction: column;
+       justify-content: space-between;
+   }
+
+   #projects > div {
+       flex-direction: column;
+   }
+
+   .overlay {
+       margin-top: 1em;
+       font-size: 400%;
+   }
+
+   .icon {
+       height: 100px;
+       width: 100px;
+       margin: 30px;
+   }
+}
+
+@media (min-width: 768px) {
+   nav {
+       font-size: 1rem;
+   }
+
+   #interests img{
+       width: 200px;
+   }
+
+   #interests > div  {
+       flex-direction: row;
+       justify-content: space-around;
+   }
+
+   #chartContainer {
+       width: 90%;
+       height: 300px;
+       margin-left: auto;
+       margin-right: auto;
+   }
+
+   #interests h3 {
+       padding: 1.4em;
+   }
+
+   #projects > div {
+       flex-direction: row;
+   }
+
+   #projects > div > div {
+       flex: 1;
+       padding: 1.5em;
+   }
+   
+   .overlay {
+       margin-top: 1.2em;
+       font-size: 700%;
+   }
+
+   .icon {
+       height: 100px;
+       width: 100px;
+       margin: 2rem;
+   }
+}
+
+@media (min-width: 992px) {
+   #interests img {
+       width: 250px;
+   }
+
+   #interests > div  {
+       flex-direction: row;
+       justify-content: space-around;
+   }
+
+   #interests h3 {
+       padding: 1.8em;
+   }
+
+   #chartContainer {
+       width: 100%;
+       height: 500px;
+       margin-left: auto;
+       margin-right: auto;
+   }
+
+   .overlay {
+       margin-top: 1.4em;
+       font-size: 900%;
+   }
+
+   .icon {
+       height: 200px;
+       width: 200px;
+       margin: 2rem;
+   }
+}
+
+@media (min-width: 1200px) {
+   .overlay {
+       position: relative;
+       text-align: center;
+       z-index: 1;
+       color: white;
+       font-size: 1000%;
+   }
+}
+
+#interests ul,li {
+   display: inline;
+   padding: 1rem;
+   margin: 0px;
+   bottom: .65rem;
+} 
+
+
+.searchBox {
+   text-align: center;
+   margin-top: 1.5rem;
+}
+
+#chartContainer {
+   background-color: lightgray;
+   display: block;
+   width: 90%;
+   height: 25rem;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: .5rem;
+   z-index: -1;
+}
+
+
+a:hover {
+   color: yellow;
+   font-weight: bold;
+ }
+
+.icon {
+   height: 100px;
+   width: 100px;
+   margin: 2rem;
+}
+
+
+.icon:hover {
+   transform: scale(1.2);
+}
+
+#icons-container {
+   display: flex;
+   justify-content: center;
+   padding: 5px;
+}
+
+#resources > ul, li{
+   display: block;
+   width: 100%;
+}
