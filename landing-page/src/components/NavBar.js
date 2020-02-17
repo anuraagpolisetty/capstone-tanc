@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
+import {Link, withRouter } from 'react-router-dom';
+import { Nav, NavItem } from 'reactstrap'
 import './css/NavBar.css';
-import { Button } from 'react-bootstrap'
 
 class NavBar extends Component {
   render() {
     return(
-      <div>
-        <Button>about</Button>
-        <Button>contact</Button>
+      <div className="navigation-bar">
+        {/* <Button>about</Button>
+        <Button>contact</Button> */}
+        <Nav>
+          <NavItem>
+            <Link to={{pathname: "/about"}}>about</Link>
+          </NavItem>
+          <NavItem>
+            <Link to={{pathname: "/contact"}}>contact</Link>
+          </NavItem>
+        </Nav>
+        
 
       </div>
     )
@@ -15,4 +25,4 @@ class NavBar extends Component {
 }
 
 
-export default NavBar;
+export default withRouter(NavBar);
