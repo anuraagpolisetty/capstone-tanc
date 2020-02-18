@@ -1,0 +1,19 @@
+
+p {
+   font-size: 25px;
+   font-weight: 700;
+ }
+
+ .triangle {
+   /* display: inline; */
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   margin: -1200px 0px 0px 5%;
+   padding-top: 1200px;
+   width: 95%;
+   /* height: 100%; */
+   background: linear-gradient(to bottom right, #fff 0%, #fff 50%, #D2716E 50%, #D2716E 100%);
+   /* background-size: 100%; */
+}
