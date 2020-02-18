@@ -4,6 +4,24 @@ import { Nav, NavItem } from 'reactstrap'
 import './css/NavBar.css';
 
 class NavBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      links: [
+        {path: "", text: "Home", isActive: false},
+        {path: "about", text: "About", isActive: false},
+      ]
+    }
+  }
+
+  handleClick(i) {
+    const links = this.state.links.slice(); 
+    for (const j in links) {
+      links[j].isActive = i === j ;
+    }
+    this.setState({links: links});
+  }
+
   render() {
     return(
       <div className="navigation-bar">
@@ -11,10 +29,10 @@ class NavBar extends Component {
         <Button>contact</Button> */}
         <Nav>
           <NavItem>
-            <Link to={{pathname: "/about"}}>about</Link>
+            <Link to={{pathname: "./"}}>home</Link>
           </NavItem>
           <NavItem>
-            <Link to={{pathname: "/contact"}}>contact</Link>
+            <Link to={{pathname: "./about"}}>about</Link>
           </NavItem>
         </Nav>
         

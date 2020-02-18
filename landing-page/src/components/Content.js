@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Splash from './Splash';
-// import NavBar from './NavBar';
 import scene2 from '../img/Scene2.png';
 import scene3 from '../img/Scene3.png';
 import './css/Content.css';
