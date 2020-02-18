@@ -32,7 +32,10 @@ class NavBar extends Component {
             <Link to={{pathname: "./"}}>home</Link>
           </NavItem>
           <NavItem>
-            <Link to={{pathname: "./about"}}>about</Link>
+            <Link to={{pathname: "./"}}>projects</Link>
+          </NavItem>
+          <NavItem>
+            <Link to={{pathname: "./about"}}>contact</Link>
           </NavItem>
         </Nav>
         

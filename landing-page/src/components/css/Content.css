@@ -39,26 +39,39 @@ p {
   justify-content: space-around;
   margin-left: 0px;
   margin-top: 50px;
-  margin-right: 50px;
-  padding-right: 50px;
+  /* margin-right: 50px; */
+  /* padding-right: 50px; */
   
 }
 
+
+
 .content-2 .container {
   /* margin-right: 50px; */
-  padding-right: 200px;
 }
 
-.content-2 img {
-  padding-left: 100px;
-  margin-right: -50px;
-  /* margin-top: -50px; */
+.header-2 {
+
+}
+
+.subheader-2 {
+  /* padding-right: 200px; */
+  box-sizing: border-box;
+}
+
+
+.content-2-img {
+  margin-left: 150px;
+  padding-right: 150px;
+  /* shape-outside: polygon(0 0, 0 20px, 30px 60px);
+  height: 20px; */
+  /* float: left; */
 }
 
 img {
   max-width: 700px;
   max-height: 600px;
-  margin-top: 150px;
+  /* margin-top: 100px; */
 }
 
 .content-3 {
