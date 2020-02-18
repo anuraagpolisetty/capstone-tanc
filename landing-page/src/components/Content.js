@@ -18,6 +18,12 @@ class Content extends Component {
                       King County will be 60 years or older by 2035. We 
                       want to be able to properly serve that growing
                       number by using data driven distribution of funds."
+            heading2="How can we help you?"
+            paragraph2="Our team has designed an improved workflow for collecting survey responses
+            from the elderly. No more need for manual input! We have proposed digitized
+            solutions that will  ensure that no human errors can be found. From these 
+            results, we have an automated dashboard where key findings from our 
+            survey results can be hosted."
           />
           <img src={scene2} className="background-logo" alt="Background for People" />
         </div>
@@ -49,14 +55,10 @@ export class Text2 extends Component {
   render() {
     let div = <div className='container2'>
     <h2>
-      How can we help you?
+      {this.props.heading2}
     </h2>
     <p>
-      Our team has designed an improved workflow for collecting survey responses
-      from the elderly. No more need for manual input! We have proposed digitized
-      solutions that will  ensure that no human errors can be found. From these 
-      results, we have an automated dashboard where key findings from our 
-      survey results can be hosted.
+      {this.props.paragraph2}
     </p>
   </div>
   return div;
