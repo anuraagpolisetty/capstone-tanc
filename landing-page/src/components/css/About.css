@@ -1,0 +1,38 @@
+.about-container {
+    display: flex;
+    flex-direction: row;
+    /* max-width: 25px; */
+}
+
+.about-container img {
+    width: 225px;
+    height: 225px;
+    border-radius: 50%;
+}
+
+.avatars-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+.caption {
+    display: block;
+    font-family:'Montserrat', sans-serif;
+    font-size: 29px;
+    font-weight: 1000;
+}
+.job {
+    display: block;
+    font-family:'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+div.item {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 400px;
+}
+
+.message {
+    text-align: left;
+}
