@@ -24,28 +24,24 @@ return(
       <div className = "message">
          {/* <form action="" method="POST"> */}
          <div className="form-group">
-                    <label>Name</label>
                     <input className="form-control"
-                        name="name"
+                        name="name" placeholder="Your name"
                         // onChange={(event) => { handleChange(event) }}
                     />
                 </div>
 
                 <div className="form-group">
-                    <label>Email</label>
                     <input className="form-control"
-                        name="email"
+                        name="email" placeholder="Email"
                         // onChange={(event) => { handleChange(event) }}
                     />
                 </div>
                 <div className="form-group">
-                    <label>Message</label>
                     <input className="form-control"
-                        name="email"
+                        name="email" placeholder="Message"
                         // onChange={(event) => { handleChange(event) }}
                     />
                 </div>
-
             <button className="btn btn-primary mr-2 red darken-3" >
                   {/* value={newPost} onClick={() => this.createNewPost(newPost)}> */}
                   Post
@@ -60,17 +56,15 @@ return(
             <span className="caption">Christopher Vitalis</span>
             <br></br>
             <span className ="job">UX Designer</span>
-            <br></br>
-            <span className ="job">cvitalis@uw.edu</span>
+            <span className ="email">cvitalis@uw.edu</span>
          </div>
-      </div>
-      <div className = "item">
-         <img src={naved} alt="Avatar"></img>
-         <span className="caption">Naved Krishnamurthy</span>
-         <br></br>
-         <span className ="job">Data Scientist</span>
-         <br></br>
-         <span className ="job">navedk@uw.edu</span>
+         <div className = "item">
+            <img src={naved} alt="Avatar"></img>
+            <span className="caption">Naved Krishnamurthy</span>
+            <br></br>
+            <span className ="job">Data Scientist</span>
+            <span className ="email">navedk@uw.edu</span>
+         </div>
       </div>
 
       <div className="avatars-lower-row">
@@ -79,16 +73,14 @@ return(
             <span className="caption">Anuraag Polisetty</span>
             <br></br>
             <span className ="job">Software Engineer</span>
-            <br></br>
-            <span className ="job">anuraag@uw.edu</span>
+            <span className ="email">anuraag@uw.edu</span>
          </div>
          <div className = "item">
             <img src={tabitha} alt="Avatar"></img>
             <span className="caption">Tabitha Anderson</span>
             <br></br>
             <span className ="job">Software Engineer</span>
-            <br></br>
-            <span className ="job">andert97@uw.edu</span>
+            <span className ="email">andert97@uw.edu</span>
          </div>
       </div>
    </div>

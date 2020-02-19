@@ -1,12 +1,21 @@
 .about-container {
     display: flex;
     flex-direction: row;
+    margin-bottom: 300px;
 }
 
 .about-container-text {
     display: flex;
     flex-direction: column;
     width: 60%;
+}
+
+.about-container-text p {
+    margin-top: -30px;
+}
+
+.about-container-text .message {
+    font-weight: bold;
 }
 
 .avatars-container img {
@@ -18,18 +27,36 @@
 .avatars-container {
     display: flex;
     flex-flow: row wrap;
-    padding-top: 5em;
+    padding-top: 10em;
 }
+
+.avatars-upper-row {
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 6em;
+}
+
+.avatars-lower-row {
+    padding-right: 7em;
+}
+
 .caption {
     display: block;
     font-family:'Montserrat', sans-serif;
-    font-size: 29px;
-    font-weight: 1000;
+    font-size: 20px;
+    font-weight: 600;
 }
 .job {
     display: block;
     font-family:'Montserrat', sans-serif;
     font-size: 18px;
+    font-weight: 400;
+}
+
+.email {
+    display: block;
+    font-family:'Montserrat', sans-serif;
+    font-size: 16px;
 }
 
 div.item {
