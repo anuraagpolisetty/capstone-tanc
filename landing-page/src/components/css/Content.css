@@ -38,7 +38,7 @@ p {
   flex-direction: row;
   justify-content: space-around;
   margin-left: 0px;
-  margin-top: 50px;
+  margin-bottom: 5em;
   /* margin-right: 50px; */
   /* padding-right: 50px; */
   
@@ -46,13 +46,12 @@ p {
 
 
 
-.content-2 .container {
-  /* margin-right: 50px; */
-}
+/* .shaped {
+  background-color: red;
+  shape-outside: polygon(0 0, 100% 0, 10% 100%, 30% 100%); 
+  shape-margin: 20px;
+} */
 
-.header-2 {
-
-}
 
 .subheader-2 {
   /* padding-right: 200px; */
@@ -61,16 +60,16 @@ p {
 
 
 .content-2-img {
-  margin-left: 150px;
-  padding-right: 150px;
+  margin-left: 100px;
+  padding-right: 50px;
   /* shape-outside: polygon(0 0, 0 20px, 30px 60px);
   height: 20px; */
   /* float: left; */
 }
 
 img {
-  max-width: 700px;
-  max-height: 600px;
+  max-width: 750px;
+  max-height: 700px;
   /* margin-top: 100px; */
 }
 

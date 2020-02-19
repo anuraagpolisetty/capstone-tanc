@@ -18,10 +18,10 @@ class App extends Component {
   render() {
     return(
       <Router>
-      <div className="triangle">
-        <NavBar/>
-        <Main />
-      </div>
+        <div className="triangle">
+          <NavBar/>
+          <Main />
+        </div>
       </Router>
     )
   }
