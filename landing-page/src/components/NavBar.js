@@ -10,8 +10,8 @@ class NavBar extends Component {
       links: [
         {path: "", text: "Home", isActive: false},
         {path: "about", text: "About", isActive: false},
-      ],
-      backgroundTriangle: true
+      ]
+
     }
   }
 

@@ -14,7 +14,7 @@ class Splash extends Component {
         </div>
         <div className="content-1">
           <div className="text">
-            <h2>{heading}</h2>
+            <h2 className='strike'>{heading}</h2>
             <p>
                 We're working to help small governments achieve better survey practices,
                 workflow, and evaluation of data to help facilitate funding decisions. 
