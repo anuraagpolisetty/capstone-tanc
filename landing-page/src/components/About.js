@@ -42,7 +42,7 @@ return(
                         // onChange={(event) => { handleChange(event) }}
                     />
                 </div>
-            <button className="btn btn-primary mr-2 red darken-3" >
+            <button type = "button" className="btn btn-primary mr-2 red darken-3" >
                   {/* value={newPost} onClick={() => this.createNewPost(newPost)}> */}
                   Post
                </button>
