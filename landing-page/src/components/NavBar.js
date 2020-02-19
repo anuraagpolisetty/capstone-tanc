@@ -10,32 +10,35 @@ class NavBar extends Component {
       links: [
         {path: "", text: "Home", isActive: false},
         {path: "about", text: "About", isActive: false},
-      ]
+      ],
+      backgroundTriangle: true
     }
   }
 
   handleClick(i) {
-    const links = this.state.links.slice(); 
-    for (const j in links) {
-      links[j].isActive = i === j ;
+    // const links = this.state.links.slice(); 
+    console.log(i.target.name)
+    if(i.target.name == "Home") {
+      
     }
-    this.setState({links: links});
+    // for (const j in links) {
+    //   links[j].isActive = i === j ;
+    // }
+    // this.setState({links: links});
   }
 
   render() {
     return(
       <div className="navigation-bar">
-        {/* <Button>about</Button>
-        <Button>contact</Button> */}
         <Nav>
           <NavItem>
-            <Link to={{pathname: "./"}}>home</Link>
+            <Link to={{pathname: "./"}} name="Home" onClick={this.handleClick}>home</Link>
           </NavItem>
           <NavItem>
-            <Link to={{pathname: "./"}}>projects</Link>
+            <Link to={{pathname: "./"}} name="Projects" onClick={this.handleClick}>projects</Link>
           </NavItem>
           <NavItem>
-            <Link to={{pathname: "./about"}}>contact</Link>
+            <Link to={{pathname: "./about"}} name="Contact" value="Contact" onClick={this.handleClick}>contact</Link>
           </NavItem>
         </Nav>
         

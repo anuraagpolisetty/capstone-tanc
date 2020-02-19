@@ -5,7 +5,7 @@ button {
 .nav {
    display: flex;
    justify-content: flex-end;
-   width:90%;
+   width:92%;
    position: fixed;
 }
 
