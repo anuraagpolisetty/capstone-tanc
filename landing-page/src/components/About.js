@@ -42,11 +42,13 @@ return(
                         // onChange={(event) => { handleChange(event) }}
                     />
                 </div>
-            <button type = "button" className="btn btn-primary mr-2 red darken-3" >
+                <div className = "space">
+                <button className="button" >
                   {/* value={newPost} onClick={() => this.createNewPost(newPost)}> */}
-                  Post
+                  Submit
                </button>
          {/* </form> */}
+         </div>
       </div>
    </div>
    <div className="avatars-container">
