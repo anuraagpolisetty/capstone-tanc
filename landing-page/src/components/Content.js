@@ -11,9 +11,9 @@ class Content extends Component {
         <div className="page-container">
           <Splash/>
         </div>
-        <div className="page-container">
+        <div className="page-container content-2">
           <div className='content-2'>
-            <div className="text">
+            <div className="shaped">
               <Text 
                 heading="Why does it matter?"
                 paragraph="That's a good question! Locally, 1 in 4 people in

@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
-import Content from './Content'
-import './css/App.css'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import Content from './Content';
+import NavBar from './NavBar';
+import About from './About';
+import './css/App.css';
+
+const Main = () => (
+  <main>
+    <Switch>
+      <Route exact path='/' component={Content} />
+      <Route exact path='/about' component={About} />
+    </Switch>
+  </main>
+)
+
 class App extends Component {
   render() {
     return(
-      <div className="triangle">
-        {/* <div class="triangle"></div> */}
-        <Content />
-      </div>
+      <Router>
+        <div className="triangle">
+          <NavBar/>
+          <Main />
+        </div>
+      </Router>
     )
   }
 }
