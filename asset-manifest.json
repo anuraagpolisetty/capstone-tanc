@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/capstone-tanc/landing-page/static/css/main.432eb040.chunk.css",
-    "main.js": "/capstone-tanc/landing-page/static/js/main.f543ca51.chunk.js",
-    "main.js.map": "/capstone-tanc/landing-page/static/js/main.f543ca51.chunk.js.map",
-    "runtime-main.js": "/capstone-tanc/landing-page/static/js/runtime-main.8034848a.js",
-    "runtime-main.js.map": "/capstone-tanc/landing-page/static/js/runtime-main.8034848a.js.map",
-    "static/js/2.0b13ad88.chunk.js": "/capstone-tanc/landing-page/static/js/2.0b13ad88.chunk.js",
-    "static/js/2.0b13ad88.chunk.js.map": "/capstone-tanc/landing-page/static/js/2.0b13ad88.chunk.js.map",
-    "index.html": "/capstone-tanc/landing-page/index.html",
-    "precache-manifest.35b77bc217d5b55ef1526c2e891e3036.js": "/capstone-tanc/landing-page/precache-manifest.35b77bc217d5b55ef1526c2e891e3036.js",
-    "service-worker.js": "/capstone-tanc/landing-page/service-worker.js",
-    "static/css/main.432eb040.chunk.css.map": "/capstone-tanc/landing-page/static/css/main.432eb040.chunk.css.map",
-    "static/js/2.0b13ad88.chunk.js.LICENSE.txt": "/capstone-tanc/landing-page/static/js/2.0b13ad88.chunk.js.LICENSE.txt",
-    "static/media/AnuraagTemp.jpg": "/capstone-tanc/landing-page/static/media/AnuraagTemp.7ee3186a.jpg",
-    "static/media/ChrisTemp.jpg": "/capstone-tanc/landing-page/static/media/ChrisTemp.471c7f61.jpg",
-    "static/media/NavedTemp.jpg": "/capstone-tanc/landing-page/static/media/NavedTemp.6efbfe79.jpg",
-    "static/media/Scene1.png": "/capstone-tanc/landing-page/static/media/Scene1.b4d9c2d4.png",
-    "static/media/Scene2.png": "/capstone-tanc/landing-page/static/media/Scene2.571daa04.png",
-    "static/media/Scene3.png": "/capstone-tanc/landing-page/static/media/Scene3.3bb950f5.png",
-    "static/media/TabithaTemp.jpg": "/capstone-tanc/landing-page/static/media/TabithaTemp.39ae7b9b.jpg"
+    "main.css": "/capstone-tanc/static/css/main.432eb040.chunk.css",
+    "main.js": "/capstone-tanc/static/js/main.fa7c97c7.chunk.js",
+    "main.js.map": "/capstone-tanc/static/js/main.fa7c97c7.chunk.js.map",
+    "runtime-main.js": "/capstone-tanc/static/js/runtime-main.cf587306.js",
+    "runtime-main.js.map": "/capstone-tanc/static/js/runtime-main.cf587306.js.map",
+    "static/js/2.0b13ad88.chunk.js": "/capstone-tanc/static/js/2.0b13ad88.chunk.js",
+    "static/js/2.0b13ad88.chunk.js.map": "/capstone-tanc/static/js/2.0b13ad88.chunk.js.map",
+    "index.html": "/capstone-tanc/index.html",
+    "precache-manifest.887e5483a76f52942d9db2f2aecb075c.js": "/capstone-tanc/precache-manifest.887e5483a76f52942d9db2f2aecb075c.js",
+    "service-worker.js": "/capstone-tanc/service-worker.js",
+    "static/css/main.432eb040.chunk.css.map": "/capstone-tanc/static/css/main.432eb040.chunk.css.map",
+    "static/js/2.0b13ad88.chunk.js.LICENSE.txt": "/capstone-tanc/static/js/2.0b13ad88.chunk.js.LICENSE.txt",
+    "static/media/AnuraagTemp.jpg": "/capstone-tanc/static/media/AnuraagTemp.7ee3186a.jpg",
+    "static/media/ChrisTemp.jpg": "/capstone-tanc/static/media/ChrisTemp.471c7f61.jpg",
+    "static/media/NavedTemp.jpg": "/capstone-tanc/static/media/NavedTemp.6efbfe79.jpg",
+    "static/media/Scene1.png": "/capstone-tanc/static/media/Scene1.b4d9c2d4.png",
+    "static/media/Scene2.png": "/capstone-tanc/static/media/Scene2.571daa04.png",
+    "static/media/Scene3.png": "/capstone-tanc/static/media/Scene3.3bb950f5.png",
+    "static/media/TabithaTemp.jpg": "/capstone-tanc/static/media/TabithaTemp.39ae7b9b.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8034848a.js",
+    "static/js/runtime-main.cf587306.js",
     "static/js/2.0b13ad88.chunk.js",
     "static/css/main.432eb040.chunk.css",
-    "static/js/main.f543ca51.chunk.js"
+    "static/js/main.fa7c97c7.chunk.js"
   ]
 }
