@@ -12,8 +12,10 @@ let heading = "Who we are."
 return(
 <div className = "about-container">
    <div className="about-container-text">
-      <h2 className='strike'>{heading}</h2>
-
+        <div className="about-container-header">
+            <h2 className='about-strike'>{heading}</h2>
+        </div>
+        <div className='about-container-paragraph'> </div>
       <p>We are a group of engineers and a designer from Seattle. We have a passion
          for creating tools that help streamline production so people can spend more
          time doing what they love. If you would like to know more about our project

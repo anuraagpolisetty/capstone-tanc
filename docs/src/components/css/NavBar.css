@@ -9,8 +9,9 @@ button {
     .nav {
     display: flex;
     justify-content: flex-end;
-    width:90%;
-    position: fixed;
+    width:96%;
+    position: absolute;
+    /* float:right */
     }
 
     .nav-item {
@@ -20,6 +21,7 @@ button {
     background-color: #D2716E;
     padding: 5px;
     border-radius: 5%;
+    /* float:right; */
     }
 
     .nav-item a {
@@ -41,7 +43,8 @@ button {
      display: flex;
      justify-content: flex-end;
      width:80%;
-     position: fixed;
+     position: absolute;
+     /* float:right; */
      }
  
      .nav-item {
@@ -73,9 +76,10 @@ button {
      /* display: flex; */
      /* justify-content: flex-end; */
      width:80%;
-     position: fixed;
+     position: absolute;
      top: 0;
      overflow:hidden;
+     /* float:right; */
      }
  
      .nav-item {
