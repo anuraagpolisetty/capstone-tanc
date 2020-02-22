@@ -49,6 +49,9 @@ return(
                   {/* value={newPost} onClick={() => this.createNewPost(newPost)}> */}
                   Post
                </button>
+               <div class = "footer">This project is a part of the Capstone Project course at the University of Washington
+      <a href = "https://ischool.uw.edu/capstone"> Information School.</a> We are sponsored by <a href = "www.agingkingcounty.org">Aging and Disability Services</a> who have provided us with data & information to launch our projects.
+      </div>
          {/* </form> */}
       </div>
    </div>
@@ -87,8 +90,8 @@ return(
          </div>
       </div>
    </div>
-   
 </div>
+
 );
 }
 }

@@ -128,3 +128,8 @@ textarea {
     display: inline-block;
     background-color: #4CAF50;
 }
+
+.footer {
+  padding-top: 20px;
+  font-size: 13px;
+}
