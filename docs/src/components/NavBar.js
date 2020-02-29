@@ -9,6 +9,7 @@ class NavBar extends Component {
     this.state = {
       links: [
         {path: "", text: "Home", isActive: false},
+        {path: "projects", text: "Projects", isActive: false},
         {path: "about", text: "About", isActive: false},
       ]
 
@@ -35,7 +36,7 @@ class NavBar extends Component {
             <Link to={{pathname: "./"}} name="Home" onClick={this.handleClick}>home</Link>
           </NavItem>
           <NavItem>
-            <Link to={{pathname: "./"}} name="Projects" onClick={this.handleClick}>projects</Link>
+            <Link to={{pathname: "./projects"}} name="Projects" onClick={this.handleClick}>project</Link>
           </NavItem>
           <NavItem>
             <Link to={{pathname: "./about"}} name="Contact" value="Contact" onClick={this.handleClick}>contact</Link>

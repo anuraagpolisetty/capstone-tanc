@@ -2,22 +2,16 @@ import React, { Component } from 'react';
 import scene3 from '../img/Scene1.png'
 import './css/Project.css';
 
-class Project extends Component {
+class Projects extends Component {
 
   render() {
-    let heading = "Solutions will go here:"
+    let heading = "Solutions will go here: "
 
     return(
       <div>
-        <div>
-          {/* <Navbar /> */}
-        </div>
-        <div className="content-1">
-          <div className="text">
-            <h2 className='strike'>{heading}</h2>
-            <p>
-                1234
-            </p>
+        <div className="project-1">
+          <div className="project-1-text">
+            <h2 className='project-1-header'>{heading}</h2>
           </div>
         </div>
       </div>
@@ -25,4 +19,4 @@ class Project extends Component {
   }
 }
 
-export default Project
+export default Projects

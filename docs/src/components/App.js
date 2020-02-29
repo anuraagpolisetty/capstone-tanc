@@ -3,12 +3,14 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Content from './Content';
 import NavBar from './NavBar';
 import About from './About';
+import Projects from './Projects'
 import './css/App.css';
 
 const Main = () => (
   <main>
     <Switch>
       <Route exact path='/' component={Content} />
+      <Route exact path='/projects' component={Projects} />
       <Route exact path='/about' component={About} />
     </Switch>
   </main>

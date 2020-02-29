@@ -1,90 +1,27 @@
-@media (min-width: 1200px) {
-  p {
-    font-size: 25px;
-    /* font-weight: 700; */
-  }
 
-  h2 {
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 2px;
-    /* font-weight: bolder; */
-  }
+p {
+   font-size: 25px;
+   /* font-weight: 700; */
+ }
 
-  .triangle {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: -1000px 0px 0px 5%;
-    padding-top: 1000px;
-    width: 95%;
-    background: linear-gradient(to bottom right, #fff 0%, #fff 50%, #D2716E 50%, #D2716E 100%);
-  }
+ h2 {
+   font-family: 'Montserrat', sans-serif;
+   letter-spacing: 2px;
+   /* font-weight: bolder; */
+ }
 
-  .page-container {
-    margin-top: 10em;
-    margin-bottom: 10em;
-  }
+ .triangle {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   margin: -1000px 0px 0px 5%;
+   padding-top: 1000px;
+   width: 95%;
+   background: linear-gradient(to bottom right, #fff 0%, #fff 50%, #D2716E 50%, #D2716E 100%);
 }
 
-@media (max-width: 1200px) and (min-width: 700px) {
-  p {
-    font-size: 25px;
-    /* font-weight: 700; */
-  }
-
-  h2 {
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 2px;
-    /* font-weight: bolder; */
-  }
-
-  /* .triangle {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: -1000px 0px 0px 5%;
-    padding-top: 1000px;
-    width: 95%;
-    background: linear-gradient(to bottom right, #fff 0%, #fff 50%, #D2716E 50%, #D2716E 100%);
-  } */
-
-  .page-container {
-    margin-top: 1em;
-    margin-bottom: 5em;
-    margin-left: 2em;
-  }
-}
-
-
-@media (max-width: 700px) {
-  p {
-    font-size: 25px;
-    /* font-weight: 700; */
-  }
-
-  h2 {
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 2px;
-    /* font-weight: bolder; */
-  }
-
-  /* .triangle {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: -1000px 0px 0px 5%;
-    padding-top: 1000px;
-    width: 95%;
-    background: linear-gradient(to bottom right, #fff 0%, #fff 50%, #D2716E 50%, #D2716E 100%);
-  } */
-
-  .page-container {
-    margin-top: 1em;
-    margin-bottom: 5em;
-    margin-left: 2em;
-  }
-
+.page-container {
+  margin-top: 10em;
+  margin-bottom: 10em;
 }

@@ -42,7 +42,7 @@ export class Text extends Component {
   render() {
     let div = <div className='container'>
       <div className="header-2">
-        <h2>
+        <h2 className='strike'>
           {this.props.heading}
         </h2>
       </div>

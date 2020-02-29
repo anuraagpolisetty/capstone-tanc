@@ -5,11 +5,12 @@
    justify-content: space-around;
    margin-left: 50px;
    padding: 50px;
+
  }
  .content-1 {
    /* margin-left: 50px; */
    margin-right: 25px;
-   /* margin-top: 120px; */
+   margin-top: -70px;
  }
 
  .content-1 .text {
@@ -17,6 +18,11 @@
    /* padding-left: 50px; */
  }
 }
+
+.content-1-background {
+  margin-right: -100px;
+}
+
 
 @media (max-width: 1200px) and (min-width: 700px) {
 

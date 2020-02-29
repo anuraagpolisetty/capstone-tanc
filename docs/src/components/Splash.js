@@ -22,7 +22,9 @@ class Splash extends Component {
                 TLDR: Making working with data not suck. 
             </p>
           </div>
-          <img src={scene3} className="content-1" alt="Background for People" />
+          <div className='content-1-background'>
+            <img src={scene3} className="content-1" alt="Background for People" />
+          </div>
         </div>
       </div>
     )

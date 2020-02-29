@@ -12,8 +12,10 @@ let heading = "Who we are."
 return(
 <div className = "about-container">
    <div className="about-container-text">
-      <h2 className='strike'>{heading}</h2>
-
+        <div className="about-container-header">
+            <h2 className='about-strike'>{heading}</h2>
+        </div>
+        <div className='about-container-paragraph'> </div>
       <p>We are a group of engineers and a designer from Seattle. We have a passion
          for creating tools that help streamline production so people can spend more
          time doing what they love. If you would like to know more about our project
@@ -47,6 +49,9 @@ return(
                   {/* value={newPost} onClick={() => this.createNewPost(newPost)}> */}
                   Post
                </button>
+               <div class = "footer">This project is a part of the Capstone Project course at the University of Washington
+      <a href = "https://ischool.uw.edu/capstone"> Information School.</a> We are sponsored by <a href = "www.agingkingcounty.org">Aging and Disability Services</a> who have provided us with data & information to launch our projects.
+      </div>
          {/* </form> */}
       </div>
    </div>
@@ -85,8 +90,8 @@ return(
          </div>
       </div>
    </div>
-   
 </div>
+
 );
 }
 }

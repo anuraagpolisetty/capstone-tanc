@@ -13,6 +13,15 @@
     width: 60%;
 }
 
+.about-container-header {
+    width: 600px;
+    margin-top:30px;
+}
+
+.about-container-paragraph {
+    margin-top: 60px;
+}
+
 .about-container-text p {
     margin-top: -30px;
 }
@@ -23,8 +32,16 @@
     font-family:'Montserrat', sans-serif;
     font-size: 25px;
     font-weight: 700;
-    padding-top: 25px;
+    padding-top: 15px;
 }
+
+ h2.about-strike {
+
+    background-color: white;
+    display: inline;
+    background: linear-gradient(to top, #D2716E 41%, white 40%);
+}
+
 
 .avatars-container img {
     width: 225px;
@@ -36,16 +53,18 @@
     display: flex;
     flex-flow: row wrap;
     padding-top: 10em;
+    margin-top:-80px;
+    margin-left:-60px;
 }
 
 .avatars-upper-row {
     display: flex;
     justify-content: flex-end;
-    padding-left: 12em;
+    padding-left: 10em;
 }
 
 .avatars-lower-row {
-    padding-right: 10em;
+    padding-right: 8em;
 }
 
 .caption {
@@ -108,4 +127,9 @@ textarea {
 .button {
     display: inline-block;
     background-color: #4CAF50;
+}
+
+.footer {
+  padding-top: 20px;
+  font-size: 13px;
 }
