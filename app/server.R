@@ -1,30 +1,47 @@
-library(shiny)
-library(ggplot2)
+# Server used to host the application. 
+# Creates the plots displayed to the user and considers user input. 
 
-function(input, output) {
-  
-  dataset <- reactive({
-    diamonds[sample(nrow(diamonds), input$sampleSize),]
-  })
-  
-  output$plot <- renderPlot({
-    
-    p <- ggplot(dataset(), aes_string(x=input$x, y=input$y)) + geom_point()
-    
-    if (input$color != 'None')
-      p <- p + aes_string(color=input$color)
-    
-    facets <- paste(input$facet_row, '~', input$facet_col)
-    if (facets != '. ~ .')
-      p <- p + facet_grid(facets)
-    
-    if (input$jitter)
-      p <- p + geom_jitter()
-    if (input$smooth)
-      p <- p + geom_smooth()
-    
-    print(p)
-    
-  }, height=700)
-  
-}
+library(plotly)
+library(shiny)
+
+source('./scripts/MapData.R')
+source('./scripts/HistogramData.R')
+source('./scripts/ScatterData.R')
+source('./scripts/BarData.R')
+source('./scripts/MapPlot.R')
+source('./scripts/HistogramPlot.R')
+source('./scripts/ScatterPlot.R')
+source('./scripts/BarPlot.R')
+source('./IndexData.R')
+
+full.data <- read.csv('./data/police_killings.csv', stringsAsFactors = FALSE)
+
+# Read in data to be used for each plot. 
+map.data <- MapData(full.data)
+histogram.data <- HistogramData(full.data)
+scatter.data <- ScatterData(full.data)
+bar.data <- BarData(full.data)
+
+allData <- read.csv(file="./data/TOTAL.csv", stringsAsFactors=FALSE)
+data.2019 <- IndexData(df) %>% filter(Batch=="2019-1"|Batch=="2019-2")
+social.index <- SocialIndex(data.2019, "all")
+
+
+# # Generate output plots displayed in UI. 
+# shinyServer(function(input, output) {
+#   output$Map <- renderPlotly({
+#     MapPlot(map.data, input)
+#   })
+#   
+#   output$Histogram <- renderPlotly({
+#     HistogramPlot(histogram.data, input$type.plot)
+#   })
+#   
+#   output$Scatter <- renderPlotly({
+#     ScatterPlot(scatter.data, input)
+#   })
+#   
+#   output$Bar <- renderPlotly({
+#     BarPlot(bar.data, input)
+#   })
+# })
