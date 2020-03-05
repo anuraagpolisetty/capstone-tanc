@@ -3,6 +3,11 @@ library(ggplot2)
 library(bs4Dash)
 library(plotly)
 
+data <- read.csv("C:/Users/Tabit/OneDrive/Capstone/capstone-tanc/data/Total.csv")
+test <- unique(data$SiteID)
+filtered <- filter(data, SiteID == "GWP")
+#View(filtered)
+
 fluidPage(
   bs4DashPage(
     title = 'Survey Visualization Tool',
@@ -27,13 +32,18 @@ fluidPage(
           icon = 'info'
         ),
         bs4SidebarMenuItem(
-          'Tabitha/Anuraag Visuals',
+          'Single Centers',
           tabName = 'create',
           icon = 'info'
         ), 
         bs4SidebarMenuItem(
-          'Data',
-          tabName = 'data',
+          'Comparing Centers',
+          tabName = 'compare',
+          icon = 'info'
+        ),
+        bs4SidebarMenuItem(
+          'General Info',
+          tabName = 'general',
           icon = 'info'
         )
       )
@@ -51,10 +61,11 @@ fluidPage(
             width = 12,
             bs4InfoBox(
               title = 'View Data',
-              tabName = 'data',
+              tabName = 'create',
               gradientColor = 'primary'
-            )
             ),
+            plotlyOutput("gauge")
+          ),
           bs4UserCard(
             title = "Wallingford Senior Center",
             width = 12,
@@ -86,46 +97,58 @@ fluidPage(
           ),
           bs4TabItem(
             tabName = 'create',
-            selectInput("select", label=h3('Select box'),
-                        choices = list('Question 1' = 1, 'Question 2' = 2),
+            titlePanel('Pike Market Senior Center'),
+            bs4Card(
+              title = 'Index for Pike Market Senior Center',
+              plotlyOutput("social"),
+              plotlyOutput("physical"),
+              plotlyOutput("positive"),
+              plotlyOutput("services"),
+              plotlyOutput("independence"),
+              plotlyOutput("general")
+            ),
+            selectInput("select", label=h3('Pick a Sector to Evaluate'),
+                        choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
                         selected = 1),
             bs4Card(
               title = "Over Time",
               width = 12,
               collapsible = TRUE,
               plotOutput("timeplot")
+            ),
+            bs4Card(
+              title = "Response for Sector",
+              width = 12,
+              collapsible = TRUE,
+              plotOutput("single_center_bar")
             )
           ),
           bs4TabItem(
-            tabName = 'data'
+            tabName = 'compare',
+            # Application title
+            titlePanel("Survey Questions"),
+            
+            # Sidebar with a slider input for number of bins 
+            sidebarPanel(
+              radioButtons("question",
+                           "Select Question",
+                           choices = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"),
+                           selected = "1"),
+              plotOutput("bar"),
+              selectInput(
+                "select",
+                label = h3("Filter on site"),
+                choices = c("All", "ACRS", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", "Wallingford", "CISC", "South Park", "GWP", "Southeast")
+              ),
+              plotOutput("income")
+            ),
+            mainPanel(
+              plotOutput("bar"),
+              plotOutput("income")
+            )
+            
           )
         )
       )
     )
   )
-
-    # Use this styling to move on tab over. How to move the rest?
-    # tags$head(tags$style('.navbar-nav {width: 95%;}
-    #                       .navbar-nav :first-child{float:right}')))
-  
-  # titlePanel("Single Senior Center"),
-  # 
-  # sidebarPanel(
-  #   
-  #   sliderInput('sampleSize', 'Sample Size', min=1, max=nrow(dataset),
-  #               value=min(1000, nrow(dataset)), step=500, round=0),
-  #   
-  #   selectInput('x', 'X', names(dataset)),
-  #   selectInput('y', 'Y', names(dataset), names(dataset)[[2]]),
-  #   selectInput('color', 'Color', c('None', names(dataset))),
-  #   
-  #   checkboxInput('jitter', 'Jitter'),
-  #   checkboxInput('smooth', 'Smooth'),
-  #   
-  #   selectInput('facet_row', 'Facet Row', c(None='.', names(dataset))),
-  #   selectInput('facet_col', 'Facet Column', c(None='.', names(dataset)))
-  # ),
-  # 
-  # mainPanel(
-  #   plotOutput('plot')
-  # )

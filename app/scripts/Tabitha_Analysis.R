@@ -37,7 +37,7 @@ bar_data <- bar_data[!is.na(data_single_center$Do.more.volunteer.work),]
 
 grouped_data <- bar_data %>% group_by(Do.more.volunteer.work) %>% summarise(count = n())
   
-ggplot(grouped_data, aes(x=reorder(Do.more.volunteer.work, -count),count))+geom_bar(stat="identity")
+single_center_bar <- ggplot(grouped_data, aes(x=reorder(Do.more.volunteer.work, -count),count))+geom_bar(stat="identity")
 
 
 # Visualization #3 Race and Ethnicity
