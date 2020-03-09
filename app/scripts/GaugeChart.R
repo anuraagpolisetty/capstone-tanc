@@ -30,7 +30,7 @@ GaugeChart <- function(data, FUN, site, year) {
     value = index,
     title = list(text = "Social Index"),
     type = "indicator",
-    frame = ~f,
+    # frame = ~f,
     mode = "gauge+number+delta",
     delta = list(reference = social.index.2018),
     gauge = list(
@@ -46,7 +46,9 @@ GaugeChart <- function(data, FUN, site, year) {
       #   value = 490)
     ))
   fig <- fig %>%
-    layout(margin = list(l=20,r=30))
+    layout(margin = list(l=20,r=30),
+           autosize = F, width = 200, height = 200)
+
   return(fig)
 }
 
