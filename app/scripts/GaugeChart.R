@@ -23,11 +23,14 @@ GaugeChart <- function(data, FUN, site, year) {
   index <- (FUN(data, site))
   print(year)
   
+  f = c(0, 0.5, 1, 1.5, index)
+  
   fig <- plot_ly(
     domain = list(x = c(0, 1), y = c(0, 1)),
     value = index,
     title = list(text = "Social Index"),
     type = "indicator",
+    frame = ~f,
     mode = "gauge+number+delta",
     delta = list(reference = social.index.2018),
     gauge = list(
