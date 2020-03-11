@@ -1,7 +1,7 @@
 library(plotly)
-source("C:/Users/Tabit/OneDrive/Capstone/capstone-tanc/app/IndexData.R")
+source("./IndexData.R")
 
-allData <- read.csv(file="C:/Users/Tabit/OneDrive/Capstone/capstone-tanc/data/TOTAL.csv", stringsAsFactors=FALSE)
+allData <- read.csv(file="./data/TOTAL.csv", stringsAsFactors=FALSE)
 
 data.2019 <- IndexData(allData) %>% filter(Batch=="2019-1"|Batch=="2019-2")
 social.index.2019 <- SocialIndex(data.2019, "all")
@@ -43,7 +43,8 @@ GaugeChart <- function(data, FUN, site, year) {
       #   value = 490)
     ))
   fig <- fig %>%
-    layout(margin = list(l=20,r=30))
+    layout(margin = list(l=20,r=30),
+           autosize = F, width = 200, height = 200)
   return(fig)
 }
 
