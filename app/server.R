@@ -8,6 +8,7 @@ library(bs4Dash)
 library(rsconnect)
 source('scripts/Tabitha_Analysis.R')
 source('scripts/GaugeChart.R')
+source('scripts/MapPlot.R')
 
 function(input, output) {
 

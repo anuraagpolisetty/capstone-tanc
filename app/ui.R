@@ -463,7 +463,13 @@ fluidPage(
                    ),
                    mainPanel(
                      plotOutput("bar")
-                   ))
+                   )),
+        bs4TabItem('general',
+                   titlePanel("General Center information"),
+                   mainPanel(
+                     plotOutput("map")
+                   )
+                   )
 
       )
     )
