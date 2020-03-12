@@ -8,10 +8,10 @@ source('scripts/GaugeChart.R')
 southeast_cleaned_data <- cleaned_data %>% filter(SiteID == 'Southeast')
 
 
-output$gauge <- renderPlotly({
+output$southeast_gauge <- renderPlotly({
   
   wallingford.data.2019 <- data.2019 %>% filter(SiteID == 'Southeast')   
-  GaugeChart(wallingford.data.2019, OverallSatisfactionIndex, "all", "2019")
+  GaugeChart(wallingford.data.2019, OverallIndex, "all", "2019")
   
 })
 
@@ -118,7 +118,7 @@ output$general_southeast <- renderPlotly({
     wallingford.date.data <- southeast_cleaned_data %>%  filter(Batch == '2019-1' | Batch == '2019-2')
     date <- '2019'    
   }
-  GaugeChart(wallingford.date.data, OverallSatisfactionIndex, 'all', date)
+  GaugeChart(wallingford.date.data, OverallIndex, 'all', date)
   
 })
 

@@ -8,10 +8,10 @@ source('scripts/GaugeChart.R')
 idic_cleaned_data <- cleaned_data %>% filter(SiteID == 'IDIC')
 
 
-output$gauge <- renderPlotly({
+output$idic_gauge <- renderPlotly({
   
   wallingford.data.2019 <- data.2019 %>% filter(SiteID == 'IDIC')   
-  GaugeChart(wallingford.data.2019, OverallSatisfactionIndex, "all", "2019")
+  GaugeChart(wallingford.data.2019, OverallIndex, "all", "2019")
   
 })
 
@@ -118,7 +118,7 @@ output$general_idic <- renderPlotly({
     wallingford.date.data <- idic_cleaned_data %>%  filter(Batch == '2019-1' | Batch == '2019-2')
     date <- '2019'    
   }
-  GaugeChart(wallingford.date.data, OverallSatisfactionIndex, 'all', date)
+  GaugeChart(wallingford.date.data, OverallIndex, 'all', date)
   
 })
 

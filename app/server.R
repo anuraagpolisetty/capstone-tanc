@@ -4,8 +4,9 @@ library(bs4Dash)
 library(rsconnect)
 source('scripts/Tabitha_Analysis.R')
 source('scripts/GaugeChart.R')
+source('Map/MapPlot.R')
 
-function(input, output) {
+function(input, output, session) {
 
   source('Single_Center/pike_server.R', local = T)
   source('Single_Center/wallingford_server.R', local = T)
@@ -17,4 +18,7 @@ function(input, output) {
   source('Single_Center/acrs_server.R', local = T)
   source('Single_Center/gwp_server.R', local=T)
   source('Compare/compare_server.R', local=T)
+  output$map <- renderPlot({
+    p
+  })
 }

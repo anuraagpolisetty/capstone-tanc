@@ -8,10 +8,10 @@ source('scripts/GaugeChart.R')
 acrs_cleaned_data <- cleaned_data %>% filter(SiteID == 'ACRS')
 
 
-output$gauge <- renderPlotly({
+output$acrs_gauge <- renderPlotly({
   
   acrs.data.2019 <- data.2019 %>% filter(SiteID == 'ACRS')   
-  GaugeChart(acrs.data.2019, OverallSatisfactionIndex, "all", "2019")
+  GaugeChart(acrs.data.2019, OverallIndex, "all", "2019")
   
 })
 
@@ -118,7 +118,7 @@ output$general_acrs <- renderPlotly({
     acrs.date.data <- acrs_cleaned_data %>%  filter(Batch == '2019-1' | Batch == '2019-2')
     date <- '2019'    
   }
-  GaugeChart(acrs.date.data, OverallSatisfactionIndex, 'all', date)
+  GaugeChart(acrs.date.data, OverallIndex, 'all', date)
   
 })
 
