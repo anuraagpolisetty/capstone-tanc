@@ -23,14 +23,11 @@ GaugeChart <- function(data, FUN, site, year) {
   index <- (FUN(data, site))
   print(year)
   
-  f = c(0, 0.5, 1, 1.5, index)
-  
   fig <- plot_ly(
     domain = list(x = c(0, 1), y = c(0, 1)),
     value = index,
-    title = list(text = "Social Index"),
+    title = list(text = deparse(substitute(FUN))),
     type = "indicator",
-    # frame = ~f,
     mode = "gauge+number+delta",
     delta = list(reference = social.index.2018),
     gauge = list(
@@ -48,19 +45,12 @@ GaugeChart <- function(data, FUN, site, year) {
   fig <- fig %>%
     layout(margin = list(l=20,r=30),
            autosize = F, width = 200, height = 200)
-
   return(fig)
 }
 
-GaugeChart(data.2019, SocialIndex, "all", "2019")
-GaugeChart(data.2019, PhysicalIndex, "all", "2019")
-GaugeChart(data.2019, PositiveIndex, "all", "2019")
-GaugeChart(data.2019, ServicesIndex, "all", "2019")
-GaugeChart(data.2019, IndependenceIndex, "all", "2019")
-GaugeChart(data.2019, OverallSatisfactionIndex, "all", "2019")
-
-
-
-
-
-
+social = GaugeChart(data.2019, SocialIndex, "all", "2019")
+physical = GaugeChart(data.2019, PhysicalIndex, "all", "2019")
+positive = GaugeChart(data.2019, PositiveIndex, "all", "2019")
+services = GaugeChart(data.2019, ServicesIndex, "all", "2019")
+independence = GaugeChart(data.2019, IndependenceIndex, "all", "2019")
+plot = GaugeChart(data.2019, OverallSatisfactionIndex, "all", "2019")
