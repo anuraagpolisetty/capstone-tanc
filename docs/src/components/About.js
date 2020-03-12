@@ -45,14 +45,16 @@ return(
                         // onChange={(event) => { handleChange(event) }}
                     />
                 </div>
-            <button type = "button" className="btn btn-primary mr-2 red darken-3" >
+                <div className = "space">
+                <button className="button" >
                   {/* value={newPost} onClick={() => this.createNewPost(newPost)}> */}
-                  Post
+                  Submit
                </button>
                <div class = "footer">This project is a part of the Capstone Project course at the University of Washington
       <a href = "https://ischool.uw.edu/capstone"> Information School.</a> We are sponsored by <a href = "www.agingkingcounty.org">Aging and Disability Services</a> who have provided us with data & information to launch our projects.
       </div>
          {/* </form> */}
+         </div>
       </div>
    </div>
    <div className="avatars-container">
