@@ -834,11 +834,7 @@ fluidPage(
                    mainPanel(
                      plotOutput("map")
                    )
-<<<<<<< HEAD
-                   )
-=======
         )
->>>>>>> tabitha
 
       )
     )

@@ -4,15 +4,12 @@
 library(plotly)
 library(shiny)
 library(ggplot2)
+library(ISOcodes)
 library(bs4Dash)
 library(rsconnect)
 source('scripts/Tabitha_Analysis.R')
 source('scripts/GaugeChart.R')
-<<<<<<< HEAD
-source('scripts/MapPlot.R')
-=======
 source('Map/MapPlot.R')
->>>>>>> tabitha
 
 function(input, output, session) {
 
@@ -26,15 +23,7 @@ function(input, output, session) {
   source('Single_Center/acrs_server.R', local = T)
   source('Single_Center/gwp_server.R', local=T)
   source('Compare/compare_server.R', local=T)
-<<<<<<< HEAD
-}
-
-# output$map <- renderPlot({
-#   p
-# })
-=======
   output$map <- renderPlot({
     p
   })
 }
->>>>>>> tabitha
