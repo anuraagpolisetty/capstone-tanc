@@ -4,6 +4,278 @@ library(bs4Dash)
 library(plotly)
 
 fluidPage(
+  #theme = "bootstrap.css",
+  #tags$link(rel ='stylesheet', type='text/css', href='bootstrap.css'),
+  tags$style(HTML("
+                  div#gauge {
+                    width:170px !important;
+                    height:150px !important;
+                  }
+                  div#wallingford_gauge {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#greenwood_gauge {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#southpark_gauge {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#idic_gauge {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#southeast_gauge {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#sunshine_gauge {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#acrs_gauge {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#gwp_gauge {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  .card-footer {
+                    max-height: 200px;
+                  }
+
+                  div#social_pike {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_pike {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_pike {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_pike {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_pike {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_pike {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+
+                  div#social_wallingford {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_wallingford {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_wallingford {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_wallingford {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_wallingford {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_wallingford {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+                  div#social_greenwood {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_greenwood {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_greenwood {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_greenwood {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_greenwood {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_greenwood {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+                  div#social_southpark {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_southpark {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_southpark {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_southpark {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_southpark {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_southpark {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+
+                  div#social_idic {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_idic {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_idic {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_idic {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_idic {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_idic {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+                  div#social_southeast {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_southeast {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_southeast {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_southeast {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_southeast {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_southeast {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+                  div#social_sunshine {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_sunshine {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_sunshine {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_sunshine {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_sunshine {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_sunshine {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+                  div#social_acrs {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_acrs {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_acrs {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_acrs {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_acrs {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_acrs {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+
+                  div#social_gwp {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_gwp {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_gwp {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_gwp {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_gwp {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_gwp {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+                 ")),
+  
   bs4DashPage(
     title = 'Survey Visualization Tool',
     sidebar_collapsed = FALSE,
@@ -16,7 +288,6 @@ fluidPage(
 
     # left sidebar
     sidebar = bs4DashSidebar(
-      skin = "dark",
       status = 'primary',
       title = 'Survey Visualization Tool',
 
@@ -29,7 +300,43 @@ fluidPage(
         bs4SidebarMenuItem(
           'Single Centers',
           tabName = 'single',
-          icon = 'info'
+          icon = 'info',
+          bs4SidebarMenuSubItem(
+            text = 'Pike',
+            tabName = 'sub_pike'
+          ),
+          bs4SidebarMenuSubItem(
+            text = 'Wallingford',
+            tabName = 'sub_wallingford'
+          ),
+          bs4SidebarMenuSubItem(
+            text = 'Greenwood',
+            tabName = 'sub_greenwood'
+          ),
+          bs4SidebarMenuSubItem(
+            text = 'South Park',
+            tabName = 'sub_southpark'
+          ),
+          bs4SidebarMenuSubItem(
+            text = 'IDIC',
+            tabName = 'sub_idic'
+          ),
+          bs4SidebarMenuSubItem(
+            text = 'Southeast',
+            tabName = 'sub_southeast'
+          ),
+          bs4SidebarMenuSubItem(
+            text = 'Sunshine Garden',
+            tabName = 'sub_sunshine'
+          ),
+          bs4SidebarMenuSubItem(
+            text = 'ACRS',
+            tabName = 'sub_acrs'
+          ),
+          bs4SidebarMenuSubItem(
+            text = 'GWP',
+            tabName = 'sub_gwp'
+          )
         ),
         bs4SidebarMenuItem(
           'Comparing Centers',
@@ -49,262 +356,321 @@ fluidPage(
       bs4TabItems(
         bs4TabItem(
           tabName = "home",
-          bs4UserCard(
-            title = "Pike Market Senior Center",
-            width = 12,
-            bs4InfoBox(
-              title = 'View Data',
-              tabName = 'single',
-              gradientColor = 'primary'
+          fluidRow(
+              bs4UserCard(
+                width = 4,
+                title = "Pike Market Senior Center",
+                plotlyOutput("gauge"),
+                bs4InfoBox(
+                  title = 'View Data',
+                  tabName = 'sub_pike',
+                  gradientColor = 'primary',
+                  width = 12
+                )
             ),
-            plotlyOutput("gauge")
-          ),
-          bs4UserCard(
-            title = "Wallingford Senior Center",
-            width = 12,
-            status = 'primary',
-            bs4InfoBox(
-              title = 'View Data',
-              tabName = 'wallingford',
-              gradientColor = 'primary'
-            )
-          ),
+            bs4UserCard(
+              width = 4,
+              title = "Wallingford Senior Center",
+              status = 'primary',
+              plotlyOutput('wallingford_gauge'),
+              bs4InfoBox(
+                title = 'View Data',
+                tabName = 'sub_wallingford',
+                gradientColor = 'primary',
+                width = 12
+                    )
+                ),
           bs4UserCard(
             title = "Greenwood Senior Center",
-            width = 12,
+            width = 4,
+            plotlyOutput('greenwood_gauge'),
             bs4InfoBox(
               title = 'View Data',
-              tabName = 'greenwood',
-              gradientColor = 'primary'
+              tabName = 'sub_greenwood',
+              gradientColor = 'primary',
+              width = 12
             )
-          ),
-          bs4UserCard(
-            title = "South Park Senior Center",
-            width = 12,
-            bs4InfoBox(
-              title = 'View Data',
-              tabName = 'southpark',
-              gradientColor = 'primary'
-            )
-          ),
-          bs4UserCard(
-            title = "International Drop-In Center",
-            width = 12,
-            bs4InfoBox(
-              title = 'View Data',
-              tabName = 'idic',
-              gradientColor = 'primary'
-            )
-          ),
-          bs4UserCard(
-            title = "Southeast Seattle Senior Center",
-            width = 12,
-            bs4InfoBox(
-              title = 'View Data',
-              tabName = 'southeast',
-              gradientColor = 'primary'
-            )
-          ),
-          bs4UserCard(
-            title = "Sunshine Garden (Chinese Information and Service Center)",
-            width = 12,
-            bs4InfoBox(
-              title = 'View Data',
-              tabName = 'sunshine',
-              gradientColor = 'primary'
-            )
-          ),
-          bs4UserCard(
-            title = "ACRS",
-            width = 12,
-            bs4InfoBox(
-              title = 'View Data',
-              tabName = 'acrs',
-              gradientColor = 'primary'
-            )
-          ),
-          bs4UserCard(
-            title = "GWP",
-            width = 12,
-            bs4InfoBox(
-              title = 'View Data',
-              tabName = 'gwp',
-              gradientColor = 'primary'
+          )),
+          fluidRow(
+            bs4UserCard(
+              title = "South Park Senior Center",
+              width = 4,
+              plotlyOutput('southpark_gauge'),
+              bs4InfoBox(
+                title = 'View Data',
+                tabName = 'sub_southpark',
+                gradientColor = 'primary',
+                width = 12
+              )
+            ),
+            bs4UserCard(
+              title = "International Drop-In Center",
+              width = 4,
+              plotlyOutput('idic_gauge'),
+              bs4InfoBox(
+                title = 'View Data',
+                tabName = 'sub_idic',
+                gradientColor = 'primary',
+                width = 12
+              )
+            ),
+            bs4UserCard(
+              title = "Southeast Seattle Senior Center",
+              width = 4,
+              plotlyOutput('southeast_gauge'),
+              bs4InfoBox(
+                title = 'View Data',
+                tabName = 'sub_southeast',
+                gradientColor = 'primary',
+                width = 12
+              )
+            )),
+          fluidRow(
+            bs4UserCard(
+              title = "Sunshine Garden service Center",
+              width = 4,
+              plotlyOutput('sunshine_gauge'),
+              bs4InfoBox(
+                title = 'View Data',
+                tabName = 'sub_sunshine',
+                gradientColor = 'primary',
+                width = 12
+              )
+            ),
+            bs4UserCard(
+              title = "ACRS",
+              width = 4,
+              plotlyOutput('acrs_gauge'),
+              bs4InfoBox(
+                title = 'View Data',
+                tabName = 'sub_acrs',
+                gradientColor = 'primary',
+                width = 12
+              )
+            ),
+            bs4UserCard(
+              title = "GWP",
+              width = 4,
+              plotlyOutput('gwp_gauge'),
+              bs4InfoBox(
+                title = 'View Data',
+                tabName = 'sub_gwp',
+                gradientColor = 'primary',
+                width = 12
+              )
             )
           )
         ),
-        bs4TabItem(tabName = 'single',
-                   bs4TabSetPanel(
-                     id = 'tabset1',
-                     side = 'right',
-                     bs4TabPanel(tabName = 'Pike Market',
-                                 titlePanel('Pike Market Senior Center'),
-
-                                 selectInput("pike_gauge", label=h3('Filter By Batch'),
-                                             choices = list('2017' = 1, '2018' = 2, '2019' = 3),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = 'Index for Pike Market Senior Center',
-                                   closable=FALSE,
-                                   plotlyOutput("social_pike"),
-                                   plotlyOutput("physical_pike"),
-                                   plotlyOutput("positive_pike"),
-                                   plotlyOutput("services_pike"),
-                                   plotlyOutput("independence_pike"),
-                                   plotlyOutput("general_pike")
-                                 ),
+        bs4TabItem(tabName = 'sub_pike',
+                                titlePanel('Pike Market Senior Center'),
+                                br(),
+                                fluidRow(
+                                  
+                                 column(
+                                   width = 8,
+                                   selectInput("pike_answer", label=h3('Pick a Sector to Evaluate'),
+                                               choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                               selected = 1),
+                                   bs4Card(
+                                     title = "Over Time",
+                                     width = 14,
+                                     collapsible = TRUE,
+                                     closable=FALSE,
+                                     plotOutput("pike_timeplot")
+                                   ),
+                                   bs4Card(
+                                     title = "Response for Sector",
+                                     width = 14,
+                                     collapsible = TRUE,
+                                     closable = FALSE,
+                                     plotOutput("pike_bar")
+                                   )
+                                  ),
                                  
-                                 selectInput("pike_answer", label=h3('Pick a Sector to Evaluate'),
-                                             choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = "Over Time",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable=FALSE,
-                                   plotOutput("pike_timeplot")
-                                 ),
-                                 bs4Card(
-                                   title = "Response for Sector",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable = FALSE,
-                                   plotOutput("pike_bar")
+                                 column(
+                                   width= 4,
+                                   selectInput("pike_gauge", label=h3('Filter By Batch'),
+                                               choices = list('2017' = 1, '2018' = 2, '2019' = 3),
+                                               selected = 1),
+                                   bs4Card(
+                                     title = 'Index for Pike Market Senior Center',
+                                     closable=FALSE,
+                                     width=8,
+                                     plotlyOutput("social_pike"),
+                                     plotlyOutput("physical_pike"),
+                                     plotlyOutput("positive_pike"),
+                                     plotlyOutput("services_pike"),
+                                     plotlyOutput("independence_pike"),
+                                     plotlyOutput("general_pike")
+                                   ))
+                                )
+                     ),
+                     
+                     bs4TabItem(tabName = 'sub_wallingford',
+                                 titlePanel('Wallingford Senior Center'),
+                                 br(),
+                                fluidRow(
+                                  column(
+                                    width = 8,
+                                     selectInput("wallingford_answer", label=h3('Pick a Sector to Evaluate'),
+                                                 choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                                 selected = 1),
+                                     bs4Card(
+                                       title = "Over Time",
+                                       width = 14,
+                                       collapsible = TRUE,
+                                       closable=FALSE,
+                                       plotOutput("wallingford_timeplot")
+                                     ),
+                                     bs4Card(
+                                       title = "Response for Sector",
+                                       width = 14,
+                                       collapsible = TRUE,
+                                       closable = FALSE,
+                                       plotOutput("wallingford_bar")
+                                     )),
+                                  column(
+                                    width = 4,
+                                    selectInput("wallingford_gauge", label=h3('Filter By Batch'),
+                                                choices = list('2017' = 1, '2018' = 2, '2019' = 3),
+                                                selected = 1),
+                                    bs4Card(
+                                      title = 'Index for Wallingford Senior Center',
+                                      closable=FALSE,
+                                      width = 8,
+                                      plotlyOutput("social_wallingford"),
+                                      plotlyOutput("physical_wallingford"),
+                                      plotlyOutput("positive_wallingford"),
+                                      plotlyOutput("services_wallingford"),
+                                      plotlyOutput("independence_wallingford"),
+                                      plotlyOutput("general_wallingford")
+                                    )
+                                  )
+                                )),
+                     bs4TabItem(tabName = 'sub_greenwood',
+                                 titlePanel('Greenwood Senior Center'),
+                                fluidRow(
+                                  column(
+                                    width = 8,
+                                     selectInput("greenwood_answer", label=h3('Pick a Sector to Evaluate'),
+                                                 choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                                 selected = 1),
+                                     bs4Card(
+                                       title = "Over Time",
+                                       width = 14,
+                                       collapsible = TRUE,
+                                       closable=FALSE,
+                                       plotOutput("greenwood_timeplot")
+                                     ),
+                                     bs4Card(
+                                       title = "Response for Sector",
+                                       width = 14,
+                                       collapsible = TRUE,
+                                       closable = FALSE,
+                                       plotOutput("greenwood_bar")
+                                     )),
+                                  column(
+                                    width = 4,
+                                    selectInput("greenwood_gauge", label=h3('Filter By Batch'),
+                                                choices = list('2017' = 1, '2018' = 2, '2019' = 3),
+                                                selected = 1),
+                                    bs4Card(
+                                      title = 'Index for Greenwood Senior Center',
+                                      closable=FALSE,
+                                      width= 8,
+                                      plotlyOutput("social_greenwood"),
+                                      plotlyOutput("physical_greenwood"),
+                                      plotlyOutput("positive_greenwood"),
+                                      plotlyOutput("services_greenwood"),
+                                      plotlyOutput("independence_greendwood"),
+                                      plotlyOutput("general_greenwood")
+                                    )
+                                  )
+                                )
+                     ),
+                     bs4TabItem(tabName = 'sub_southpark',
+                                 titlePanel('South Park Senior Center'),
+                                 fluidRow(
+                                   column(
+                                      width = 8,
+                                     selectInput("southpark_answer", label=h3('Pick a Sector to Evaluate'),
+                                                 choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                                 selected = 1),
+                                     bs4Card(
+                                       title = "Over Time",
+                                       width = 14,
+                                       collapsible = TRUE,
+                                       closable=FALSE,
+                                       plotOutput("southpark_timeplot")
+                                     ),
+                                     bs4Card(
+                                       title = "Response for Sector",
+                                       width = 14,
+                                       collapsible = TRUE,
+                                       closable = FALSE,
+                                       plotOutput("southpark_bar")
+                                     )),
+                                   column(
+                                     width = 4,
+                                     selectInput("southpark_gauge", label=h3('Filter By Batch'),
+                                                 choices = list('2017' = 1, '2018' = 2, '2019' = 3),
+                                                 selected = 1),
+                                     bs4Card(
+                                       title = 'Index for South Park Senior Center',
+                                       width = 8,
+                                       closable=FALSE,
+                                       plotlyOutput("social_southpark"),
+                                       plotlyOutput("physical_southpark"),
+                                       plotlyOutput("positive_southpark"),
+                                       plotlyOutput("services_southpark"),
+                                       plotlyOutput("independence_southpark"),
+                                       plotlyOutput("general_southpark")
+                                     )
+                                   )
                                  )
                      ),
-                     bs4TabPanel(tabName = 'Wallingford',
-                                 titlePanel('Wallingford Senior Center'),
-                                 selectInput("wallingford_gauge", label=h3('Filter By Batch'),
-                                             choices = list('2017' = 1, '2018' = 2, '2019' = 3),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = 'Index for Wallingford Senior Center',
-                                   closable=FALSE,
-                                   plotlyOutput("social_wallingford"),
-                                   plotlyOutput("physical_wallingford"),
-                                   plotlyOutput("positive_wallingford"),
-                                   plotlyOutput("services_wallingford"),
-                                   plotlyOutput("independence_wallingford"),
-                                   plotlyOutput("general_wallingford")
-                                 ),
-                                 
-                                 selectInput("wallingford_answer", label=h3('Pick a Sector to Evaluate'),
-                                             choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = "Over Time",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable=FALSE,
-                                   plotOutput("wallingford_timeplot")
-                                 ),
-                                 bs4Card(
-                                   title = "Response for Sector",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable = FALSE,
-                                   plotOutput("wallingford_bar")
-                                 )),
-                     bs4TabPanel(tabName = 'Greenwood',
-                                 titlePanel('Greenwood Senior Center'),
-                                 selectInput("greenwood_gauge", label=h3('Filter By Batch'),
-                                             choices = list('2017' = 1, '2018' = 2, '2019' = 3),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = 'Index for Greenwood Senior Center',
-                                   closable=FALSE,
-                                   plotlyOutput("social_greenwood"),
-                                   plotlyOutput("physical_greenwood"),
-                                   plotlyOutput("positive_greenwood"),
-                                   plotlyOutput("services_greenwood"),
-                                   plotlyOutput("independence_greendwood"),
-                                   plotlyOutput("general_greenwood")
-                                 ),
-                                 
-                                 selectInput("greenwood_answer", label=h3('Pick a Sector to Evaluate'),
-                                             choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = "Over Time",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable=FALSE,
-                                   plotOutput("greenwood_timeplot")
-                                 ),
-                                 bs4Card(
-                                   title = "Response for Sector",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable = FALSE,
-                                   plotOutput("greenwood_bar")
-                                 )),
-                     bs4TabPanel(tabName = 'South Park',
-                                 titlePanel('South Park Senior Center'),
-                                 selectInput("southpark_gauge", label=h3('Filter By Batch'),
-                                             choices = list('2017' = 1, '2018' = 2, '2019' = 3),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = 'Index for South Park Senior Center',
-                                   closable=FALSE,
-                                   plotlyOutput("social_southpark"),
-                                   plotlyOutput("physical_southpark"),
-                                   plotlyOutput("positive_southpark"),
-                                   plotlyOutput("services_southpark"),
-                                   plotlyOutput("independence_southpark"),
-                                   plotlyOutput("general_southpark")
-                                 ),
-                                 
-                                 selectInput("southpark_answer", label=h3('Pick a Sector to Evaluate'),
-                                             choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = "Over Time",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable=FALSE,
-                                   plotOutput("southpark_timeplot")
-                                 ),
-                                 bs4Card(
-                                   title = "Response for Sector",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable = FALSE,
-                                   plotOutput("southpark_bar")
-                                 )),
-                     bs4TabPanel(tabName = 'IDIC',
+                     bs4TabItem(tabName = 'sub_idic',
                                  titlePanel('International Drop-In Center'),
-                                 selectInput("idic_gauge", label=h3('Filter By Batch'),
-                                             choices = list('2017' = 1, '2018' = 2, '2019' = 3),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = 'Index for International Drop-In Center',
-                                   closable=FALSE,
-                                   plotlyOutput("social_idic"),
-                                   plotlyOutput("physical_idic"),
-                                   plotlyOutput("positive_idic"),
-                                   plotlyOutput("services_idic"),
-                                   plotlyOutput("independence_idic"),
-                                   plotlyOutput("general_idic")
-                                 ),
-                                 
-                                 selectInput("idic_answer", label=h3('Pick a Sector to Evaluate'),
-                                             choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = "Over Time",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable=FALSE,
-                                   plotOutput("idic_timeplot")
-                                 ),
-                                 bs4Card(
-                                   title = "Response for Sector",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable = FALSE,
-                                   plotOutput("idic_bar")
-                                 )),
-                     bs4TabPanel(tabName = 'Southeast',
+                                 fluidRow(
+                                    column(
+                                      width = 8,
+                                     selectInput("idic_answer", label=h3('Pick a Sector to Evaluate'),
+                                                 choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                                 selected = 1),
+                                     bs4Card(
+                                       title = "Over Time",
+                                       width = 14,
+                                       collapsible = TRUE,
+                                       closable=FALSE,
+                                       plotOutput("idic_timeplot")
+                                     ),
+                                     bs4Card(
+                                       title = "Response for Sector",
+                                       width = 14,
+                                       collapsible = TRUE,
+                                       closable = FALSE,
+                                       plotOutput("idic_bar")
+                                     )),
+                                    column(
+                                      width = 4,
+                                      selectInput("idic_gauge", label=h3('Filter By Batch'),
+                                                  choices = list('2017' = 1, '2018' = 2, '2019' = 3),
+                                                  selected = 1),
+                                      bs4Card(
+                                        title = 'Index for International Drop-In Center',
+                                        closable=FALSE,
+                                        width = 8,
+                                        plotlyOutput("social_idic"),
+                                        plotlyOutput("physical_idic"),
+                                        plotlyOutput("positive_idic"),
+                                        plotlyOutput("services_idic"),
+                                        plotlyOutput("independence_idic"),
+                                        plotlyOutput("general_idic")
+                                      )
+                                    )
+                                 )
+                     ),
+                     bs4TabItem(tabName = 'sub_southeast',
                                  titlePanel('Southeast Seattle Senior Center'),
                                  selectInput("southeast_gauge", label=h3('Filter By Batch'),
                                              choices = list('2017' = 1, '2018' = 2, '2019' = 3),
@@ -319,7 +685,7 @@ fluidPage(
                                    plotlyOutput("independence_southeast"),
                                    plotlyOutput("general_southeast")
                                  ),
-                                 
+
                                  selectInput("southeast_answer", label=h3('Pick a Sector to Evaluate'),
                                              choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
                                              selected = 1),
@@ -337,7 +703,7 @@ fluidPage(
                                    closable = FALSE,
                                    plotOutput("southeast_bar")
                                  )),
-                     bs4TabPanel(tabName = 'Sunshine Garden',
+                     bs4TabItem(tabName = 'sub_sunshine',
                                  titlePanel('Sunshine Garden Senior Center'),
                                  selectInput("sunshine_gauge", label=h3('Filter By Batch'),
                                              choices = list('2017' = 1, '2018' = 2, '2019' = 3),
@@ -352,7 +718,7 @@ fluidPage(
                                    plotlyOutput("independence_sunshine"),
                                    plotlyOutput("general_sunshine")
                                  ),
-                                 
+
                                  selectInput("sunshine_answer", label=h3('Pick a Sector to Evaluate'),
                                              choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
                                              selected = 1),
@@ -370,7 +736,7 @@ fluidPage(
                                    closable = FALSE,
                                    plotOutput("sunshine_bar")
                                  )),
-                     bs4TabPanel(tabName = 'ACRS',
+                     bs4TabItem(tabName = 'sub_acrs',
                                  titlePanel('ACRS'),
                                  selectInput("acrs_gauge", label=h3('Filter By Batch'),
                                              choices = list('2017' = 1, '2018' = 2, '2019' = 3),
@@ -385,7 +751,7 @@ fluidPage(
                                    plotlyOutput("independence_acrs"),
                                    plotlyOutput("general_acrs")
                                  ),
-                                 
+
                                  selectInput("acrs_answer", label=h3('Pick a Sector to Evaluate'),
                                              choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
                                              selected = 1),
@@ -403,7 +769,7 @@ fluidPage(
                                    closable = FALSE,
                                    plotOutput("acrs_bar")
                                  )),
-                     bs4TabPanel(tabName = 'GWP',
+                     bs4TabItem(tabName = 'sub_gwp',
                                  titlePanel('GWP'),
                                  selectInput("gwp_gauge", label=h3('Filter By Batch'),
                                              choices = list('2017' = 1, '2018' = 2, '2019' = 3),
@@ -418,7 +784,7 @@ fluidPage(
                                    plotlyOutput("independence_gwp"),
                                    plotlyOutput("general_gwp")
                                  ),
-                                 
+
                                  selectInput("gwp_answer", label=h3('Pick a Sector to Evaluate'),
                                              choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
                                              selected = 1),
@@ -435,9 +801,8 @@ fluidPage(
                                    collapsible = TRUE,
                                    closable = FALSE,
                                    plotOutput("gwp_bar")
-                                 ))
-                   )
-        ),
+                                 )),
+      
         bs4TabItem('compare',
                    titlePanel("Compare Senior Centers"),
                    sidebarPanel(
@@ -469,7 +834,11 @@ fluidPage(
                    mainPanel(
                      plotOutput("map")
                    )
+<<<<<<< HEAD
                    )
+=======
+        )
+>>>>>>> tabitha
 
       )
     )

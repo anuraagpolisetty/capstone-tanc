@@ -8,10 +8,10 @@ source('scripts/GaugeChart.R')
 sunshine_cleaned_data <- cleaned_data %>% filter(SiteID == 'Sunshine Garden')
 
 
-output$gauge <- renderPlotly({
+output$sunshine_gauge <- renderPlotly({
   
   sunshine.data.2019 <- data.2019 %>% filter(SiteID == 'Sunshine Garden')   
-  GaugeChart(sunshine.data.2019, OverallSatisfactionIndex, "all", "2019")
+  GaugeChart(sunshine.data.2019, OverallIndex, "all", "2019")
   
 })
 
@@ -118,7 +118,7 @@ output$general_sunshine <- renderPlotly({
     sunshine.date.data <- sunshine_cleaned_data %>%  filter(Batch == '2019-1' | Batch == '2019-2')
     date <- '2019'    
   }
-  GaugeChart(sunshine.date.data, OverallSatisfactionIndex, 'all', date)
+  GaugeChart(sunshine.date.data, OverallIndex, 'all', date)
   
 })
 

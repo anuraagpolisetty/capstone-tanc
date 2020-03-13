@@ -8,10 +8,10 @@ source('scripts/GaugeChart.R')
 wallingford_cleaned_data <- cleaned_data %>% filter(SiteID == 'Wallingford')
 
 
-output$gauge <- renderPlotly({
+output$wallingford_gauge <- renderPlotly({
   
   wallingford.data.2019 <- data.2019 %>% filter(SiteID == 'Wallingford')   
-  GaugeChart(wallingford.data.2019, OverallSatisfactionIndex, "all", "2019")
+  GaugeChart(wallingford.data.2019, OverallIndex, "all", "2019")
   
 })
 

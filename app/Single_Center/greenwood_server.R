@@ -8,10 +8,10 @@ source('scripts/GaugeChart.R')
 greenwood_cleaned_data <- cleaned_data %>% filter(SiteID == 'Greenwood')
 
 
-output$gauge <- renderPlotly({
+output$greenwood_gauge <- renderPlotly({
   
   greenwood.data.2019 <- data.2019 %>% filter(SiteID == 'Greenwood')   
-  GaugeChart(greenwood.data.2019, OverallSatisfactionIndex, "all", "2019")
+  GaugeChart(greenwood.data.2019, OverallIndex, "all", "2019")
   
 })
 
@@ -118,7 +118,7 @@ output$general_greenwood <- renderPlotly({
     greenwood.date.data <- greenwood_cleaned_data %>%  filter(Batch == '2019-1' | Batch == '2019-2')
     date <- '2019'    
   }
-  GaugeChart(greenwood.date.data, OverallSatisfactionIndex, 'all', date)
+  GaugeChart(greenwood.date.data, OverallIndex, 'all', date)
   
 })
 

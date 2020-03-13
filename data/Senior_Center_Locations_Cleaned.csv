@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-SiteName,race_for_center,lat,long,SurveyYear,SurveyPeriod,SurveyResponseID,Q1 - DoMoreVolunteerWork,Q2 - SeeFriendsMore,Q3 - TakeCareOfHealth,Q4 - EatBetterMeals,Q5 - HaveMoreEnergy,Q6 - FeelHappier,Q7 - SomethingToLookForwardTo,Q9 - FeelIndependent,Q10 - FeelSeniorCenterPositiveEffect,Q11 - LearnNewThings,Q12 - LearnedAboutServices,Q13 - MoreActive,Q14 - WouldRecommendSeniorCenter
-=======
 ﻿SiteName,race_for_center,lat,long,SurveyYear,SurveyPeriod,SurveyResponseID,Q1 - DoMoreVolunteerWork,Q2 - SeeFriendsMore,Q3 - TakeCareOfHealth,Q4 - EatBetterMeals,Q5 - HaveMoreEnergy,Q6 - FeelHappier,Q7 - SomethingToLookForwardTo,Q9 - FeelIndependent,Q10 - FeelSeniorCenterPositiveEffect,Q11 - LearnNewThings,Q12 - LearnedAboutServices,Q13 - MoreActive,Q14 - WouldRecommendSeniorCenter
->>>>>>> tabitha
 ACRS,"Asian, Asian-American",47.571763,-122.297273,2016.004405,1.491189427,5165.814978,2.288546256,2.757709251,2.795154185,2.707048458,2.753303965,2.845814978,2.660792952,2.704845815,2.843612335,2.733480176,2.656387665,2.817180617,2.746696035
 Ballard NW Senior Center,White or Caucasian,47.668534,-122.398667,2016.087925,1.467760844,6814.029308,2.1992966,2.664712778,2.638921454,2.533411489,2.627198124,2.78077374,2.712778429,2.770222743,2.901524033,2.675263775,2.705744431,2.679953107,2.939038687
 CISC,"Asian, Asian-American",47.596407,-122.325425,2016.510753,1.607526882,7118.33871,2.193548387,2.725806452,2.822580645,2.634408602,2.704301075,2.827956989,2.720430108,2.76344086,2.887096774,2.715053763,2.731182796,2.731182796,2.731182796
