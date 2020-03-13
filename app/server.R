@@ -23,3 +23,7 @@ function(input, output) {
   source('Single_Center/gwp_server.R', local=T)
   source('Compare/compare_server.R', local=T)
 }
+
+# output$map <- renderPlot({
+#   p
+# })
