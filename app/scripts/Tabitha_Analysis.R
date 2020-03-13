@@ -14,7 +14,6 @@ questions <- column.names[12:25]
 
 
 for (question in questions) {
-  print(question)
   data_single_center[is.na(data_single_center[question]), question] <- '0'
   data_single_center[data_single_center[question] == 'Not Applicable',question] <- '0'
   data_single_center[data_single_center[question] == 'Almost Never',question] <- '1'
@@ -55,7 +54,6 @@ questions <- column.names[12:25]
 
 
 for (question in questions) {
-  print(question)
   cleaned_data[is.na(cleaned_data[question]), question] <- '0'
   cleaned_data[cleaned_data[question] == 'Not Applicable',question] <- '0'
   cleaned_data[cleaned_data[question] == 'Almost Never',question] <- '1'

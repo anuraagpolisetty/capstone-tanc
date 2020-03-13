@@ -9,14 +9,6 @@ social.index.2019 <- SocialIndex(data.2019, "all")
 data.2018 <- IndexData(allData) %>% filter(Batch=="2018-1"|Batch=="2018-2")
 social.index.2018 <- SocialIndex(data.2018, "all")
 
-social.index <- SocialIndex(data.2019, "all")
-physical.index <- PhysicalIndex(data.2019, "all")
-positive.index <- PositiveIndex(data.2019, "all")
-services.index <- ServicesIndex(data.2019, "all")
-independence.index <- IndependenceIndex(data.2019, "all")
-satisfaction.index <- OverallSatisfactionIndex(data.2019, "all")
-
-
 GaugeChart <- function(data, FUN, site, year) {
   yr1 <- paste0(year,"-1")
   yr2 <- paste0(year, "-2")
@@ -44,13 +36,6 @@ GaugeChart <- function(data, FUN, site, year) {
     ))
   fig <- fig %>%
     layout(margin = list(l=20,r=30),
-           autosize = F, width = 200, height = 200)
+           autosize = F, width = '250', height = '190', plot_bgcolor='#d3d3d3')
   return(fig)
 }
-
-social = GaugeChart(data.2019, SocialIndex, "all", "2019")
-physical = GaugeChart(data.2019, PhysicalIndex, "all", "2019")
-positive = GaugeChart(data.2019, PositiveIndex, "all", "2019")
-services = GaugeChart(data.2019, ServicesIndex, "all", "2019")
-independence = GaugeChart(data.2019, IndependenceIndex, "all", "2019")
-plot = GaugeChart(data.2019, OverallSatisfactionIndex, "all", "2019")

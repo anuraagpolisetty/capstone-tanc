@@ -77,7 +77,7 @@ IndependenceIndex <- function(df, site) {
 # independence.index <- IndependenceIndex(data.2019, "all")
 
 
-OverallSatisfactionIndex <- function(df, site) {
+OverallIndex <- function(df, site) {
   if(site == "all") {
     # satisfaction.questions <- c(21,25)
     overall.satisfaction <- df[,c(21,25)] # satisfaction.questions]
