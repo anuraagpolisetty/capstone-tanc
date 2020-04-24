@@ -11,7 +11,7 @@ acrs_cleaned_data <- cleaned_data %>% filter(SiteID == 'ACRS')
 output$acrs_gauge <- renderPlotly({
   
   acrs.data.2019 <- data.2019 %>% filter(SiteID == 'ACRS')   
-  GaugeChart(acrs.data.2019, OverallIndex, "all", "2019")
+  GaugeChart(acrs.data.2019, OverallIndex, "all", "2019", 'rgb(255,255,255)')
   
 })
 
@@ -29,7 +29,7 @@ output$social_acrs <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(acrs.date.data, SocialIndex, 'all', date)
+  GaugeChart(acrs.date.data, SocialIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -47,7 +47,7 @@ output$physical_acrs <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(acrs.date.data, PhysicalIndex, 'all', date)
+  GaugeChart(acrs.date.data, PhysicalIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -65,7 +65,7 @@ output$positive_acrs <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(acrs.date.data, PositiveIndex, 'all', date)
+  GaugeChart(acrs.date.data, PositiveIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -83,7 +83,7 @@ output$services_acrs <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(acrs.date.data, ServicesIndex, 'all', date)
+  GaugeChart(acrs.date.data, ServicesIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -101,7 +101,7 @@ output$independence_acrs <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(acrs.date.data, IndependenceIndex, 'all', date)
+  GaugeChart(acrs.date.data, IndependenceIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -118,7 +118,7 @@ output$general_acrs <- renderPlotly({
     acrs.date.data <- acrs_cleaned_data %>%  filter(Batch == '2019-1' | Batch == '2019-2')
     date <- '2019'    
   }
-  GaugeChart(acrs.date.data, OverallIndex, 'all', date)
+  GaugeChart(acrs.date.data, OverallIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 

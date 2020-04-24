@@ -11,7 +11,7 @@ greenwood_cleaned_data <- cleaned_data %>% filter(SiteID == 'Greenwood')
 output$greenwood_gauge <- renderPlotly({
   
   greenwood.data.2019 <- data.2019 %>% filter(SiteID == 'Greenwood')   
-  GaugeChart(greenwood.data.2019, OverallIndex, "all", "2019")
+  GaugeChart(greenwood.data.2019, OverallIndex, "all", "2019", 'rgb(255,255,255)')
   
 })
 
@@ -29,7 +29,7 @@ output$social_greenwood <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(greenwood.date.data, SocialIndex, 'all', date)
+  GaugeChart(greenwood.date.data, SocialIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -47,7 +47,7 @@ output$physical_greenwood <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(greenwood.date.data, PhysicalIndex, 'all', date)
+  GaugeChart(greenwood.date.data, PhysicalIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -65,7 +65,7 @@ output$positive_greenwood <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(greenwood.date.data, PositiveIndex, 'all', date)
+  GaugeChart(greenwood.date.data, PositiveIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -83,7 +83,7 @@ output$services_greenwood <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(greenwood.date.data, ServicesIndex, 'all', date)
+  GaugeChart(greenwood.date.data, ServicesIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -101,7 +101,7 @@ output$independence_greenwood <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(greenwood.date.data, IndependenceIndex, 'all', date)
+  GaugeChart(greenwood.date.data, IndependenceIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -118,7 +118,7 @@ output$general_greenwood <- renderPlotly({
     greenwood.date.data <- greenwood_cleaned_data %>%  filter(Batch == '2019-1' | Batch == '2019-2')
     date <- '2019'    
   }
-  GaugeChart(greenwood.date.data, OverallIndex, 'all', date)
+  GaugeChart(greenwood.date.data, OverallIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 

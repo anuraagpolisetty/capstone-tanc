@@ -11,7 +11,7 @@ southeast_cleaned_data <- cleaned_data %>% filter(SiteID == 'Southeast')
 output$southeast_gauge <- renderPlotly({
   
   wallingford.data.2019 <- data.2019 %>% filter(SiteID == 'Southeast')   
-  GaugeChart(wallingford.data.2019, OverallIndex, "all", "2019")
+  GaugeChart(wallingford.data.2019, OverallIndex, "all", "2019", 'rgb(255,255,255)')
   
 })
 
@@ -29,7 +29,7 @@ output$social_southeast <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(wallingford.date.data, SocialIndex, 'all', date)
+  GaugeChart(wallingford.date.data, SocialIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -47,7 +47,7 @@ output$physical_southeast <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(wallingford.date.data, PhysicalIndex, 'all', date)
+  GaugeChart(wallingford.date.data, PhysicalIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -65,7 +65,7 @@ output$positive_southeast <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(wallingford.date.data, PositiveIndex, 'all', date)
+  GaugeChart(wallingford.date.data, PositiveIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -83,7 +83,7 @@ output$services_southeast <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(wallingford.date.data, ServicesIndex, 'all', date)
+  GaugeChart(wallingford.date.data, ServicesIndex, 'all', date,'rgb(255,255,255)')
   
 })
 
@@ -101,7 +101,7 @@ output$independence_southeast <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(wallingford.date.data, IndependenceIndex, 'all', date)
+  GaugeChart(wallingford.date.data, IndependenceIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -118,7 +118,7 @@ output$general_southeast <- renderPlotly({
     wallingford.date.data <- southeast_cleaned_data %>%  filter(Batch == '2019-1' | Batch == '2019-2')
     date <- '2019'    
   }
-  GaugeChart(wallingford.date.data, OverallIndex, 'all', date)
+  GaugeChart(wallingford.date.data, OverallIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 

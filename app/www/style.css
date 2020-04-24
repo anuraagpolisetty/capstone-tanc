@@ -1,0 +1,391 @@
+                  div#gauge {
+                    width:170px !important;
+                    height:150px !important;
+                    position:relative;
+                    top: 50px;
+                    left: 150px;
+
+                  }
+                  div#wallingford_gauge {
+                    width:170px !important;
+                    height:150px !important;
+                    position:relative;
+                    top: 50px;
+                    left: 150px;
+                  }
+                  div#greenwood_gauge {
+                    width:170px !important;
+                    height:150px !important;
+                    position:relative;
+                    top: 50px;
+                    left: 150px;
+                  }
+                  div#southpark_gauge {
+                    width:170px !important;
+                    height:150px !important;
+                    position:relative;
+                    top: 50px;
+                    left: 150px;
+                  }
+                  div#idic_gauge {
+                    width:170px !important;
+                    height:150px !important;
+                    position:relative;
+                    top: 50px;
+                    left: 150px;
+                  }
+                  div#southeast_gauge {
+                    width:170px !important;
+                    height:150px !important;
+                    position:relative;
+                    top: 50px;
+                    left: 150px;
+                  }
+                  div#sunshine_gauge {
+                    width:170px !important;
+                    height:150px !important;
+                    position:relative;
+                    top: 50px;
+                    left: 150px;
+                  }
+                  div#acrs_gauge {
+                    width:170px !important;
+                    height:150px !important;
+                    position:relative;
+                    top: 50px;
+                    left: 150px;
+                  }
+                  div#gwp_gauge {
+                    width:170px !important;
+                    height:150px !important;
+                    position:relative;
+                    top: 50px;
+                    left: 150px;
+                  }
+                  .card-footer {
+                    max-height: 200px;
+                  }
+
+                  div#social_pike {
+                    width:170px !important;
+                    height:150px !important;
+                  }
+                  div#physical_pike {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_pike {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_pike {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_pike {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_pike {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+
+                  div#social_wallingford {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_wallingford {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_wallingford {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_wallingford {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_wallingford {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_wallingford {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+                  div#social_greenwood {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_greenwood {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_greenwood {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_greenwood {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_greenwood {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_greenwood {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+                  div#social_southpark {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_southpark {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_southpark {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_southpark {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_southpark {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_southpark {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+
+                  div#social_idic {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_idic {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_idic {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_idic {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_idic {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_idic {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+                  div#social_southeast {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_southeast {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_southeast {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_southeast {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_southeast {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_southeast {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+                  div#social_sunshine {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_sunshine {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_sunshine {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_sunshine {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_sunshine {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_sunshine {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+                  div#social_acrs {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_acrs {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_acrs {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_acrs {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_acrs {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_acrs {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+
+                  div#social_gwp {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_gwp {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_gwp {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_gwp {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_gwp {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_gwp {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+                  div#gauge .svg-container{
+                    top: -30px;
+                    left:40px;
+                  }
+
+                  div#wallingford_gauge .svg-container{
+                    top: -30px;
+                    left:40px;
+                  }
+
+                  div#greenwood_gauge .svg-container{
+                    top: -30px;
+                  left:40px;
+                  }
+
+                  div#southpark_gauge .svg-container{
+                    top: -30px;
+                  left:40px;
+                  }
+
+                  div#idic_gauge .svg-container{
+                    top: -30px;
+                  left:40px;
+                  }
+
+                  div#southeast_gauge .svg-container{
+                    top: -30px;
+                  left:40px;
+                  }
+
+                  div#sunshine_gauge .svg-container{
+                    top: -30px;
+                  left:40px;
+                  }
+
+                  div#acrs_gauge .svg-container{
+                    top: -30px;
+                    left:40px;
+                  }
+                  div#gwp_gauge .svg-container{
+                    top: -30px;
+                    left:40px;
+                  }
+
+
+                  div#shiny-tab-home div.card-header {
+                    position:absolute;
+                    top: 5%;
+                    left: 27%;
+                  }
+                  h3.card-title {
+                    font-size: 30px;
+                  }
+                  .attachment-block {
+                    border: none;
+                    background:white;
+                  }
+
+                  .attachment-img {
+                    max-height: none !important;
+                    max-width: none !important;
+                    height: 200px !important;
+                    width: 200px;
+                  }
+
+                  div#shiny-tab-home .card-body {
+                    display: flex;
+
+                    flex-direction: row;
+                  }
+
+                  .info-box {
+                    top: 100px;
+                    left: 125px;
+                  }
+
+                  span.font-weight-light {
+                    color: white;
+                  }
+                  .info-box .info-box-icon {
+                    width: 100%;
+                  }
+
+                  .info-box .info-box-content {
+                    padding: 0px;
+                  }
+                
+
+                  .card-body p {
+                    position: relative;
+                    top: 120px;
+                    right: 70px;
+                    color: white;
+                    font-weight: 500;
+                    font-size: 20pt;
+                    }

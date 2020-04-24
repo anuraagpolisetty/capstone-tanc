@@ -11,7 +11,7 @@ gwp_cleaned_data <- cleaned_data %>% filter(SiteID == 'GWP')
 output$gwp_gauge <- renderPlotly({
   
   gwp.data.2019 <- data.2019 %>% filter(SiteID == 'GWP')   
-  GaugeChart(gwp.data.2019, OverallIndex, "all", "2019")
+  GaugeChart(gwp.data.2019, OverallIndex, "all", "2019", 'rgb(255,255,255)')
   
 })
 
@@ -29,7 +29,7 @@ output$social_gwp <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(gwp.date.data, SocialIndex, 'all', date)
+  GaugeChart(gwp.date.data, SocialIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -47,7 +47,7 @@ output$physical_gwp <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(gwp.date.data, PhysicalIndex, 'all', date)
+  GaugeChart(gwp.date.data, PhysicalIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -65,7 +65,7 @@ output$positive_gwp <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(gwp.date.data, PositiveIndex, 'all', date)
+  GaugeChart(gwp.date.data, PositiveIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -83,7 +83,7 @@ output$services_gwp <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(gwp.date.data, ServicesIndex, 'all', date)
+  GaugeChart(gwp.date.data, ServicesIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -101,7 +101,7 @@ output$independence_gwp <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(gwp.date.data, IndependenceIndex, 'all', date)
+  GaugeChart(gwp.date.data, IndependenceIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -118,7 +118,7 @@ output$general_gwp <- renderPlotly({
     gwp.date.data <- gwp_cleaned_data %>%  filter(Batch == '2019-1' | Batch == '2019-2')
     date <- '2019'    
   }
-  GaugeChart(gwp.date.data, OverallIndex, 'all', date)
+  GaugeChart(gwp.date.data, OverallIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 

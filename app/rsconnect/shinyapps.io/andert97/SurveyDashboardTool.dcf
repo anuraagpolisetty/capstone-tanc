@@ -1,0 +1,12 @@
+name: SurveyDashboardTool
+title: SurveyDashboardTool
+username:
+account: andert97
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1946598
+bundleId: 3061295
+url: https://andert97.shinyapps.io/SurveyDashboardTool/
+when: 1587758382.81982
+asMultiple: FALSE
+asStatic: FALSE
