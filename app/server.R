@@ -12,7 +12,6 @@ source('scripts/GaugeChart.R')
 source('Map/MapPlot.R')
 
 function(input, output, session) {
-
   source('Single_Center/pike_server.R', local = T)
   source('Single_Center/wallingford_server.R', local = T)
   source('Single_Center/greenwood_server.R', local = T)
@@ -26,4 +25,5 @@ function(input, output, session) {
   output$map <- renderPlot({
     p
   })
+  
 }

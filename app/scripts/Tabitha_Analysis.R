@@ -75,7 +75,6 @@ for (question in questions) {
 
 # Data exploration
 
-centers <- data.2019 %>% group_by(SiteID) %>% summarise(count = n())
 
 batch <- data %>% group_by(Batch) %>% summarise(count = n())
 
