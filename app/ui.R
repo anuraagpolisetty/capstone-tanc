@@ -5,9 +5,19 @@ library(plotly)
 
 answers <- c("Not applicable", "Almost Never", "Sometimes", "Most of the Time")
 
+labelMandatory <- function(label) {
+  tagList(
+    label,
+    span("*", class = "mandatory_star")
+  )
+}
+
+appCSS <- ".mandatory_star { color: red;)"
+
 fluidPage(
-  #theme = "bootstrap.css",
-  #tags$link(rel ='stylesheet', type='text/css', href='bootstrap.css'),
+  # theme = "bootstrap.css",
+  # tags$link(rel ='stylesheet', type='text/css', href='bootstrap.css'),
+  shinyjs::inlineCSS(appCSS),
   tags$style(HTML("
                   div#gauge {
                     width:170px !important;
@@ -848,110 +858,115 @@ fluidPage(
                    div(
                      id = "form",
                      selectInput(
-                       "select2",
-                       label = h5("What senior center do you currently reside in?"),
+                       "which_center",
+                       label = h5(labelMandatory("What senior center do you currently reside in?")),
                        choices = c("ACRS", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", "Wallingford", "CISC", "South Park", "GWP", "Southeast"),
                        selected = "Greenwood"
                       ),
-                     textInput("zipcode", "What is your zipcode"),
+                     textInput("zipcode", labelMandatory("What is your zipcode"), ""),
                      bs4Card(
                        title = "I do more volunteer work at my Senior Center",
                        width = 14,
                        collapsible = FALSE,
                        closable=FALSE,
-                       radioButtons("do_more_volunteer_work", label="", choices = answers, inline=TRUE)
+                       radioButtons("do_more_volunteer_work", label="", choices = answers, inline=TRUE, selected = character(0))
                      ),
                      bs4Card(
                       title = "I see friends more often/make new friends at my Senior Center",
                       width = 14,
                       collapsible = FALSE,
                       closable=FALSE,
-                      radioButtons("see_more_friends", label="", choices = answers, inline=TRUE)
+                      radioButtons("see_friends", label="", choices = answers, inline=TRUE, selected = character(0))
                      ),
                      bs4Card(
                        title = "I take better care of my health at my Senior Center",
                        width = 14,
                        collapsible = FALSE,
                        closable=FALSE,
-                       radioButtons("better_care_of_my_health", label="", choices = answers, inline=TRUE)
+                       radioButtons("better_health", label="", choices = answers, inline=TRUE, selected = character(0))
                      ),
                      bs4Card(
                        title = "I eat meals that are better for me at my Senior Center",
                        width = 14,
                        collapsible = FALSE,
                        closable=FALSE,
-                       radioButtons("eat_better_meals", label="", choices = answers, inline=TRUE)
+                       radioButtons("better_meals", label="", choices = answers, inline=TRUE, selected = character(0))
                      ),
                      bs4Card(
                        title = "I have more energy",
                        width = 14,
                        collapsible = FALSE,
                        closable=FALSE,
-                       radioButtons("have_more_energy", label="", choices = answers, inline=TRUE)
+                       radioButtons("more_energy", label="", choices = answers, inline=TRUE, selected = character(0))
                      ),
                      bs4Card(
                        title = "I feel happier or more satisfied with my life",
                        width = 14,
                        collapsible = FALSE,
                        closable=FALSE,
-                       radioButtons("happier_with_life", label="", choices = answers, inline=TRUE)
+                       radioButtons("happier_life", label="", choices = answers, inline=TRUE, selected = character(0))
                      ),
                      bs4Card(
                        title = "I know where to ask if I need service such as a ride to doctor",
                        width = 14,
                        collapsible = FALSE,
                        closable=FALSE,
-                       radioButtons("ask_for_services", label="", choices = answers, inline=TRUE)
+                       radioButtons("ask_services", label="", choices = answers, inline=TRUE, selected = character(0))
                      ),
                      bs4Card(
                        title = "I feel more able to stay independent",
                        width = 14,
                        collapsible = FALSE,
                        closable=FALSE,
-                       radioButtons("more_independent", label="", choices = answers, inline=TRUE)
+                       radioButtons("more_independent", label="", choices = answers, inline=TRUE, selected = character(0))
                      ),
                      bs4Card(
                        title = "I feel that the senior center has had a positive effect on my life",
                        width = 14,
                        collapsible = FALSE,
                        closable=FALSE,
-                       radioButtons("positive_effect_on_life", label="", choices = answers, inline=TRUE)
+                       radioButtons("positive_effect", label="", choices = answers, inline=TRUE, selected = character(0))
                      ),
                      bs4Card(
                        title = "I learn new things at my senior center",
                        width = 14,
                        collapsible = FALSE,
                        closable=FALSE,
-                       radioButtons("learn_new_things", label="", choices = answers, inline=TRUE)
+                       radioButtons("learn_new_things", label="", choices = answers, inline=TRUE, selected = character(0))
                      ),
                      bs4Card(
                        title = "I have learned about services and benefits at my senior center",
                        width = 14,
                        collapsible = FALSE,
                        closable=FALSE,
-                       radioButtons("learned_about_services", label="", choices = answers, inline=TRUE)
+                       radioButtons("learn_new_services", label="", choices = answers, inline=TRUE, selected = character(0))
                      ),
                      bs4Card(
                        title = "I am more physically active",
                        width = 14,
                        collapsible = FALSE,
                        closable=FALSE,
-                       radioButtons("more_physically_active", label="", choices = answers, inline=TRUE)
+                       radioButtons("physically_active", label="", choices = answers, inline=TRUE, selected = character(0))
                      ),
                      bs4Card(
                        title = "I would recommend my senior center to a friend or family member",
                        width = 14,
                        collapsible = FALSE,
                        closable=FALSE,
-                       radioButtons("recommend_senior_center", label="", choices = answers, inline=TRUE)
+                       radioButtons("would_recommend", label="", choices = answers, inline=TRUE, selected = character(0))
                      ),
-                     # checkboxGroupInput("Income", "What is your estimated annual income", choices = answers, inline=TRUE),
-                     # checkboxInput("used_shiny", "I've built a Shiny app in R before", FALSE),
-                     # sliderInput("r_num_years", "Number of years using R", 0, 25, 2, ticks = FALSE),
-                     # selectInput("os_type", "Operating system used most frequently",
-                     #             c("",  "Windows", "Mac", "Linux")),
-                     actionButton("submit", "Submit", class = "btn-primary")
+                     # textInput("free_response", "Please tell us how participating in the senior center has changed your life"),
+                     
+                     # Submit button to upload responses
+                     actionButton("submit", "Submit")
+                   ),
+                 shinyjs::hidden(
+                   div(
+                     id = "thankyou_msg",
+                     h3("Thanks, your response was submitted successfully!"),
+                     actionLink("submit_another", "Submit another response")
                    )
+                 )  
         )
       )
     )
