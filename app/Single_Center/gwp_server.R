@@ -153,11 +153,12 @@ output$gwp_timeplot <-  renderPlot({
     social.life.means <-  time.data %>% select(mean1, mean2) %>% rowMeans()
     time.data$total_mean <- social.life.means
   }
+  time.data <- time.data %>% mutate(Mean= total_mean)
+  ggplot(time.data, aes(x=Batch, y=Mean, group=1)) + geom_point() + geom_line()
   
-  ggplot(time.data, aes(x=Batch, y=total_mean, group=1)) + geom_point() + geom_line() 
 })
 
-output$gwp_bar <-  renderPlot({
+output$gwp_bar <-  renderPlotly({
   if(input$gwp_answer == 1) {
     sum1 <- bar_data %>% group_by(Do.more.volunteer.work) %>% summarise(count1 = n())
     sum2 <- bar_data %>% group_by(See.friends.more.often.make.new.friends) %>% summarise(count2 = n())
@@ -196,6 +197,7 @@ output$gwp_bar <-  renderPlot({
     sum1$total_count <- sum1$count1 + sum2$count2
     names(sum1)[1] <- 'categories'
   }
+  sum1 <- sum1 %>% mutate(Categories = reorder(categories, -total_count), Count = total_count)
+  ggplot(sum1, aes(x=Categories,y=Count))+geom_bar(stat="identity")
   
-  ggplot(sum1, aes(x=reorder(categories, -total_count),total_count))+geom_bar(stat="identity")
 })

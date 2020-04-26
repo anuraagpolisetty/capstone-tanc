@@ -96,7 +96,10 @@ filtered3 <- rbind(filtered1, filtered2)
 x_value <- filtered3$Do.more.volunteer.work
 
 filtered4 <- filtered3 %>% group_by(SiteID) %>% count(Do.more.volunteer.work) %>% mutate(perc = n / sum(n)) 
-ggplot(filtered4, aes_string(x=colnames(filtered4)[2], y = colnames(filtered4)[4], fill=colnames(filtered4)[1])) + 
+#filtered4 <- filtered4 %>% mutate(Question = colnames(filtered4)[2])
+colnames(filtered4)[2] <- 'Question'
+
+ggplot(filtered4, aes_string(x=colnames(filtered4)[2], y = Question, fill=colnames(filtered4)[1])) + 
   geom_bar(color = "lightgoldenrodyellow", stat='identity', position='dodge') +
   xlab("Question") + ylab("Percentage") +
   coord_flip()
@@ -112,3 +115,10 @@ tips %>%
   mutate(perc = n / nrow(tips)) -> tips2
 
 ggplot(tips2, aes(x = day, y = perc)) + geom_bar(stat = "identity")
+
+############################ Figure out Tooltips ###########################
+sum1 <- bar_data %>% group_by(Do.more.volunteer.work) %>% summarise(count1 = n())
+sum2 <- bar_data %>% group_by(See.friends.more.often.make.new.friends) %>% summarise(count2 = n())
+sum1$total_count <- sum1$count1 + sum2$count2
+names(sum1)[1] <- 'categories'
+ggplot(sum1, aes(x=reorder(categories, -total_count),total_count))+geom_bar(stat="identity") + xlab('Questions') + ylab('Count')

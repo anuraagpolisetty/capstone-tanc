@@ -680,14 +680,14 @@ fluidPage(
                                      width = 14,
                                      collapsible = TRUE,
                                      closable=FALSE,
-                                     plotOutput("pike_timeplot")
+                                     plotlyOutput("pike_timeplot")
                                    ),
                                    bs4Card(
                                      title = "Response for Sector",
                                      width = 14,
                                      collapsible = TRUE,
                                      closable = FALSE,
-                                     plotOutput("pike_bar")
+                                     plotlyOutput("pike_bar")
                                    )
                                   ),
                                  
@@ -724,14 +724,14 @@ fluidPage(
                                        width = 14,
                                        collapsible = TRUE,
                                        closable=FALSE,
-                                       plotOutput("wallingford_timeplot")
+                                       plotlyOutput("wallingford_timeplot")
                                      ),
                                      bs4Card(
                                        title = "Response for Sector",
                                        width = 14,
                                        collapsible = TRUE,
                                        closable = FALSE,
-                                       plotOutput("wallingford_bar")
+                                       plotlyOutput("wallingford_bar")
                                      )),
                                   column(
                                     width = 4,
@@ -764,14 +764,14 @@ fluidPage(
                                        width = 14,
                                        collapsible = TRUE,
                                        closable=FALSE,
-                                       plotOutput("greenwood_timeplot")
+                                       plotlyOutput("greenwood_timeplot")
                                      ),
                                      bs4Card(
                                        title = "Response for Sector",
                                        width = 14,
                                        collapsible = TRUE,
                                        closable = FALSE,
-                                       plotOutput("greenwood_bar")
+                                       plotlyOutput("greenwood_bar")
                                      )),
                                   column(
                                     width = 4,
@@ -805,14 +805,14 @@ fluidPage(
                                        width = 14,
                                        collapsible = TRUE,
                                        closable=FALSE,
-                                       plotOutput("southpark_timeplot")
+                                       plotlyOutput("southpark_timeplot")
                                      ),
                                      bs4Card(
                                        title = "Response for Sector",
                                        width = 14,
                                        collapsible = TRUE,
                                        closable = FALSE,
-                                       plotOutput("southpark_bar")
+                                       plotlyOutput("southpark_bar")
                                      )),
                                    column(
                                      width = 4,
@@ -846,14 +846,14 @@ fluidPage(
                                        width = 14,
                                        collapsible = TRUE,
                                        closable=FALSE,
-                                       plotOutput("idic_timeplot")
+                                       plotlyOutput("idic_timeplot")
                                      ),
                                      bs4Card(
                                        title = "Response for Sector",
                                        width = 14,
                                        collapsible = TRUE,
                                        closable = FALSE,
-                                       plotOutput("idic_bar")
+                                       plotlyOutput("idic_bar")
                                      )),
                                     column(
                                       width = 4,
@@ -887,14 +887,14 @@ fluidPage(
                                        width = 14,
                                        collapsible = TRUE,
                                        closable=FALSE,
-                                       plotOutput("southeast_timeplot")
+                                       plotlyOutput("southeast_timeplot")
                                      ),
                                      bs4Card(
                                        title = "Response for Sector",
                                        width = 14,
                                        collapsible = TRUE,
                                        closable = FALSE,
-                                       plotOutput("southeast_bar")
+                                       plotlyOutput("southeast_bar")
                                      )),
                                    column(
                                      width = 4,
@@ -927,14 +927,14 @@ fluidPage(
                                        width = 12,
                                        collapsible = TRUE,
                                        closable=FALSE,
-                                       plotOutput("sunshine_timeplot")
+                                       plotlyOutput("sunshine_timeplot")
                                      ),
                                      bs4Card(
                                        title = "Response for Sector",
                                        width = 12,
                                        collapsible = TRUE,
                                        closable = FALSE,
-                                       plotOutput("sunshine_bar")
+                                       plotlyOutput("sunshine_bar")
                                      )),
                                    column( 
                                      width = 4,
@@ -968,14 +968,14 @@ fluidPage(
                                        width = 14,
                                        collapsible = TRUE,
                                        closable=FALSE,
-                                       plotOutput("acrs_timeplot")
+                                       plotlyOutput("acrs_timeplot")
                                      ),
                                      bs4Card(
                                        title = "Response for Sector",
                                        width = 14,
                                        collapsible = TRUE,
                                        closable = FALSE,
-                                       plotOutput("acrs_bar")
+                                       plotlyOutput("acrs_bar")
                                      )),
                                    column(
                                      width = 4,
@@ -1010,14 +1010,14 @@ fluidPage(
                                          width = 12,
                                          collapsible = TRUE,
                                          closable=FALSE,
-                                         plotOutput("gwp_timeplot")
+                                         plotlyOutput("gwp_timeplot")
                                        ),
                                        bs4Card(
                                          title = "Response for Sector",
                                          width = 12,
                                          collapsible = TRUE,
                                          closable = FALSE,
-                                         plotOutput("gwp_bar")
+                                         plotlyOutput("gwp_bar")
                                        )),
                                      column(
                                        width = 4,
@@ -1067,7 +1067,7 @@ fluidPage(
                          )),
                           column(
                             width = 8,
-                            plotOutput("bar")
+                            plotlyOutput("bar")
                           )
                      )),
         bs4TabItem('general',
@@ -1097,7 +1097,7 @@ fluidPage(
                    ),
                    mainPanel(
                       width = 12,
-                      plotOutput("map")
+                      plotlyOutput("map")
                      )
                    ),
         bs4TabItem('survey',
