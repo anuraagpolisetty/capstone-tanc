@@ -3,9 +3,21 @@ library(ggplot2)
 library(bs4Dash)
 library(plotly)
 
+answers <- c("Not applicable", "Almost Never", "Sometimes", "Most of the Time")
+
+labelMandatory <- function(label) {
+  tagList(
+    label,
+    span("*", class = "mandatory_star")
+  )
+}
+
+appCSS <- ".mandatory_star { color: red;)"
+
 fluidPage(
-  #theme = "bootstrap.css",
-  #tags$link(rel ='stylesheet', type='text/css', href='bootstrap.css'),
+  # theme = "bootstrap.css",
+  # tags$link(rel ='stylesheet', type='text/css', href='bootstrap.css'),
+  shinyjs::inlineCSS(appCSS),
   tags$style(HTML("
                   div#gauge {
                     width:170px !important;
@@ -341,12 +353,17 @@ fluidPage(
         bs4SidebarMenuItem(
           'Comparing Centers',
           tabName = 'compare',
-          icon = 'info'
+          icon = 'sliders'
         ),
         bs4SidebarMenuItem(
           'General Info',
           tabName = 'general',
           icon = 'info'
+        ),
+        bs4SidebarMenuItem(
+          'Survey',
+          tabName = 'survey',
+          icon = 'id-card'
         )
       )
     ),
@@ -462,347 +479,347 @@ fluidPage(
           )
         ),
         bs4TabItem(tabName = 'sub_pike',
-                                titlePanel('Pike Market Senior Center'),
-                                br(),
-                                fluidRow(
-                                  
-                                 column(
-                                   width = 8,
-                                   selectInput("pike_answer", label=h3('Pick a Sector to Evaluate'),
-                                               choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
-                                               selected = 1),
-                                   bs4Card(
-                                     title = "Over Time",
-                                     width = 14,
-                                     collapsible = TRUE,
-                                     closable=FALSE,
-                                     plotOutput("pike_timeplot")
-                                   ),
-                                   bs4Card(
-                                     title = "Response for Sector",
-                                     width = 14,
-                                     collapsible = TRUE,
-                                     closable = FALSE,
-                                     plotOutput("pike_bar")
-                                   )
-                                  ),
-                                 
-                                 column(
-                                   width= 4,
-                                   selectInput("pike_gauge", label=h3('Filter By Batch'),
-                                               choices = list('2017' = 1, '2018' = 2, '2019' = 3),
-                                               selected = 1),
-                                   bs4Card(
-                                     title = 'Index for Pike Market Senior Center',
-                                     closable=FALSE,
-                                     width=8,
-                                     plotlyOutput("social_pike"),
-                                     plotlyOutput("physical_pike"),
-                                     plotlyOutput("positive_pike"),
-                                     plotlyOutput("services_pike"),
-                                     plotlyOutput("independence_pike"),
-                                     plotlyOutput("general_pike")
-                                   ))
-                                )
-                     ),
-                     
-                     bs4TabItem(tabName = 'sub_wallingford',
-                                 titlePanel('Wallingford Senior Center'),
-                                 br(),
-                                fluidRow(
-                                  column(
-                                    width = 8,
-                                     selectInput("wallingford_answer", label=h3('Pick a Sector to Evaluate'),
-                                                 choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
-                                                 selected = 1),
-                                     bs4Card(
-                                       title = "Over Time",
-                                       width = 14,
-                                       collapsible = TRUE,
-                                       closable=FALSE,
-                                       plotOutput("wallingford_timeplot")
-                                     ),
-                                     bs4Card(
-                                       title = "Response for Sector",
-                                       width = 14,
-                                       collapsible = TRUE,
-                                       closable = FALSE,
-                                       plotOutput("wallingford_bar")
-                                     )),
-                                  column(
-                                    width = 4,
-                                    selectInput("wallingford_gauge", label=h3('Filter By Batch'),
-                                                choices = list('2017' = 1, '2018' = 2, '2019' = 3),
-                                                selected = 1),
-                                    bs4Card(
-                                      title = 'Index for Wallingford Senior Center',
-                                      closable=FALSE,
-                                      width = 8,
-                                      plotlyOutput("social_wallingford"),
-                                      plotlyOutput("physical_wallingford"),
-                                      plotlyOutput("positive_wallingford"),
-                                      plotlyOutput("services_wallingford"),
-                                      plotlyOutput("independence_wallingford"),
-                                      plotlyOutput("general_wallingford")
-                                    )
-                                  )
-                                )),
-                     bs4TabItem(tabName = 'sub_greenwood',
-                                 titlePanel('Greenwood Senior Center'),
-                                fluidRow(
-                                  column(
-                                    width = 8,
-                                     selectInput("greenwood_answer", label=h3('Pick a Sector to Evaluate'),
-                                                 choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
-                                                 selected = 1),
-                                     bs4Card(
-                                       title = "Over Time",
-                                       width = 14,
-                                       collapsible = TRUE,
-                                       closable=FALSE,
-                                       plotOutput("greenwood_timeplot")
-                                     ),
-                                     bs4Card(
-                                       title = "Response for Sector",
-                                       width = 14,
-                                       collapsible = TRUE,
-                                       closable = FALSE,
-                                       plotOutput("greenwood_bar")
-                                     )),
-                                  column(
-                                    width = 4,
-                                    selectInput("greenwood_gauge", label=h3('Filter By Batch'),
-                                                choices = list('2017' = 1, '2018' = 2, '2019' = 3),
-                                                selected = 1),
-                                    bs4Card(
-                                      title = 'Index for Greenwood Senior Center',
-                                      closable=FALSE,
-                                      width= 8,
-                                      plotlyOutput("social_greenwood"),
-                                      plotlyOutput("physical_greenwood"),
-                                      plotlyOutput("positive_greenwood"),
-                                      plotlyOutput("services_greenwood"),
-                                      plotlyOutput("independence_greendwood"),
-                                      plotlyOutput("general_greenwood")
-                                    )
-                                  )
-                                )
-                     ),
-                     bs4TabItem(tabName = 'sub_southpark',
-                                 titlePanel('South Park Senior Center'),
-                                 fluidRow(
-                                   column(
-                                      width = 8,
-                                     selectInput("southpark_answer", label=h3('Pick a Sector to Evaluate'),
-                                                 choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
-                                                 selected = 1),
-                                     bs4Card(
-                                       title = "Over Time",
-                                       width = 14,
-                                       collapsible = TRUE,
-                                       closable=FALSE,
-                                       plotOutput("southpark_timeplot")
-                                     ),
-                                     bs4Card(
-                                       title = "Response for Sector",
-                                       width = 14,
-                                       collapsible = TRUE,
-                                       closable = FALSE,
-                                       plotOutput("southpark_bar")
-                                     )),
-                                   column(
-                                     width = 4,
-                                     selectInput("southpark_gauge", label=h3('Filter By Batch'),
-                                                 choices = list('2017' = 1, '2018' = 2, '2019' = 3),
-                                                 selected = 1),
-                                     bs4Card(
-                                       title = 'Index for South Park Senior Center',
-                                       width = 8,
-                                       closable=FALSE,
-                                       plotlyOutput("social_southpark"),
-                                       plotlyOutput("physical_southpark"),
-                                       plotlyOutput("positive_southpark"),
-                                       plotlyOutput("services_southpark"),
-                                       plotlyOutput("independence_southpark"),
-                                       plotlyOutput("general_southpark")
-                                     )
-                                   )
-                                 )
-                     ),
-                     bs4TabItem(tabName = 'sub_idic',
-                                 titlePanel('International Drop-In Center'),
-                                 fluidRow(
-                                    column(
-                                      width = 8,
-                                     selectInput("idic_answer", label=h3('Pick a Sector to Evaluate'),
-                                                 choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
-                                                 selected = 1),
-                                     bs4Card(
-                                       title = "Over Time",
-                                       width = 14,
-                                       collapsible = TRUE,
-                                       closable=FALSE,
-                                       plotOutput("idic_timeplot")
-                                     ),
-                                     bs4Card(
-                                       title = "Response for Sector",
-                                       width = 14,
-                                       collapsible = TRUE,
-                                       closable = FALSE,
-                                       plotOutput("idic_bar")
-                                     )),
-                                    column(
-                                      width = 4,
-                                      selectInput("idic_gauge", label=h3('Filter By Batch'),
-                                                  choices = list('2017' = 1, '2018' = 2, '2019' = 3),
-                                                  selected = 1),
-                                      bs4Card(
-                                        title = 'Index for International Drop-In Center',
-                                        closable=FALSE,
-                                        width = 8,
-                                        plotlyOutput("social_idic"),
-                                        plotlyOutput("physical_idic"),
-                                        plotlyOutput("positive_idic"),
-                                        plotlyOutput("services_idic"),
-                                        plotlyOutput("independence_idic"),
-                                        plotlyOutput("general_idic")
-                                      )
-                                    )
-                                 )
-                     ),
-                     bs4TabItem(tabName = 'sub_southeast',
-                                 titlePanel('Southeast Seattle Senior Center'),
-                                 selectInput("southeast_gauge", label=h3('Filter By Batch'),
-                                             choices = list('2017' = 1, '2018' = 2, '2019' = 3),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = 'Index for Southeast Seattle Senior Center',
-                                   closable=FALSE,
-                                   plotlyOutput("social_southeast"),
-                                   plotlyOutput("physical_southeast"),
-                                   plotlyOutput("positive_southeast"),
-                                   plotlyOutput("services_southeast"),
-                                   plotlyOutput("independence_southeast"),
-                                   plotlyOutput("general_southeast")
-                                 ),
+                        titlePanel('Pike Market Senior Center'),
+                        br(),
+                        fluidRow(
+                          
+                         column(
+                           width = 8,
+                           selectInput("pike_answer", label=h3('Pick a Sector to Evaluate'),
+                                       choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                       selected = 1),
+                           bs4Card(
+                             title = "Over Time",
+                             width = 14,
+                             collapsible = TRUE,
+                             closable=FALSE,
+                             plotOutput("pike_timeplot")
+                           ),
+                           bs4Card(
+                             title = "Response for Sector",
+                             width = 14,
+                             collapsible = TRUE,
+                             closable = FALSE,
+                             plotOutput("pike_bar")
+                           )
+                          ),
+                         
+                         column(
+                           width= 4,
+                           selectInput("pike_gauge", label=h3('Filter By Batch'),
+                                       choices = list('2017' = 1, '2018' = 2, '2019' = 3),
+                                       selected = 1),
+                           bs4Card(
+                             title = 'Index for Pike Market Senior Center',
+                             closable=FALSE,
+                             width=8,
+                             plotlyOutput("social_pike"),
+                             plotlyOutput("physical_pike"),
+                             plotlyOutput("positive_pike"),
+                             plotlyOutput("services_pike"),
+                             plotlyOutput("independence_pike"),
+                             plotlyOutput("general_pike")
+                           ))
+                        )
+             ),
+             
+             bs4TabItem(tabName = 'sub_wallingford',
+                         titlePanel('Wallingford Senior Center'),
+                         br(),
+                        fluidRow(
+                          column(
+                            width = 8,
+                             selectInput("wallingford_answer", label=h3('Pick a Sector to Evaluate'),
+                                         choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                         selected = 1),
+                             bs4Card(
+                               title = "Over Time",
+                               width = 14,
+                               collapsible = TRUE,
+                               closable=FALSE,
+                               plotOutput("wallingford_timeplot")
+                             ),
+                             bs4Card(
+                               title = "Response for Sector",
+                               width = 14,
+                               collapsible = TRUE,
+                               closable = FALSE,
+                               plotOutput("wallingford_bar")
+                             )),
+                          column(
+                            width = 4,
+                            selectInput("wallingford_gauge", label=h3('Filter By Batch'),
+                                        choices = list('2017' = 1, '2018' = 2, '2019' = 3),
+                                        selected = 1),
+                            bs4Card(
+                              title = 'Index for Wallingford Senior Center',
+                              closable=FALSE,
+                              width = 8,
+                              plotlyOutput("social_wallingford"),
+                              plotlyOutput("physical_wallingford"),
+                              plotlyOutput("positive_wallingford"),
+                              plotlyOutput("services_wallingford"),
+                              plotlyOutput("independence_wallingford"),
+                              plotlyOutput("general_wallingford")
+                            )
+                          )
+                        )),
+             bs4TabItem(tabName = 'sub_greenwood',
+                         titlePanel('Greenwood Senior Center'),
+                        fluidRow(
+                          column(
+                            width = 8,
+                             selectInput("greenwood_answer", label=h3('Pick a Sector to Evaluate'),
+                                         choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                         selected = 1),
+                             bs4Card(
+                               title = "Over Time",
+                               width = 14,
+                               collapsible = TRUE,
+                               closable=FALSE,
+                               plotOutput("greenwood_timeplot")
+                             ),
+                             bs4Card(
+                               title = "Response for Sector",
+                               width = 14,
+                               collapsible = TRUE,
+                               closable = FALSE,
+                               plotOutput("greenwood_bar")
+                             )),
+                          column(
+                            width = 4,
+                            selectInput("greenwood_gauge", label=h3('Filter By Batch'),
+                                        choices = list('2017' = 1, '2018' = 2, '2019' = 3),
+                                        selected = 1),
+                            bs4Card(
+                              title = 'Index for Greenwood Senior Center',
+                              closable=FALSE,
+                              width= 8,
+                              plotlyOutput("social_greenwood"),
+                              plotlyOutput("physical_greenwood"),
+                              plotlyOutput("positive_greenwood"),
+                              plotlyOutput("services_greenwood"),
+                              plotlyOutput("independence_greendwood"),
+                              plotlyOutput("general_greenwood")
+                            )
+                          )
+                        )
+             ),
+             bs4TabItem(tabName = 'sub_southpark',
+                         titlePanel('South Park Senior Center'),
+                         fluidRow(
+                           column(
+                              width = 8,
+                             selectInput("southpark_answer", label=h3('Pick a Sector to Evaluate'),
+                                         choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                         selected = 1),
+                             bs4Card(
+                               title = "Over Time",
+                               width = 14,
+                               collapsible = TRUE,
+                               closable=FALSE,
+                               plotOutput("southpark_timeplot")
+                             ),
+                             bs4Card(
+                               title = "Response for Sector",
+                               width = 14,
+                               collapsible = TRUE,
+                               closable = FALSE,
+                               plotOutput("southpark_bar")
+                             )),
+                           column(
+                             width = 4,
+                             selectInput("southpark_gauge", label=h3('Filter By Batch'),
+                                         choices = list('2017' = 1, '2018' = 2, '2019' = 3),
+                                         selected = 1),
+                             bs4Card(
+                               title = 'Index for South Park Senior Center',
+                               width = 8,
+                               closable=FALSE,
+                               plotlyOutput("social_southpark"),
+                               plotlyOutput("physical_southpark"),
+                               plotlyOutput("positive_southpark"),
+                               plotlyOutput("services_southpark"),
+                               plotlyOutput("independence_southpark"),
+                               plotlyOutput("general_southpark")
+                             )
+                           )
+                         )
+             ),
+             bs4TabItem(tabName = 'sub_idic',
+                         titlePanel('International Drop-In Center'),
+                         fluidRow(
+                            column(
+                              width = 8,
+                             selectInput("idic_answer", label=h3('Pick a Sector to Evaluate'),
+                                         choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                         selected = 1),
+                             bs4Card(
+                               title = "Over Time",
+                               width = 14,
+                               collapsible = TRUE,
+                               closable=FALSE,
+                               plotOutput("idic_timeplot")
+                             ),
+                             bs4Card(
+                               title = "Response for Sector",
+                               width = 14,
+                               collapsible = TRUE,
+                               closable = FALSE,
+                               plotOutput("idic_bar")
+                             )),
+                            column(
+                              width = 4,
+                              selectInput("idic_gauge", label=h3('Filter By Batch'),
+                                          choices = list('2017' = 1, '2018' = 2, '2019' = 3),
+                                          selected = 1),
+                              bs4Card(
+                                title = 'Index for International Drop-In Center',
+                                closable=FALSE,
+                                width = 8,
+                                plotlyOutput("social_idic"),
+                                plotlyOutput("physical_idic"),
+                                plotlyOutput("positive_idic"),
+                                plotlyOutput("services_idic"),
+                                plotlyOutput("independence_idic"),
+                                plotlyOutput("general_idic")
+                              )
+                            )
+                         )
+             ),
+             bs4TabItem(tabName = 'sub_southeast',
+                         titlePanel('Southeast Seattle Senior Center'),
+                         selectInput("southeast_gauge", label=h3('Filter By Batch'),
+                                     choices = list('2017' = 1, '2018' = 2, '2019' = 3),
+                                     selected = 1),
+                         bs4Card(
+                           title = 'Index for Southeast Seattle Senior Center',
+                           closable=FALSE,
+                           plotlyOutput("social_southeast"),
+                           plotlyOutput("physical_southeast"),
+                           plotlyOutput("positive_southeast"),
+                           plotlyOutput("services_southeast"),
+                           plotlyOutput("independence_southeast"),
+                           plotlyOutput("general_southeast")
+                         ),
 
-                                 selectInput("southeast_answer", label=h3('Pick a Sector to Evaluate'),
-                                             choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = "Over Time",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable=FALSE,
-                                   plotOutput("southeast_timeplot")
-                                 ),
-                                 bs4Card(
-                                   title = "Response for Sector",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable = FALSE,
-                                   plotOutput("southeast_bar")
-                                 )),
-                     bs4TabItem(tabName = 'sub_sunshine',
-                                 titlePanel('Sunshine Garden Senior Center'),
-                                 selectInput("sunshine_gauge", label=h3('Filter By Batch'),
-                                             choices = list('2017' = 1, '2018' = 2, '2019' = 3),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = 'Index for Sunshine Garden Senior Center',
-                                   closable=FALSE,
-                                   plotlyOutput("social_sunshine"),
-                                   plotlyOutput("physical_sunshine"),
-                                   plotlyOutput("positive_sunshine"),
-                                   plotlyOutput("services_sunshine"),
-                                   plotlyOutput("independence_sunshine"),
-                                   plotlyOutput("general_sunshine")
-                                 ),
+                         selectInput("southeast_answer", label=h3('Pick a Sector to Evaluate'),
+                                     choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                     selected = 1),
+                         bs4Card(
+                           title = "Over Time",
+                           width = 12,
+                           collapsible = TRUE,
+                           closable=FALSE,
+                           plotOutput("southeast_timeplot")
+                         ),
+                         bs4Card(
+                           title = "Response for Sector",
+                           width = 12,
+                           collapsible = TRUE,
+                           closable = FALSE,
+                           plotOutput("southeast_bar")
+                         )),
+             bs4TabItem(tabName = 'sub_sunshine',
+                         titlePanel('Sunshine Garden Senior Center'),
+                         selectInput("sunshine_gauge", label=h3('Filter By Batch'),
+                                     choices = list('2017' = 1, '2018' = 2, '2019' = 3),
+                                     selected = 1),
+                         bs4Card(
+                           title = 'Index for Sunshine Garden Senior Center',
+                           closable=FALSE,
+                           plotlyOutput("social_sunshine"),
+                           plotlyOutput("physical_sunshine"),
+                           plotlyOutput("positive_sunshine"),
+                           plotlyOutput("services_sunshine"),
+                           plotlyOutput("independence_sunshine"),
+                           plotlyOutput("general_sunshine")
+                         ),
 
-                                 selectInput("sunshine_answer", label=h3('Pick a Sector to Evaluate'),
-                                             choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = "Over Time",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable=FALSE,
-                                   plotOutput("sunshine_timeplot")
-                                 ),
-                                 bs4Card(
-                                   title = "Response for Sector",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable = FALSE,
-                                   plotOutput("sunshine_bar")
-                                 )),
-                     bs4TabItem(tabName = 'sub_acrs',
-                                 titlePanel('ACRS'),
-                                 selectInput("acrs_gauge", label=h3('Filter By Batch'),
-                                             choices = list('2017' = 1, '2018' = 2, '2019' = 3),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = 'Index for ACRS',
-                                   closable=FALSE,
-                                   plotlyOutput("social_acrs"),
-                                   plotlyOutput("physical_acrs"),
-                                   plotlyOutput("positive_acrs"),
-                                   plotlyOutput("services_acrs"),
-                                   plotlyOutput("independence_acrs"),
-                                   plotlyOutput("general_acrs")
-                                 ),
+                         selectInput("sunshine_answer", label=h3('Pick a Sector to Evaluate'),
+                                     choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                     selected = 1),
+                         bs4Card(
+                           title = "Over Time",
+                           width = 12,
+                           collapsible = TRUE,
+                           closable=FALSE,
+                           plotOutput("sunshine_timeplot")
+                         ),
+                         bs4Card(
+                           title = "Response for Sector",
+                           width = 12,
+                           collapsible = TRUE,
+                           closable = FALSE,
+                           plotOutput("sunshine_bar")
+                         )),
+             bs4TabItem(tabName = 'sub_acrs',
+                         titlePanel('ACRS'),
+                         selectInput("acrs_gauge", label=h3('Filter By Batch'),
+                                     choices = list('2017' = 1, '2018' = 2, '2019' = 3),
+                                     selected = 1),
+                         bs4Card(
+                           title = 'Index for ACRS',
+                           closable=FALSE,
+                           plotlyOutput("social_acrs"),
+                           plotlyOutput("physical_acrs"),
+                           plotlyOutput("positive_acrs"),
+                           plotlyOutput("services_acrs"),
+                           plotlyOutput("independence_acrs"),
+                           plotlyOutput("general_acrs")
+                         ),
 
-                                 selectInput("acrs_answer", label=h3('Pick a Sector to Evaluate'),
-                                             choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = "Over Time",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable=FALSE,
-                                   plotOutput("acrs_timeplot")
-                                 ),
-                                 bs4Card(
-                                   title = "Response for Sector",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable = FALSE,
-                                   plotOutput("acrs_bar")
-                                 )),
-                     bs4TabItem(tabName = 'sub_gwp',
-                                 titlePanel('GWP'),
-                                 selectInput("gwp_gauge", label=h3('Filter By Batch'),
-                                             choices = list('2017' = 1, '2018' = 2, '2019' = 3),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = 'Index for GWP',
-                                   closable=FALSE,
-                                   plotlyOutput("social_gwp"),
-                                   plotlyOutput("physical_gwp"),
-                                   plotlyOutput("positive_gwp"),
-                                   plotlyOutput("services_gwp"),
-                                   plotlyOutput("independence_gwp"),
-                                   plotlyOutput("general_gwp")
-                                 ),
+                         selectInput("acrs_answer", label=h3('Pick a Sector to Evaluate'),
+                                     choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                     selected = 1),
+                         bs4Card(
+                           title = "Over Time",
+                           width = 12,
+                           collapsible = TRUE,
+                           closable=FALSE,
+                           plotOutput("acrs_timeplot")
+                         ),
+                         bs4Card(
+                           title = "Response for Sector",
+                           width = 12,
+                           collapsible = TRUE,
+                           closable = FALSE,
+                           plotOutput("acrs_bar")
+                         )),
+             bs4TabItem(tabName = 'sub_gwp',
+                         titlePanel('GWP'),
+                         selectInput("gwp_gauge", label=h3('Filter By Batch'),
+                                     choices = list('2017' = 1, '2018' = 2, '2019' = 3),
+                                     selected = 1),
+                         bs4Card(
+                           title = 'Index for GWP',
+                           closable=FALSE,
+                           plotlyOutput("social_gwp"),
+                           plotlyOutput("physical_gwp"),
+                           plotlyOutput("positive_gwp"),
+                           plotlyOutput("services_gwp"),
+                           plotlyOutput("independence_gwp"),
+                           plotlyOutput("general_gwp")
+                         ),
 
-                                 selectInput("gwp_answer", label=h3('Pick a Sector to Evaluate'),
-                                             choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
-                                             selected = 1),
-                                 bs4Card(
-                                   title = "Over Time",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable=FALSE,
-                                   plotOutput("gwp_timeplot")
-                                 ),
-                                 bs4Card(
-                                   title = "Response for Sector",
-                                   width = 12,
-                                   collapsible = TRUE,
-                                   closable = FALSE,
-                                   plotOutput("gwp_bar")
-                                 )),
-      
+                         selectInput("gwp_answer", label=h3('Pick a Sector to Evaluate'),
+                                     choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                     selected = 1),
+                         bs4Card(
+                           title = "Over Time",
+                           width = 12,
+                           collapsible = TRUE,
+                           closable=FALSE,
+                           plotOutput("gwp_timeplot")
+                         ),
+                         bs4Card(
+                           title = "Response for Sector",
+                           width = 12,
+                           collapsible = TRUE,
+                           closable = FALSE,
+                           plotOutput("gwp_bar")
+                         )),
+
         bs4TabItem('compare',
                    titlePanel("Compare Senior Centers"),
                    sidebarPanel(
@@ -834,8 +851,123 @@ fluidPage(
                    mainPanel(
                      plotOutput("map")
                    )
+        ),
+        bs4TabItem('survey',
+                   titlePanel("Senior Center Survey Form"),
+                   shinyjs::useShinyjs(),
+                   div(
+                     id = "form",
+                     selectInput(
+                       "which_center",
+                       label = h5(labelMandatory("What senior center do you currently reside in?")),
+                       choices = c("ACRS", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", "Wallingford", "CISC", "South Park", "GWP", "Southeast"),
+                       selected = "Greenwood"
+                      ),
+                     textInput("zipcode", labelMandatory("What is your zipcode"), ""),
+                     bs4Card(
+                       title = "I do more volunteer work at my Senior Center",
+                       width = 14,
+                       collapsible = FALSE,
+                       closable=FALSE,
+                       radioButtons("do_more_volunteer_work", label="", choices = answers, inline=TRUE, selected = character(0))
+                     ),
+                     bs4Card(
+                      title = "I see friends more often/make new friends at my Senior Center",
+                      width = 14,
+                      collapsible = FALSE,
+                      closable=FALSE,
+                      radioButtons("see_friends", label="", choices = answers, inline=TRUE, selected = character(0))
+                     ),
+                     bs4Card(
+                       title = "I take better care of my health at my Senior Center",
+                       width = 14,
+                       collapsible = FALSE,
+                       closable=FALSE,
+                       radioButtons("better_health", label="", choices = answers, inline=TRUE, selected = character(0))
+                     ),
+                     bs4Card(
+                       title = "I eat meals that are better for me at my Senior Center",
+                       width = 14,
+                       collapsible = FALSE,
+                       closable=FALSE,
+                       radioButtons("better_meals", label="", choices = answers, inline=TRUE, selected = character(0))
+                     ),
+                     bs4Card(
+                       title = "I have more energy",
+                       width = 14,
+                       collapsible = FALSE,
+                       closable=FALSE,
+                       radioButtons("more_energy", label="", choices = answers, inline=TRUE, selected = character(0))
+                     ),
+                     bs4Card(
+                       title = "I feel happier or more satisfied with my life",
+                       width = 14,
+                       collapsible = FALSE,
+                       closable=FALSE,
+                       radioButtons("happier_life", label="", choices = answers, inline=TRUE, selected = character(0))
+                     ),
+                     bs4Card(
+                       title = "I know where to ask if I need service such as a ride to doctor",
+                       width = 14,
+                       collapsible = FALSE,
+                       closable=FALSE,
+                       radioButtons("ask_services", label="", choices = answers, inline=TRUE, selected = character(0))
+                     ),
+                     bs4Card(
+                       title = "I feel more able to stay independent",
+                       width = 14,
+                       collapsible = FALSE,
+                       closable=FALSE,
+                       radioButtons("more_independent", label="", choices = answers, inline=TRUE, selected = character(0))
+                     ),
+                     bs4Card(
+                       title = "I feel that the senior center has had a positive effect on my life",
+                       width = 14,
+                       collapsible = FALSE,
+                       closable=FALSE,
+                       radioButtons("positive_effect", label="", choices = answers, inline=TRUE, selected = character(0))
+                     ),
+                     bs4Card(
+                       title = "I learn new things at my senior center",
+                       width = 14,
+                       collapsible = FALSE,
+                       closable=FALSE,
+                       radioButtons("learn_new_things", label="", choices = answers, inline=TRUE, selected = character(0))
+                     ),
+                     bs4Card(
+                       title = "I have learned about services and benefits at my senior center",
+                       width = 14,
+                       collapsible = FALSE,
+                       closable=FALSE,
+                       radioButtons("learn_new_services", label="", choices = answers, inline=TRUE, selected = character(0))
+                     ),
+                     bs4Card(
+                       title = "I am more physically active",
+                       width = 14,
+                       collapsible = FALSE,
+                       closable=FALSE,
+                       radioButtons("physically_active", label="", choices = answers, inline=TRUE, selected = character(0))
+                     ),
+                     bs4Card(
+                       title = "I would recommend my senior center to a friend or family member",
+                       width = 14,
+                       collapsible = FALSE,
+                       closable=FALSE,
+                       radioButtons("would_recommend", label="", choices = answers, inline=TRUE, selected = character(0))
+                     ),
+                     # textInput("free_response", "Please tell us how participating in the senior center has changed your life"),
+                     
+                     # Submit button to upload responses
+                     actionButton("submit", "Submit")
+                   ),
+                 shinyjs::hidden(
+                   div(
+                     id = "thankyou_msg",
+                     h3("Thanks, your response was submitted successfully!"),
+                     actionLink("submit_another", "Submit another response")
+                   )
+                 )  
         )
-
       )
     )
   )

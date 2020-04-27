@@ -2,8 +2,9 @@ library(shiny)
 library(dplyr)
 library(ISOcodes)
 library(ggplot2)
+
 data <- read.csv("./TOTAL.csv")
-test <- unique(data$SiteID)
+test <- unique(data$SiteID)=
 filtered <- filter(data, SiteID == "GWP")
 View(filtered)
 # Define UI for application that draws a histogram
@@ -31,6 +32,7 @@ ui <- fluidPage(
     )
 
 server <- function(input, output) {
+    
     output$bar <- renderPlot({
         if (input$question == "1") {
             tbl <- with(data, table(data$Do.more.volunteer.work))
@@ -115,8 +117,9 @@ server <- function(input, output) {
         ggplot(filtered, aes(filtered$What.is.your.estimated.annual.income), y = count()) + geom_bar() +
             coord_flip()
     })
+    
         
 }
 
 # Run the application 
-shinyApp(ui = ui, server = server)
+# shinyApp(ui = ui, server = server)
