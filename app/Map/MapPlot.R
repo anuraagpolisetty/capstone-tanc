@@ -12,12 +12,12 @@ library(tidyverse)
 # install.packages("devtools", type="binary")
 # devtools::install_github("dkahle/ggmap", type="binary", ref = "tidyup", force=TRUE)
 
+
 #Load the library
 library("ggmap")
 
 locations.data <- read.csv("data/Senior_Center_Locations_Cleaned.csv")
 names(locations.data)[1] <- 'SiteName'
-locations <- locations.data %>% select(SiteName,lat, long, race_for_center)
 
 
 #Set Maps API Key

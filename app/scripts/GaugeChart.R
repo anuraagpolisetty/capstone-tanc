@@ -17,6 +17,7 @@ independence.index <- IndependenceIndex(data.2019, "all")
 satisfaction.index <- OverallSatisfactionIndex(data.2019, "all")
 
 GaugeChart <- function(data, FUN, site, year, colored) {
+
   yr1 <- paste0(year,"-1")
   yr2 <- paste0(year, "-2")
   index <- (FUN(data, site))
@@ -55,3 +56,4 @@ GaugeChart <- function(data, FUN, site, year, colored) {
 # services = GaugeChart(data.2019, ServicesIndex, "all", "2019")
 # independence = GaugeChart(data.2019, IndependenceIndex, "all", "2019")
 # plot = GaugeChart(data.2019, OverallIndex, "all", "2019")
+
