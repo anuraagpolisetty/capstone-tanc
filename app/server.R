@@ -25,8 +25,9 @@ function(input, output, session) {
   source('Single_Center/acrs_server.R', local = T)
   source('Single_Center/gwp_server.R', local=T)
   source('Compare/compare_server.R', local=T)
+
   source('Survey/Survey.R', local = T)
-  output$map <- renderPlot({
+  output$map <- renderPlotly({
     p
   })
   

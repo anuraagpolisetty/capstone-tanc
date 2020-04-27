@@ -11,7 +11,7 @@ southpark_cleaned_data <- cleaned_data %>% filter(SiteID == 'South Park')
 output$southpark_gauge <- renderPlotly({
   
   wallingford.data.2019 <- data.2019 %>% filter(SiteID == 'South Park')   
-  GaugeChart(wallingford.data.2019, OverallIndex, "all", "2019")
+  GaugeChart(wallingford.data.2019, OverallIndex, "all", "2019", 'rgb(255,255,255)')
   
 })
 
@@ -29,7 +29,7 @@ output$social_southpark <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(wallingford.date.data, SocialIndex, 'all', date)
+  GaugeChart(wallingford.date.data, SocialIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -47,7 +47,7 @@ output$physical_southpark <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(wallingford.date.data, PhysicalIndex, 'all', date)
+  GaugeChart(wallingford.date.data, PhysicalIndex, 'all', date,'rgb(255,255,255)')
   
 })
 
@@ -65,7 +65,7 @@ output$positive_southpark <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(wallingford.date.data, PositiveIndex, 'all', date)
+  GaugeChart(wallingford.date.data, PositiveIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -83,7 +83,7 @@ output$services_southpark <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(wallingford.date.data, ServicesIndex, 'all', date)
+  GaugeChart(wallingford.date.data, ServicesIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -101,7 +101,7 @@ output$independence_southpark <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(wallingford.date.data, IndependenceIndex, 'all', date)
+  GaugeChart(wallingford.date.data, IndependenceIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -118,11 +118,11 @@ output$general_southpark <- renderPlotly({
     wallingford.date.data <- southpark_cleaned_data %>%  filter(Batch == '2019-1' | Batch == '2019-2')
     date <- '2019'    
   }
-  GaugeChart(wallingford.date.data, OverallIndex, 'all', date)
+  GaugeChart(wallingford.date.data, OverallIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
-output$southpark_timeplot <-  renderPlot({
+output$southpark_timeplot <-  renderPlotly({
   if(input$southpark_answer == 1) {
     time.data <- southpark_cleaned_data %>% group_by(Batch) %>%  summarise(mean1 = mean(Do.more.volunteer.work), mean2 = mean(See.friends.more.often.make.new.friends))
     social.life.means <-  time.data %>% select(mean1, mean2) %>% rowMeans()
@@ -153,11 +153,11 @@ output$southpark_timeplot <-  renderPlot({
     social.life.means <-  time.data %>% select(mean1, mean2) %>% rowMeans()
     time.data$total_mean <- social.life.means
   }
-  
-  ggplot(time.data, aes(x=Batch, y=total_mean, group=1)) + geom_point() + geom_line() 
+  time.data <- time.data %>% mutate(Mean = total_mean)
+  ggplot(time.data, aes(x=Batch, y=Mean, group=1)) + geom_point() + geom_line() 
 })
 
-output$southpark_bar <-  renderPlot({
+output$southpark_bar <-  renderPlotly({
   if(input$southpark_answer == 1) {
     sum1 <- bar_data %>% group_by(Do.more.volunteer.work) %>% summarise(count1 = n())
     sum2 <- bar_data %>% group_by(See.friends.more.often.make.new.friends) %>% summarise(count2 = n())
@@ -196,6 +196,6 @@ output$southpark_bar <-  renderPlot({
     sum1$total_count <- sum1$count1 + sum2$count2
     names(sum1)[1] <- 'categories'
   }
-  
-  ggplot(sum1, aes(x=reorder(categories, -total_count),total_count))+geom_bar(stat="identity")
+  sum1 <- sum1 %>% mutate(Categories = reorder(categories, -total_count), Count = total_count)
+  ggplot(sum1, aes(x=Categories,y=Count))+geom_bar(stat="identity")
 })

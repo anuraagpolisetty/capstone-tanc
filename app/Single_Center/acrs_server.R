@@ -11,7 +11,7 @@ acrs_cleaned_data <- cleaned_data %>% filter(SiteID == 'ACRS')
 output$acrs_gauge <- renderPlotly({
   
   acrs.data.2019 <- data.2019 %>% filter(SiteID == 'ACRS')   
-  GaugeChart(acrs.data.2019, OverallIndex, "all", "2019")
+  GaugeChart(acrs.data.2019, OverallIndex, "all", "2019", 'rgb(255,255,255)')
   
 })
 
@@ -29,7 +29,7 @@ output$social_acrs <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(acrs.date.data, SocialIndex, 'all', date)
+  GaugeChart(acrs.date.data, SocialIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -47,7 +47,7 @@ output$physical_acrs <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(acrs.date.data, PhysicalIndex, 'all', date)
+  GaugeChart(acrs.date.data, PhysicalIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -65,7 +65,7 @@ output$positive_acrs <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(acrs.date.data, PositiveIndex, 'all', date)
+  GaugeChart(acrs.date.data, PositiveIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -83,7 +83,7 @@ output$services_acrs <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(acrs.date.data, ServicesIndex, 'all', date)
+  GaugeChart(acrs.date.data, ServicesIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -101,7 +101,7 @@ output$independence_acrs <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(acrs.date.data, IndependenceIndex, 'all', date)
+  GaugeChart(acrs.date.data, IndependenceIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -118,11 +118,11 @@ output$general_acrs <- renderPlotly({
     acrs.date.data <- acrs_cleaned_data %>%  filter(Batch == '2019-1' | Batch == '2019-2')
     date <- '2019'    
   }
-  GaugeChart(acrs.date.data, OverallIndex, 'all', date)
+  GaugeChart(acrs.date.data, OverallIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
-output$acrs_timeplot <-  renderPlot({
+output$acrs_timeplot <-  renderPlotly({
   if(input$acrs_answer == 1) {
     time.data <- acrs_cleaned_data %>% group_by(Batch) %>%  summarise(mean1 = mean(Do.more.volunteer.work), mean2 = mean(See.friends.more.often.make.new.friends))
     social.life.means <-  time.data %>% select(mean1, mean2) %>% rowMeans()
@@ -153,11 +153,12 @@ output$acrs_timeplot <-  renderPlot({
     social.life.means <-  time.data %>% select(mean1, mean2) %>% rowMeans()
     time.data$total_mean <- social.life.means
   }
+  time.data <- time.data %>% mutate(Mean= total_mean)
+  ggplot(time.data, aes(x=Batch, y=Mean, group=1)) + geom_point() + geom_line()
   
-  ggplot(time.data, aes(x=Batch, y=total_mean, group=1)) + geom_point() + geom_line() 
 })
 
-output$acrs_bar <-  renderPlot({
+output$acrs_bar <-  renderPlotly({
   if(input$acrs_answer == 1) {
     sum1 <- bar_data %>% group_by(Do.more.volunteer.work) %>% summarise(count1 = n())
     sum2 <- bar_data %>% group_by(See.friends.more.often.make.new.friends) %>% summarise(count2 = n())
@@ -197,5 +198,7 @@ output$acrs_bar <-  renderPlot({
     names(sum1)[1] <- 'categories'
   }
   
-  ggplot(sum1, aes(x=reorder(categories, -total_count),total_count))+geom_bar(stat="identity")
+  sum1 <- sum1 %>% mutate(Categories = reorder(categories, -total_count), Count = total_count)
+  ggplot(sum1, aes(x=Categories,y=Count))+geom_bar(stat="identity")
+  
 })

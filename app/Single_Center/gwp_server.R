@@ -11,7 +11,7 @@ gwp_cleaned_data <- cleaned_data %>% filter(SiteID == 'GWP')
 output$gwp_gauge <- renderPlotly({
   
   gwp.data.2019 <- data.2019 %>% filter(SiteID == 'GWP')   
-  GaugeChart(gwp.data.2019, OverallIndex, "all", "2019")
+  GaugeChart(gwp.data.2019, OverallIndex, "all", "2019", 'rgb(255,255,255)')
   
 })
 
@@ -29,7 +29,7 @@ output$social_gwp <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(gwp.date.data, SocialIndex, 'all', date)
+  GaugeChart(gwp.date.data, SocialIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -47,7 +47,7 @@ output$physical_gwp <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(gwp.date.data, PhysicalIndex, 'all', date)
+  GaugeChart(gwp.date.data, PhysicalIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -65,7 +65,7 @@ output$positive_gwp <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(gwp.date.data, PositiveIndex, 'all', date)
+  GaugeChart(gwp.date.data, PositiveIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -83,7 +83,7 @@ output$services_gwp <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(gwp.date.data, ServicesIndex, 'all', date)
+  GaugeChart(gwp.date.data, ServicesIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -101,7 +101,7 @@ output$independence_gwp <- renderPlotly({
     date <- '2019'    
   }
   
-  GaugeChart(gwp.date.data, IndependenceIndex, 'all', date)
+  GaugeChart(gwp.date.data, IndependenceIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -118,7 +118,7 @@ output$general_gwp <- renderPlotly({
     gwp.date.data <- gwp_cleaned_data %>%  filter(Batch == '2019-1' | Batch == '2019-2')
     date <- '2019'    
   }
-  GaugeChart(gwp.date.data, OverallIndex, 'all', date)
+  GaugeChart(gwp.date.data, OverallIndex, 'all', date, 'rgb(255,255,255)')
   
 })
 
@@ -153,11 +153,12 @@ output$gwp_timeplot <-  renderPlot({
     social.life.means <-  time.data %>% select(mean1, mean2) %>% rowMeans()
     time.data$total_mean <- social.life.means
   }
+  time.data <- time.data %>% mutate(Mean= total_mean)
+  ggplot(time.data, aes(x=Batch, y=Mean, group=1)) + geom_point() + geom_line()
   
-  ggplot(time.data, aes(x=Batch, y=total_mean, group=1)) + geom_point() + geom_line() 
 })
 
-output$gwp_bar <-  renderPlot({
+output$gwp_bar <-  renderPlotly({
   if(input$gwp_answer == 1) {
     sum1 <- bar_data %>% group_by(Do.more.volunteer.work) %>% summarise(count1 = n())
     sum2 <- bar_data %>% group_by(See.friends.more.often.make.new.friends) %>% summarise(count2 = n())
@@ -196,6 +197,7 @@ output$gwp_bar <-  renderPlot({
     sum1$total_count <- sum1$count1 + sum2$count2
     names(sum1)[1] <- 'categories'
   }
+  sum1 <- sum1 %>% mutate(Categories = reorder(categories, -total_count), Count = total_count)
+  ggplot(sum1, aes(x=Categories,y=Count))+geom_bar(stat="identity")
   
-  ggplot(sum1, aes(x=reorder(categories, -total_count),total_count))+geom_bar(stat="identity")
 })
