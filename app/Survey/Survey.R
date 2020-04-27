@@ -1,3 +1,4 @@
+library(shiny)
 fieldsMandatory <- c("which_center","zipcode",
                      # "do_more_volunteer_work", "see_friends", "physically_active", 
                      "would_recommend")
@@ -14,6 +15,7 @@ humanTime <- function() {
   format(Sys.time(), "%Y%m%d-%H%M%OS")
 }
 
+v <- reactiveValues(data = character(0))
 
 observe({
   mandatoryFilled <-
