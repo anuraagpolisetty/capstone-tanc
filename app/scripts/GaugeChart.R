@@ -14,7 +14,7 @@ physical.index <- PhysicalIndex(data.2019, "all")
 positive.index <- PositiveIndex(data.2019, "all")
 services.index <- ServicesIndex(data.2019, "all")
 independence.index <- IndependenceIndex(data.2019, "all")
-satisfaction.index <- OverallSatisfactionIndex(data.2019, "all")
+satisfaction.index <- OverallIndex(data.2019, "all")
 
 GaugeChart <- function(data, FUN, site, year, colored) {
 
