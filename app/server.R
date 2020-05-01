@@ -31,6 +31,13 @@ function(input, output, session) {
     p
   })
   
-  
+  output$contents <- renderTable({
+    inFile <- input$file1
+    
+    if (is.null(inFile))
+      return(NULL)
+    
+    read.csv(inFile$datapath, header = input$header)
+  })
   
 }

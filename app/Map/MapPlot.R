@@ -16,8 +16,8 @@ library(tidyverse)
 #Load the library
 library("ggmap")
 
-locations.data <- read.csv("data/Senior_Center_Locations_Cleaned.csv")
-names(locations.data)[1] <- 'SiteName'
+locations <- read.csv("data/Senior_Center_Locations_Cleaned.csv")
+names(locations)[1] <- 'SiteName'
 
 
 #Set Maps API Key
@@ -26,7 +26,7 @@ ggmap::register_google(key = "AIzaSyC0DaJT7v6nAO7uBxGsBdDzzhagOsNXwXo")
 p <- ggmap(get_googlemap(center = c(lon = -122.335167, lat = 47.608013),
                          zoom = 11, scale = 2,
                          maptype ='roadmap',
-                         color = 'color')) + geom_point(aes(x = long, y = lat, color=race_for_center), alpha=0.4,data = locations, size = 5) +
+                         color = 'color')) + geom_point(aes(x = long, y = lat, color=race_for_center), alpha=0.4, data = locations, size = 5) +
   theme(legend.position="bottom" ) 
 p 
 
