@@ -1,4 +1,20 @@
 library(shiny)
+# library(googlesheets4)
+# # gs4_auth()
+# 
+# sheets_auth(
+#   email = gargle::gargle_oauth_email(),
+#   path = NULL,
+#   scopes = "https://www.googleapis.com/auth/spreadsheets",
+#   cache = gargle::gargle_oauth_cache(),
+#   use_oob = gargle::gargle_oob_default(),
+#   token = NULL
+# )
+# 
+# read_sheet("https://docs.google.com/spreadsheets/d/1mTXkR7OQya5hJoq3EC6N1TwkHuS8cRpHPDLd_VGF9Nk/edit#gid=0")
+# 
+# gs4_create(name = "Test", sheets = NULL)
+
 fieldsMandatory <- c("which_center","zipcode",
                      # "do_more_volunteer_work", "see_friends", "physically_active", 
                      "would_recommend")
@@ -30,6 +46,7 @@ observe({
   shinyjs::toggleState(id = "submit", condition = mandatoryFilled)
   shinyjs::toggleClass(id = "submit", condition = mandatoryFilled, class = "btn-primary")
 })
+
 saveData <- function(data) {
   fileName <- sprintf("%s_%s.csv",
                       humanTime(),
