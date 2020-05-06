@@ -1,20 +1,7 @@
 library(shiny)
-# library(googlesheets4)
-# # gs4_auth()
-# 
-# sheets_auth(
-#   email = gargle::gargle_oauth_email(),
-#   path = NULL,
-#   scopes = "https://www.googleapis.com/auth/spreadsheets",
-#   cache = gargle::gargle_oauth_cache(),
-#   use_oob = gargle::gargle_oob_default(),
-#   token = NULL
-# )
-# 
-# read_sheet("https://docs.google.com/spreadsheets/d/1mTXkR7OQya5hJoq3EC6N1TwkHuS8cRpHPDLd_VGF9Nk/edit#gid=0")
-# 
-# gs4_create(name = "Test", sheets = NULL)
+source('Survey/Sheets.r')
 
+# 
 fieldsMandatory <- c("which_center","zipcode",
                      # "do_more_volunteer_work", "see_friends", "physically_active", 
                      "would_recommend")
@@ -47,14 +34,16 @@ observe({
   shinyjs::toggleClass(id = "submit", condition = mandatoryFilled, class = "btn-primary")
 })
 
-saveData <- function(data) {
-  fileName <- sprintf("%s_%s.csv",
-                      humanTime(),
-                      digest::digest(data))
-  
-  write.csv(x = data, file = file.path(responsesDir, fileName),
-            row.names = FALSE, quote = TRUE)
-}
+# #Downloads the file as a csv
+# saveData <- function(data) {
+#   fileName <- sprintf("%s_%s.csv",
+#                       humanTime(),
+#                       digest::digest(data))
+#   
+#   write.csv(x = data, file = file.path(responsesDir, fileName),
+#             row.names = FALSE, quote = TRUE)
+# }
+
 
 # Saves and formats the submit data
 formData <- reactive({
@@ -66,7 +55,7 @@ formData <- reactive({
 
 # action to take when submit button is pressed
 observeEvent(input$submit, {
-  saveData(formData())
+  saveData(formData()) # saves the data in function in Sheets.R
   shinyjs::reset("form")
   shinyjs::hide("form")
   shinyjs::show("thankyou_msg")

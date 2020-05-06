@@ -1,31 +1,72 @@
-library(googlesheets4)
 library(googledrive)
+library(googlesheets4)
 library(dplyr)
-# gs4_auth()
 
-ss <- "1mTXkR7OQya5hJoq3EC6N1TwkHuS8cRpHPDLd_VGF9Nk"
-ss2 <- "1-EGzAaimDlkctFMNBKgle2dSFSh5vGX8jl6zJIehmfE"
 
-sheets_auth(
-  email = gargle::gargle_oauth_email(),
+# Initialize google drive authentication
+drive_auth(
+  email = "anuraagpolisetty@gmail.com", # gargle::gargle_oauth_email(), # use gargle to automatically sign in to your email
   path = NULL,
-  scopes = "https://www.googleapis.com/auth/spreadsheets",
+  scopes = "https://www.googleapis.com/auth/drive",
   cache = gargle::gargle_oauth_cache(),
   use_oob = gargle::gargle_oob_default(),
   token = NULL
 )
 
-sheet<- read_sheet("1mTXkR7OQya5hJoq3EC6N1TwkHuS8cRpHPDLd_VGF9Nk")
+#Initialize Google Sheets authentication
+gs4_auth(token = drive_token())
 
-sheet2 <- read_sheet(ss2)
-sheet2[1,]
 
-ss <- sheet_write(ss)
+# Create inital drive folder
+# folder <- drive_mkdir("ADS Survey Responses")
 
-ss %>% sheet_append(sheet2[1,])
+folder <- drive_get("ADS Survey Responses")
+centers <- c("ACRS", "Ballard", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", 
+             "Wallingford", "West Seattle", "CISC", "South Park", "GWP", "Southeast")
 
-gs4_has_token()
+ss_centers <- centers
+batches <- c("2016-1", "2016-2", "2017-1", "2017-2", "2018-1", "2018-2",
+             "2019-1", "2019-2", "2020-1", "2020-2")
 
-gs4_example("chicken-sheet")
-sheets_browse(ss)
-sheets_example("chicken-sheet")
+# Create google Sheets for each center (only once)
+  # for(c in centers) {
+  #   sheet <- gs4_create(c)
+  #   drive_mv(file = sheet, path = as_id(folder))
+  #   
+  # }
+  # drive_ls(folder)
+
+# Store all Spreadsheet IDs
+# ss_ACRS <- drive_get(paste0(folder, "/ACRS"))
+# ss_Ballard <- drive_get(paste0(folder, "/Ballard"))
+# ss_Greenwood <- drive_get(paste0(folder, "/Greenwood"))
+# ss_IDIC <- drive_get(paste0(folder, "/IDIC"))
+# ss_PMSC <- drive_get(paste0(folder, "/PMSC"))
+# ss_SG <- drive_get(paste0(folder, "/Sunshine Garden"))
+# ss_Wallingford <- drive_get(paste0(folder, "/Wallingford"))
+# ss_WestSeattle <- drive_get(paste0(folder, "/West Seattle"))
+# ss_CISC <- drive_get(paste0(folder, "/CISC"))
+# ss_SouthPark <- drive_get(paste0(folder, "/South Park"))
+# ss_GWP <- drive_get(paste0(folder, "/GWP"))
+# ss_Southeast <- drive_get(paste0(folder, "/Southeast"))
+
+columns <- c("Hello", "World")
+rows <- c("its", "good")
+# df <- data.table(columns, rows)
+# ss_ACRS %>% sheet_append()
+
+# Add column names to google sheet
+saveData <- function(data) {
+  df <- data.frame(matrix(unlist(data), ncol=length(data)), stringsAsFactors=FALSE)
+  print(df)
+  print(typeof(df))
+  center_name <- data[1, "which_center"]
+  ss <- drive_get(paste0(folder, "/", center_name))
+  print(df[1,])
+  print(typeof(df[1,]))
+  sheet_append(ss_ACRS, df)
+}
+
+
+
+ 
