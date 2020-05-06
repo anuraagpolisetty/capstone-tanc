@@ -5,6 +5,12 @@ output$bar <- renderPlotly({
   else if (input$select1 == "Greenwood") {
     filtered <- filter(data, SiteID == "Greenwood")
   }
+  else if (input$select1 == "West Seattle") {
+    filtered <- filter(data, SiteID == "West Seattle")
+  }
+  else if (input$select1 == "Ballard") {
+    filtered <- filter(data, SiteID == "Ballard")
+  }
   else if (input$select1 == "IDIC") {
     filtered <- filter(data, SiteID == "IDIC")
   }
@@ -34,6 +40,12 @@ output$bar <- renderPlotly({
   }
   else if (input$select2 == "Greenwood") {
     filtered2 <- filter(data, SiteID == "Greenwood")
+  }
+  else if (input$select2 == "West Seattle") {
+    filtered2 <- filter(data, SiteID == "West Seattle")
+  }
+  else if (input$select2 == "Ballard") {
+    filtered2 <- filter(data, SiteID == "Ballard")
   }
   else if (input$select2 == "IDIC") {
     filtered2 <- filter(data, SiteID == "IDIC")
@@ -126,6 +138,7 @@ output$bar <- renderPlotly({
   }
   #filtered3 <- rbind(filtered, filtered2)
   colnames(filtered4)[2] <- 'Question'
+  #filtered4[filtered4$Question == 'Most of the time'] <- 'Most of the Time'
   ggplotly(ggplot(filtered4, aes(x=Question, y = Percent, fill=SiteID)) + 
     geom_bar(color = "lightgoldenrodyellow", stat='identity', position='dodge') +
     xlab("Question") + ylab("Percentage") +

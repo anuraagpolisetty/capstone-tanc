@@ -1,8 +1,9 @@
 library(dplyr)
 library(ggplot2)
 library(tidyverse)
-data <- read.table("./data/TOTAL.csv",
+data <- read.table("./data/total2.csv",
                     header=TRUE, sep=",", stringsAsFactors = FALSE)
+
 
 # Gets the data ready for a single center
 data_single_center <- data %>% filter(SiteID == 'ACRS')
@@ -49,7 +50,7 @@ ethnicity_grouped <- data_single_center %>% group_by()
 cleaned_data <- data
 # Clean the data for the visuals
 
-column.names <- names(data)
+column.names <- names(cleaned_data)
 questions <- column.names[12:25]
 
 
@@ -92,3 +93,11 @@ single_center_bar <- ggplot(grouped_data, aes(x=reorder(Do.more.volunteer.work, 
 
 first <- bar_data %>% group_by(Do.more.volunteer.work) %>% summarise(count1 = n())# %>% rename(c(Do.more.volunteer.work = 'categories'))
 second <- bar_data %>% group_by(See.friends.more.often.make.new.friends) %>% summarise(count2 = n())
+
+#cleaned_data <- cleaned_data %>% group_by(SiteID) %>% summarise(count=n())
+
+
+###################### Test New CSV #######################
+
+cleaned_data %>% group_by(SiteID) %>% summarise(count=n())
+west_cleaned <- cleaned_data %>% filter(SiteID == 'West Seattle')
