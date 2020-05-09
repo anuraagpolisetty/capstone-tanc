@@ -24,13 +24,14 @@ function(input, output, session) {
   source('Single_Center/sunshine_server.R', local = T)
   source('Single_Center/acrs_server.R', local = T)
   source('Single_Center/gwp_server.R', local=T)
+  source('Single_Center/west_server.R', local=T)
+  source('Single_Center/ballard_server.R', local=T)
   source('Compare/compare_server.R', local=T)
 
   source('Survey/Survey.R', local = T)
   output$map <- renderPlotly({
-    p
+    ggplotly(p,tooltip = 'text')
   })
-  
   
   
 }

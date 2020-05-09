@@ -1,10 +1,13 @@
-all.data <- read.csv("data/TOTAL.csv")
+all.data <- read.csv("data/total.csv")
 locations.data <- read.csv("data/Senior_Center_Locations_Cleaned.csv")
 
 column.names <- names(all.data)
 questions <- column.names[12:25]
 
+#  Find why 2017 isn't showing for west seattle and ballard
 
+grouped_for_ballard <- all.data %>% filter(SiteID == 'Ballard')
+grouped_for_ballard <- grouped_for_ballard %>% group_by(Batch) %>% summarise(count = n())
 ################################################# Percentages #######################################################
 # Shows the percentage of every response type for every question
 
@@ -74,14 +77,14 @@ total.responses
 nrow(all.data[(all.data$Batch == '2019-1') | (all.data$Batch == '2019-2'),])
 
 # Total Amount of Senior Centers: 11
-all.data[all.data['SiteID'] == 'Greenwood Senior Center', 'SiteID'] <- 'Greenwood'
-all.data[all.data['SiteID'] == 'South Park Senior Center', 'SiteID'] <- 'South Park'
-all.data[all.data['SiteID'] == 'Wallingford Senior Center', 'SiteID'] <- 'Wallingford'
-grouped.centers <- all.data %>% group_by(SiteID) %>% summarise(count = n())
+data[data['SiteID'] == 'Greenwood Senior Center', 'SiteID'] <- 'Greenwood'
+data[data['SiteID'] == 'South Park Senior Center', 'SiteID'] <- 'South Park'
+data[data['SiteID'] == 'Wallingford Senior Center', 'SiteID'] <- 'Wallingford'
+grouped.centers <- data %>% group_by(SiteID) %>% summarise(count = n())
 total.centers <- nrow(grouped.centers)
 
 # Total Batches inputted: 6
-grouped.by.batch <- all.data %>% group_by(Batch) %>% summarise(count = n())
+grouped.by.batch <- data %>% group_by(Batch) %>% summarise(count = n())
 total.batches <- nrow(grouped.by.batch)
 
 
@@ -122,3 +125,50 @@ sum2 <- bar_data %>% group_by(See.friends.more.often.make.new.friends) %>% summa
 sum1$total_count <- sum1$count1 + sum2$count2
 names(sum1)[1] <- 'categories'
 ggplot(sum1, aes(x=reorder(categories, -total_count),total_count))+geom_bar(stat="identity") + xlab('Questions') + ylab('Count')
+
+
+########################## Get image to appear ########
+library(OpenImageR)
+path <- file.path(getwd(), 'imgs', 'pike2.jpg')
+im <- readImage(path)
+hold.image <-imageShow(im)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+######################### Test new data ###################
+
+cleaned_data %>% group_by(SiteID) %>% summarise(count = n())
+west_cleaned_data <- cleaned_data %>% filter(SiteID == 'West Seattle')
+
+
+west.data.2018 <- data.2018 %>% filter(SiteID == 'West Seattle')   
+GaugeChart(west.data.2018, OverallIndex, "all", "2018", 'rgb(255,255,255)')
+
+
+# Time for new data
+west_cleaned_time <- cleaned_data %>% filter(SiteID == 'West Seattle')
+for (question in questions) {
+  west_cleaned_time[is.na(west_cleaned_time[question]), question] <- '0'
+}
+time.data <- west_cleaned_data %>% group_by(Batch) %>%  summarise(mean1 = mean(Know.where.to.ask.if.I.need.a.service.such.as.a.ride.to.a.doctor.or.an.aide), mean2 = mean(Have.learned.about.services.and.benefits))
+social.life.means <-  time.data %>% select(mean1, mean2) %>% rowMeans()
+time.data$total_mean <- social.life.means
+
+pike_cleaned_data <- cleaned_data %>% filter(SiteID == 'PMSC' | SiteID == 'Pike Market Senior Center')
+time.data <- pike_cleaned_data %>% group_by(Batch) %>%  summarise(mean1 = mean(Would.recommend.the.senior.center.to.a.friend.or.family.member), mean2 = mean(Feel.that.the.senior.center.has.had.a.positive.effect.on.my.life))
+social.life.means <-  time.data %>% select(mean1, mean2) %>% rowMeans()
+time.data$total_mean <- social.life.means
+

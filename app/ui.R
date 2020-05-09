@@ -2,8 +2,12 @@ library(shiny)
 library(ggplot2)
 library(bs4Dash)
 library(plotly)
+library(OpenImageR)
 
 answers <- c("Almost Never", "Sometimes", "Most of the Time", "Not applicable")
+
+path = file.path(getwd(), 'imgs', 'pike2.jpg')
+im = readImage(path)
 
 labelMandatory <- function(label) {
   tagList(
@@ -23,10 +27,20 @@ fluidPage(
     sidebar_collapsed = FALSE,
 
     # Navbar on top
-    navbar = bs4DashNavbar(
-      skin = 'dark',
-      status = 'primary'
-    ),
+    navbar = bs4DashNavbar(status = 'primary', skin = 'dark'),
+    # navbar = bs4DashNavbar(
+    #   skin = 'dark',
+    #   status = 'primary',
+    #   rightUi = bs4DropdownMenu(show = TRUE,
+    #                             align = 'right',
+    #                             menuIcon = 'caret-down',
+    #                             status = 'danger',
+    #                             bs4DropdownMenuItem(
+    #                               message = 'message 1',
+    #                               src = 'www.google.com'
+    #                             ))
+    # 
+    # ),
 
     # left sidebar
     sidebar = bs4DashSidebar(
@@ -55,6 +69,14 @@ fluidPage(
           bs4SidebarMenuSubItem(
             text = 'Greenwood',
             tabName = 'sub_greenwood'
+          ),
+          bs4SidebarMenuSubItem(
+            text = 'West Seattle',
+            tabName = 'sub_west'
+          ),
+          bs4SidebarMenuSubItem(
+            text = 'Ballard',
+            tabName = 'sub_ballard'
           ),
           bs4SidebarMenuSubItem(
             text = 'South Park',
@@ -112,15 +134,16 @@ fluidPage(
                 closable = FALSE,
                 collapsible = FALSE,
                 attachmentBlock(
-                  src = 'http://pikeplacemarket.org/sites/default/files/senior-center.jpg'
+                  src='pike.jpg'
                 ),
                 bs4InfoBox(
-                  title = '',
+                  title = 'View Data',
                   tabName = 'sub_pike',
                   gradientColor = 'primary',
-                  width = 3
+                  width = 3,
+                  icon = 'chart-bar'
                 ),
-                p('View Data'),
+                #p('View Data'),
                 plotlyOutput("gauge")
             )),
           fluidRow(
@@ -131,15 +154,15 @@ fluidPage(
               closable = FALSE,
               collapsible = FALSE,
               attachmentBlock(
-                src = 'http://www.wlfdseniorctr.com/wp-content/uploads/2013/12/P1010003.jpg'
+                src = 'wallingford.jpg'
               ),
               bs4InfoBox(
-                title = '',
+                title = 'View Data',
                 tabName = 'sub_wallingford',
                 gradientColor = 'primary',
-                width = 3
-                    ),
-              p('View Data'),
+                width = 3,
+                icon = 'chart-bar'
+              ),
               plotlyOutput('wallingford_gauge')
                 )
           ),
@@ -151,16 +174,56 @@ fluidPage(
               closable = FALSE,
               collapsible = FALSE,
               attachmentBlock(
-                src = 'https://www.phinneycenter.org/wp-content/uploads/2016/07/GSCdirectionsBldg.jpg'
+                src = 'greenwood.jpg'
               ),
               bs4InfoBox(
-                title = '',
+                title = 'View Data',
                 tabName = 'sub_greenwood',
                 gradientColor = 'primary',
-                width = 3
+                width = 3,
+                icon = 'chart-bar'
               ),
-              p('View Data'),
               plotlyOutput('greenwood_gauge')
+            )
+          ),
+          fluidRow(
+            bs4Card(
+              title = "West Seattle Senior Center",
+              width = 12,
+              headerBorder = FALSE,
+              closable = FALSE,
+              collapsible = FALSE,
+              attachmentBlock(
+                src = 'greenwood.jpg'
+              ),
+              bs4InfoBox(
+                title = 'View Data',
+                tabName = 'sub_west',
+                gradientColor = 'primary',
+                width = 3,
+                icon = 'chart-bar'
+              ),
+              plotlyOutput('west_gauge')
+            )
+          ),
+          fluidRow(
+            bs4Card(
+              title = "Ballard Senior Center",
+              width = 12,
+              headerBorder = FALSE,
+              closable = FALSE,
+              collapsible = FALSE,
+              attachmentBlock(
+                src = 'greenwood.jpg'
+              ),
+              bs4InfoBox(
+                title = 'View Data',
+                tabName = 'sub_ballard',
+                gradientColor = 'primary',
+                width = 3,
+                icon = 'chart-bar'
+              ),
+              plotlyOutput('ballard_gauge')
             )
           ),
           fluidRow(
@@ -171,15 +234,15 @@ fluidPage(
               closable = FALSE,
               collapsible = FALSE,
               attachmentBlock(
-                src = 'http://pikeplacemarket.org/sites/default/files/senior-center.jpg'
+                src = 'southpark.jpg'
               ),
               bs4InfoBox(
-                title = '',
+                title = 'View Data',
                 tabName = 'sub_southpark',
                 gradientColor = 'primary',
-                width = 3
+                width = 3,
+                icon = 'chart-bar'
               ),
-              p('View Data'),
               plotlyOutput('southpark_gauge')
             )
           ),
@@ -191,15 +254,15 @@ fluidPage(
                 closable = FALSE,
                 collapsible = FALSE,
                 attachmentBlock(
-                  src = 'http://pikeplacemarket.org/sites/default/files/senior-center.jpg'
+                  src = 'idic.jpg'
                 ),
                 bs4InfoBox(
-                  title = '',
+                  title = 'View Data',
                   tabName = 'sub_idic',
                   gradientColor = 'primary',
-                  width = 3
+                  width = 3,
+                  icon = 'chart-bar'
                 ),
-                p('View Data'),
                 plotlyOutput('idic_gauge')
               )
           ),
@@ -211,15 +274,15 @@ fluidPage(
               closable = FALSE,
               collapsible = FALSE,
               attachmentBlock(
-                src = 'http://pikeplacemarket.org/sites/default/files/senior-center.jpg'
+                src = 'southeast.jpg'
               ),
               bs4InfoBox(
-                title = '',
+                title = 'View Data',
                 tabName = 'sub_southeast',
                 gradientColor = 'primary',
-                width = 3
+                width = 3,
+                icon = 'chart-bar'
               ),
-              p('View Data'),
               plotlyOutput('southeast_gauge')
             )
           ),
@@ -231,15 +294,15 @@ fluidPage(
               closable = FALSE,
               collapsible = FALSE,
               attachmentBlock(
-                src = 'http://pikeplacemarket.org/sites/default/files/senior-center.jpg'
+                src = 'sunshine.jpg'
               ),
               bs4InfoBox(
-                title = '',
+                title = 'View Data',
                 tabName = 'sub_sunshine',
                 gradientColor = 'primary',
-                width = 3
+                width = 3,
+                icon = 'chart-bar'
               ),
-              p('View Data'),
               plotlyOutput('sunshine_gauge')
             )
           ),
@@ -251,15 +314,15 @@ fluidPage(
               closable = FALSE,
               collapsible = FALSE,
               attachmentBlock(
-                src = 'http://pikeplacemarket.org/sites/default/files/senior-center.jpg'
+                src = 'acrs.jpg'
               ),
               bs4InfoBox(
-                title = '',
+                title = 'View Data',
                 tabName = 'sub_acrs',
                 gradientColor = 'primary',
-                width = 3
+                width = 3,
+                icon = 'chart-bar'
               ),
-              p('View Data'),
               plotlyOutput('acrs_gauge')
             )
           ),
@@ -274,12 +337,12 @@ fluidPage(
                 src = 'http://pikeplacemarket.org/sites/default/files/senior-center.jpg'
               ),
               bs4InfoBox(
-                title = '',
+                title = 'View Data',
                 tabName = 'sub_gwp',
                 gradientColor = 'primary',
-                width = 3
+                width = 3,
+                icon = 'chart-bar'
               ),
-              p('View Data'),
               plotlyOutput('gwp_gauge')
             )
           )
@@ -411,6 +474,88 @@ fluidPage(
                               )
                             )
                  ),
+        bs4TabItem(tabName = 'sub_west',
+                   titlePanel('West Seattle Senior Center'),
+                   fluidRow(
+                     column(
+                       width = 8,
+                       selectInput("west_answer", label=h3('Pick a Sector to Evaluate'),
+                                   choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                   selected = 1),
+                       bs4Card(
+                         title = "Over Time",
+                         width = 14,
+                         collapsible = TRUE,
+                         closable=FALSE,
+                         plotlyOutput("west_timeplot")
+                       ),
+                       bs4Card(
+                         title = "Response for Sector",
+                         width = 14,
+                         collapsible = TRUE,
+                         closable = FALSE,
+                         plotlyOutput("west_bar")
+                       )),
+                     column(
+                       width = 4,
+                       selectInput("west_gauge", label=h3('Filter By Batch'),
+                                   choices = list('2018' = 2),
+                                   selected = 2),
+                       bs4Card(
+                         title = 'Index for West Seattle Senior Center',
+                         closable=FALSE,
+                         width= 10,
+                         plotlyOutput("social_west"),
+                         plotlyOutput("physical_west"),
+                         plotlyOutput("positive_west"),
+                         plotlyOutput("services_west"),
+                         plotlyOutput("independence_west"),
+                         plotlyOutput("general_west")
+                       )
+                     )
+                   )
+        ),
+        bs4TabItem(tabName = 'sub_ballard',
+                   titlePanel('Ballard Senior Center'),
+                   fluidRow(
+                     column(
+                       width = 8,
+                       selectInput("ballard_answer", label=h3('Pick a Sector to Evaluate'),
+                                   choices = list('Social Life' = 1, 'Physical Health' = 2, 'Positive Outlook' = 3, ' Access to Services' = 4, 'Independence' = 5, 'Overall Satisfaction' = 6),
+                                   selected = 1),
+                       bs4Card(
+                         title = "Over Time",
+                         width = 14,
+                         collapsible = TRUE,
+                         closable=FALSE,
+                         plotlyOutput("ballard_timeplot")
+                       ),
+                       bs4Card(
+                         title = "Response for Sector",
+                         width = 14,
+                         collapsible = TRUE,
+                         closable = FALSE,
+                         plotlyOutput("ballard_bar")
+                       )),
+                     column(
+                       width = 4,
+                       selectInput("ballard_gauge", label=h3('Filter By Batch'),
+                                   choices = list('2018' = 2),
+                                   selected = 2),
+                       bs4Card(
+                         title = 'Index for Ballard Senior Center',
+                         closable=FALSE,
+                         width= 10,
+                         plotlyOutput("social_ballard"),
+                         plotlyOutput("physical_ballard"),
+                         plotlyOutput("positive_ballard"),
+                         plotlyOutput("services_ballard"),
+                         plotlyOutput("independence_ballard"),
+                         plotlyOutput("general_ballard")
+                       )
+                     )
+                   )
+        ),
                  bs4TabItem(tabName = 'sub_southpark',
                              titlePanel('South Park Senior Center'),
                              fluidRow(
@@ -676,12 +821,12 @@ fluidPage(
                            selectInput(
                              "select1",
                              label = h3("Pick first site"),
-                             choices = c("ACRS", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", "Wallingford", "CISC", "South Park", "GWP", "Southeast")
+                             choices = c("ACRS", "Greenwood", 'West Seattle', 'Ballard', "IDIC", "PMSC", "Sunshine Garden", "Wallingford", "CISC", "South Park", "GWP", "Southeast")
                            ),
                            selectInput(
                              "select2",
                              label = h3("Pick second site"),
-                             choices = c("ACRS", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", "Wallingford", "CISC", "South Park", "GWP", "Southeast"),
+                             choices = c("ACRS", "Greenwood", 'West Seattle', 'Ballard', "IDIC", "PMSC", "Sunshine Garden", "Wallingford", "CISC", "South Park", "GWP", "Southeast"),
                              selected = "Greenwood")
                          )),
                           column(
@@ -728,7 +873,7 @@ fluidPage(
                      selectInput(
                        "which_center",
                        label = h5(labelMandatory("What senior center do you currently reside in?")),
-                       choices = c("ACRS", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", "Wallingford", "CISC", "South Park", "GWP", "Southeast"),
+                       choices = c("ACRS", "Greenwood", 'West Seattle', 'Ballard', "IDIC", "PMSC", "Sunshine Garden", "Wallingford", "CISC", "South Park", "GWP", "Southeast"),
                        selected = "Greenwood"
                       ),
                      textInput("zipcode", labelMandatory("What is your zipcode"), ""),

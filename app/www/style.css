@@ -20,6 +20,20 @@
                     top: 50px;
                     left: 150px;
                   }
+                  div#west_gauge {
+                    width:170px !important;
+                    height:150px !important;
+                    position:relative;
+                    top: 50px;
+                    left: 150px;
+                  }
+                  div#ballard_gauge {
+                    width:170px !important;
+                    height:150px !important;
+                    position:relative;
+                    top: 50px;
+                    left: 150px;
+                  }
                   div#southpark_gauge {
                     width:170px !important;
                     height:150px !important;
@@ -137,6 +151,56 @@
                   height:150px !important;
                   }
                   div#general_greenwood {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+
+                  div#social_west {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_west {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_west {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_west {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_west {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_west {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  
+                  div#social_ballard {
+                    width:170px !important;
+                  height:150px !important;
+                  }
+                  div#physical_ballard {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#positive_ballard {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#services_ballard {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#independence_ballard {
+                  width:170px !important;
+                  height:150px !important;
+                  }
+                  div#general_ballard {
                   width:170px !important;
                   height:150px !important;
                   }
@@ -293,48 +357,9 @@
                   height:150px !important;
                   }
 
-                  div#gauge .svg-container{
+                  div#shiny-tab-home .svg-container{
                     top: -30px;
-                    left:40px;
-                  }
-
-                  div#wallingford_gauge .svg-container{
-                    top: -30px;
-                    left:40px;
-                  }
-
-                  div#greenwood_gauge .svg-container{
-                    top: -30px;
-                  left:40px;
-                  }
-
-                  div#southpark_gauge .svg-container{
-                    top: -30px;
-                  left:40px;
-                  }
-
-                  div#idic_gauge .svg-container{
-                    top: -30px;
-                  left:40px;
-                  }
-
-                  div#southeast_gauge .svg-container{
-                    top: -30px;
-                  left:40px;
-                  }
-
-                  div#sunshine_gauge .svg-container{
-                    top: -30px;
-                  left:40px;
-                  }
-
-                  div#acrs_gauge .svg-container{
-                    top: -30px;
-                    left:40px;
-                  }
-                  div#gwp_gauge .svg-container{
-                    top: -30px;
-                    left:40px;
+                    left:150px;
                   }
 
 
@@ -367,6 +392,12 @@
                   .info-box {
                     top: 100px;
                     left: 125px;
+                    box-shadow: None !important;
+                    padding: 0rem;
+                  }
+                  
+                  .elevation-3 {
+                    box-shadow: None !important;
                   }
 
                   span.font-weight-light {
@@ -388,4 +419,16 @@
                     color: white;
                     font-weight: 500;
                     font-size: 20pt;
+                    }
+                    
+                    .info-box-text {
+                      position: relative;
+                      right: 110px;
+                      top:50px;
+                    }
+                    
+                    .fa-chart-bar {
+                      position: relative;
+                      top: -12px;
+                      right: -30px;
                     }

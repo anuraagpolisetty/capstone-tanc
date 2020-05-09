@@ -5,7 +5,7 @@ library(rsconnect)
 source('scripts/Tabitha_Analysis.R')
 source('scripts/GaugeChart.R')
 
-pike_cleaned_data <- cleaned_data %>% filter(SiteID == 'PMSC')
+pike_cleaned_data <- cleaned_data %>% filter(SiteID == 'PMSC' | SiteID == 'Pike Market Senior Center')
 
 
 output$gauge <- renderPlotly({
@@ -154,7 +154,7 @@ output$pike_timeplot <-  renderPlotly({
     time.data$total_mean <- social.life.means
   }
   time.data <- time.data %>% mutate(Mean = total_mean)
-  ggplot(time.data, aes(x=Batch, y=Mean, group = 1)) + geom_point() + geom_line() 
+  ggplot(time.data, aes(x=Batch, y=Mean, group = 1)) + geom_point(color='#0275d8') + geom_line(color='#0275d8') + ylim(1,3)
 })
 
 output$pike_bar <-  renderPlotly({
@@ -197,7 +197,7 @@ output$pike_bar <-  renderPlotly({
     names(sum1)[1] <- 'categories'
   }
   sum1 <- sum1 %>% mutate(Categories = fct_reorder(categories, -total_count), Count = total_count)
-  ggplot(sum1, aes(x=Categories,y=Count))+geom_bar(stat="identity")+ xlab('Survey Responses') + ylab('Count')
+  ggplot(sum1, aes(x=Categories,y=Count))+geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ xlab('Survey Responses') + ylab('Count')
 })
 
 # output$pike_bar_hover_info <- renderUI({

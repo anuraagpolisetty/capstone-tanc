@@ -5,6 +5,7 @@ library(rsconnect)
 source('scripts/Tabitha_Analysis.R')
 source('scripts/GaugeChart.R')
 
+
 wallingford_cleaned_data <- cleaned_data %>% filter(SiteID == 'Wallingford')
 
 
@@ -154,7 +155,7 @@ output$wallingford_timeplot <-  renderPlotly({
     time.data$total_mean <- social.life.means
   }
   time.data <- time.data %>% mutate(Mean = total_mean)
-  ggplot(time.data, aes(x=Batch, y=Mean, group=1)) + geom_point() + geom_line() 
+  ggplot(time.data, aes(x=Batch, y=Mean, group=1)) + geom_point(color='#0275d8') + geom_line(color='#0275d8') 
 })
 
 output$wallingford_bar <-  renderPlotly({
@@ -197,5 +198,5 @@ output$wallingford_bar <-  renderPlotly({
     names(sum1)[1] <- 'categories'
   }
   sum1 <- sum1 %>% mutate(Categories = reorder(categories, -total_count), Count = total_count)
-  ggplot(sum1, aes(x=Categories,y=Count))+geom_bar(stat="identity")
+  ggplot(sum1, aes(x=Categories,y=Count))+geom_bar(stat="identity", color='#0275d8')
 })
