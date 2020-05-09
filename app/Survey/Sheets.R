@@ -49,9 +49,9 @@ batches <- c("2016-1", "2016-2", "2017-1", "2017-2", "2018-1", "2018-2",
 # ss_SouthPark <- drive_get(paste0(folder, "/South Park"))
 # ss_GWP <- drive_get(paste0(folder, "/GWP"))
 # ss_Southeast <- drive_get(paste0(folder, "/Southeast"))
-
-columns <- c("Hello", "World")
-rows <- c("its", "good")
+# 
+# columns <- c("Hello", "World")
+# rows <- c("its", "good")
 # df <- data.table(columns, rows)
 # ss_ACRS %>% sheet_append()
 
@@ -62,9 +62,9 @@ saveData <- function(data) {
   print(typeof(df))
   center_name <- data[1, "which_center"]
   ss <- drive_get(paste0(folder, "/", center_name))
-  print(df[1,])
-  print(typeof(df[1,]))
-  sheet_append(ss_ACRS, df)
+  print(center_name)
+  print(ss)
+  sheet_append(ss$id, df)
 }
 
 

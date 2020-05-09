@@ -826,7 +826,8 @@ fluidPage(
                      # textInput("free_response", "Please tell us how participating in the senior center has changed your life"),
                      
                      # Submit button to upload responses
-                     actionButton("submit", "Submit")
+                     actionButton("submit", "Submit"),
+                     source(file = "Survey/survey_ui.R", local=T)[1]
                    ),
                  shinyjs::hidden(
                    div(
