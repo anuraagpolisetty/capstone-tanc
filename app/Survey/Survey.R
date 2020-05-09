@@ -1,4 +1,7 @@
 library(shiny)
+source('Survey/Sheets.r')
+
+# 
 fieldsMandatory <- c("which_center","zipcode",
                      # "do_more_volunteer_work", "see_friends", "physically_active", 
                      "would_recommend")
@@ -30,14 +33,17 @@ observe({
   shinyjs::toggleState(id = "submit", condition = mandatoryFilled)
   shinyjs::toggleClass(id = "submit", condition = mandatoryFilled, class = "btn-primary")
 })
-saveData <- function(data) {
-  fileName <- sprintf("%s_%s.csv",
-                      humanTime(),
-                      digest::digest(data))
-  
-  write.csv(x = data, file = file.path(responsesDir, fileName),
-            row.names = FALSE, quote = TRUE)
-}
+
+# #Downloads the file as a csv
+# saveData <- function(data) {
+#   fileName <- sprintf("%s_%s.csv",
+#                       humanTime(),
+#                       digest::digest(data))
+#   
+#   write.csv(x = data, file = file.path(responsesDir, fileName),
+#             row.names = FALSE, quote = TRUE)
+# }
+
 
 # Saves and formats the submit data
 formData <- reactive({
@@ -49,7 +55,7 @@ formData <- reactive({
 
 # action to take when submit button is pressed
 observeEvent(input$submit, {
-  saveData(formData())
+  saveData(formData()) # saves the data in function in Sheets.R
   shinyjs::reset("form")
   shinyjs::hide("form")
   shinyjs::show("thankyou_msg")

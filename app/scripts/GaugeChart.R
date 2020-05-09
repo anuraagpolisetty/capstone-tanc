@@ -21,7 +21,7 @@ GaugeChart <- function(data, FUN, site, year, colored) {
   yr1 <- paste0(year,"-1")
   yr2 <- paste0(year, "-2")
   index <- (FUN(data, site))
-  print(year)
+  # print(year)
   
   fig <- plot_ly(
     domain = list(x = c(0, 1), y = c(0, 1)),
