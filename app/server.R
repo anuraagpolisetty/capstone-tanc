@@ -30,16 +30,8 @@ function(input, output, session) {
 
   source('Survey/Survey.R', local = T)
   output$map <- renderPlotly({
-    ggplotly(p, tooltip = 'text')
+    ggplotly(p,tooltip = 'text')
   })
   
-  output$contents <- renderTable({
-    inFile <- input$file1
-    
-    if (is.null(inFile))
-      return(NULL)
-    
-    read.csv(inFile$datapath, header = input$header)
-  })
   
 }

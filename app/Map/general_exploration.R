@@ -1,10 +1,13 @@
-all.data <- read.csv("data/total2.csv")
+all.data <- read.csv("data/total.csv")
 locations.data <- read.csv("data/Senior_Center_Locations_Cleaned.csv")
 
 column.names <- names(all.data)
 questions <- column.names[12:25]
 
+#  Find why 2017 isn't showing for west seattle and ballard
 
+grouped_for_ballard <- all.data %>% filter(SiteID == 'Ballard')
+grouped_for_ballard <- grouped_for_ballard %>% group_by(Batch) %>% summarise(count = n())
 ################################################# Percentages #######################################################
 # Shows the percentage of every response type for every question
 

@@ -1,7 +1,7 @@
 library(plotly)
 source("./IndexData.R")
 
-allData <- read.csv(file="./data/total2.csv", stringsAsFactors=FALSE)
+allData <- read.csv(file="./data/total.csv", stringsAsFactors=FALSE)
 
 data.2019 <- IndexData(allData) %>% filter(Batch=="2019-1"|Batch=="2019-2")
 social.index.2019 <- SocialIndex(data.2019, "all")

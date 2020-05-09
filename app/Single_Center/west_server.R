@@ -8,11 +8,11 @@ source('scripts/GaugeChart.R')
 
 west_cleaned_data <- cleaned_data %>% filter(SiteID == 'West Seattle')
 
-# west_cleaned_time <- west_cleaned_data
-# column.names <- names(west_cleaned_time)
+# west_cleaned_data <- west_cleaned_data
+# column.names <- names(west_cleaned_data)
 # questions <- column.names[12:25]
 # for (question in questions) {
-#   west_cleaned_time[is.na(west_cleaned_time[question]), question] <- '0'
+#   west_cleaned_data[is.na(west_cleaned_data[question]), question] <- '0'
 # }
 
 output$west_gauge <- renderPlotly({
@@ -131,32 +131,32 @@ output$general_west <- renderPlotly({
 
 output$west_timeplot <-  renderPlotly({
   if(input$west_answer == 1) {
-    time.data <- west_cleaned_time %>% group_by(Batch) %>%  summarise(mean1 = mean(Do.more.volunteer.work), mean2 = mean(See.friends.more.often.make.new.friends))
+    time.data <- west_cleaned_data %>% group_by(Batch) %>%  summarise(mean1 = mean(Do.more.volunteer.work), mean2 = mean(See.friends.more.often.make.new.friends))
     social.life.means <-  time.data %>% select(mean1, mean2) %>% rowMeans()
     time.data$total_mean <- social.life.means
   }
   else if(input$west_answer == 2) {
-    time.data <- west_cleaned_time %>% group_by(Batch) %>%  summarise(mean1 = mean(Take.better.care.of.my.health), mean2 = mean(Eat.meals.that.are.better.for.me), mean3 = mean(Have.more.energy), mean4 = mean(Am.more.physically.active))
+    time.data <- west_cleaned_data %>% group_by(Batch) %>%  summarise(mean1 = mean(Take.better.care.of.my.health), mean2 = mean(Eat.meals.that.are.better.for.me), mean3 = mean(Have.more.energy), mean4 = mean(Am.more.physically.active))
     social.life.means <-  time.data %>% select(mean1, mean2, mean3, mean4) %>% rowMeans()
     time.data$total_mean <- social.life.means
   }
   else if(input$west_answer == 3) {
-    time.data <- west_cleaned_time %>% group_by(Batch) %>%  summarise(mean1 = mean(Feel.happier.or.more.satisfied.with.my.life), mean2 = mean(Have.something.to.look.forward.to.each.day))
+    time.data <- west_cleaned_data %>% group_by(Batch) %>%  summarise(mean1 = mean(Feel.happier.or.more.satisfied.with.my.life), mean2 = mean(Have.something.to.look.forward.to.each.day))
     social.life.means <-  time.data %>% select(mean1, mean2) %>% rowMeans()
     time.data$total_mean <- social.life.means
   }
   else if(input$west_answer == 4) {
-    time.data <- west_cleaned_time %>% group_by(Batch) %>%  summarise(mean1 = mean(Know.where.to.ask.if.I.need.a.service.such.as.a.ride.to.a.doctor.or.an.aide), mean2 = mean(Have.learned.about.services.and.benefits))
+    time.data <- west_cleaned_data %>% group_by(Batch) %>%  summarise(mean1 = mean(Know.where.to.ask.if.I.need.a.service.such.as.a.ride.to.a.doctor.or.an.aide), mean2 = mean(Have.learned.about.services.and.benefits))
     social.life.means <-  time.data %>% select(mean1, mean2) %>% rowMeans()
     time.data$total_mean <- social.life.means
   }
   
   else if(input$west_answer == 5) {
-    time.data <- west_cleaned_time %>% group_by(Batch) %>%  summarise(total_mean = mean(Feel.more.able.to.stay.independent))
+    time.data <- west_cleaned_data %>% group_by(Batch) %>%  summarise(total_mean = mean(Feel.more.able.to.stay.independent))
   }
   
   else if(input$west_answer == 6) {
-    time.data <- west_cleaned_time %>% group_by(Batch) %>%  summarise(mean1 = mean(Would.recommend.the.senior.center.to.a.friend.or.family.member), mean2 = mean(Feel.that.the.senior.center.has.had.a.positive.effect.on.my.life))
+    time.data <- west_cleaned_data %>% group_by(Batch) %>%  summarise(mean1 = mean(Would.recommend.the.senior.center.to.a.friend.or.family.member), mean2 = mean(Feel.that.the.senior.center.has.had.a.positive.effect.on.my.life))
     social.life.means <-  time.data %>% select(mean1, mean2) %>% rowMeans()
     time.data$total_mean <- social.life.means
   }
