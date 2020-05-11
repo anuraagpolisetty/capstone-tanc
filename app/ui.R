@@ -863,7 +863,6 @@ fluidPage(
                      )
                    ),
         bs4TabItem( 'survey',
-                  textInput("zipcode", labelMandatory("What is your zipcode"), ""),
                   source(file = "Survey/survey_ui.R", local=T)[1]
         )
       )

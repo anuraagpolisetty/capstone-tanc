@@ -13,6 +13,7 @@ fieldsAll <- c("which_center","zipcode", "do_more_volunteer_work", "see_friends"
 
 id.questions <- all_questions[1:11]
 survey.questions <- all_questions[12:28]
+
 questions <- for(q in survey.questions) {
   return (bs4Card(
     title = q,
