@@ -2,10 +2,11 @@ library(googledrive)
 library(googlesheets4)
 library(dplyr)
 
+# Only run this section once
 
 # Initialize google drive authentication
 drive_auth(
-  email = "anuraagpolisetty@gmail.com", # gargle::gargle_oauth_email(), # use gargle to automatically sign in to your email
+  email = gargle::gargle_oauth_email(), # use gargle to automatically sign in to your email
   path = NULL,
   scopes = "https://www.googleapis.com/auth/drive",
   cache = gargle::gargle_oauth_cache(),
@@ -20,7 +21,10 @@ gs4_auth(token = drive_token())
 # Create inital drive folder
 # folder <- drive_mkdir("ADS Survey Responses")
 
+# Stores the location of the drive folder
 folder <- drive_get("ADS Survey Responses")
+
+
 centers <- c("ACRS", "Ballard", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", 
              "Wallingford", "West Seattle", "CISC", "South Park", "GWP", "Southeast")
 
@@ -32,7 +36,7 @@ batches <- c("2016-1", "2016-2", "2017-1", "2017-2", "2018-1", "2018-2",
   # for(c in centers) {
   #   sheet <- gs4_create(c)
   #   drive_mv(file = sheet, path = as_id(folder))
-  #   
+  # 
   # }
   # drive_ls(folder)
 
@@ -50,9 +54,6 @@ batches <- c("2016-1", "2016-2", "2017-1", "2017-2", "2018-1", "2018-2",
 # ss_GWP <- drive_get(paste0(folder, "/GWP"))
 # ss_Southeast <- drive_get(paste0(folder, "/Southeast"))
 # 
-# columns <- c("Hello", "World")
-# rows <- c("its", "good")
-# df <- data.table(columns, rows)
 # ss_ACRS %>% sheet_append()
 
 # Add column names to google sheet
@@ -60,11 +61,10 @@ saveData <- function(data) {
   df <- data.frame(matrix(unlist(data), ncol=length(data)), stringsAsFactors=FALSE)
   print(df)
   print(typeof(df))
-  center_name <- data[1, "which_center"]
-  ss <- drive_get(paste0(folder, "/", center_name))
-  print(center_name)
-  print(ss)
-  sheet_append(ss$id, df)
+  # center_name <- data[1, "which_center"]
+  # ss <- drive_get(paste0(folder, "/", center_name))
+  # 
+  # sheet_append(ss$id, df)
 }
 
 
