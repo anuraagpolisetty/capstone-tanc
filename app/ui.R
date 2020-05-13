@@ -7,6 +7,7 @@ library(OpenImageR)
 answers <- c("Almost Never", "Sometimes", "Most of the Time", "Not applicable")
 source('constants.R')
 
+
 path = file.path(getwd(), 'imgs', 'pike2.jpg')
 im = readImage(path)
 
@@ -72,7 +73,6 @@ fluidPage(
       shinyjs::useShinyjs(),
       shinyWidgets::chooseSliderSkin("HTML5"),
       uiOutput('SingleCenters')
-       
     )
   )
 )

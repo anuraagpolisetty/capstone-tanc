@@ -1,4 +1,5 @@
 library(shiny)
+library(bs4Dash)
 source('Survey/Sheets.r')
 
 # 
@@ -9,6 +10,20 @@ fieldsAll <- c("which_center","zipcode", "do_more_volunteer_work", "see_friends"
                "better_meals", "more_energy", "happier_life", "ask_services", "more_independent", 
                "positive_effect", "learn_new_things", "learn_new_services","physically_active", 
                "would_recommend", "free_response")
+
+id.questions <- all_questions[1:11]
+survey.questions <- all_questions[12:28]
+
+questions <- for(q in survey.questions) {
+  return (bs4Card(
+    title = q,
+    width = 14,
+    collapsible = FALSE,
+    closable=FALSE,
+    radioButtons(q, label="", choices = answers, inline=FALSE, selected = character(0))
+  ))
+}
+
 responsesDir <- file.path("Survey/responses")
 epochTime <- function() {
   as.integer(Sys.time())
