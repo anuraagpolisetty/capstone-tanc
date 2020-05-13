@@ -10,8 +10,9 @@ list(
     selectInput(
       "SiteID",
       label = h6(labelMandatory("Which senior center do you currently attend?")),
-      choices = centers, 
-      selected = centers[1]
+      choices = c("ACRS", "Ballard", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", 
+                  "Wallingford", "West Seattle", "CISC", "South Park", "GWP", "Southeast"), #centers, 
+      selected = "Greenwood" #centers[1]
     ),
     textInput("zipcode", labelMandatory("What is your zipcode"), ""),
     h3("Because I go to the senior center, I ..."),

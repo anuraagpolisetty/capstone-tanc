@@ -3,6 +3,7 @@ library(ggplot2)
 library(bs4Dash)
 library(plotly)
 library(OpenImageR)
+source('constants.R', local=T)
 
 path = file.path(getwd(), 'imgs', 'pike2.jpg')
 im = readImage(path)
