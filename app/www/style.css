@@ -1,106 +1,40 @@
-                  div#gauge {
-                    width:170px !important;
-                    height:150px !important;
-                    position:relative;
-                    top: 50px;
-                    left: 150px;
-
-                  }
-                  div#wallingford_gauge {
+                  div#shiny-tab-home .plot-container {
                     width:170px !important;
                     height:150px !important;
                     position:relative;
                     top: 50px;
                     left: 150px;
                   }
-                  div#greenwood_gauge {
-                    width:170px !important;
-                    height:150px !important;
-                    position:relative;
-                    top: 50px;
-                    left: 150px;
+                  
+                  div#shiny-tab-home .card-body {
+                    height:250px;
                   }
-                  div#west_gauge {
-                    width:170px !important;
-                    height:150px !important;
-                    position:relative;
-                    top: 50px;
-                    left: 150px;
-                  }
-                  div#ballard_gauge {
-                    width:170px !important;
-                    height:150px !important;
-                    position:relative;
-                    top: 50px;
-                    left: 150px;
-                  }
-                  div#southpark_gauge {
-                    width:170px !important;
-                    height:150px !important;
-                    position:relative;
-                    top: 50px;
-                    left: 150px;
-                  }
-                  div#idic_gauge {
-                    width:170px !important;
-                    height:150px !important;
-                    position:relative;
-                    top: 50px;
-                    left: 150px;
-                  }
-                  div#southeast_gauge {
-                    width:170px !important;
-                    height:150px !important;
-                    position:relative;
-                    top: 50px;
-                    left: 150px;
-                  }
-                  div#sunshine_gauge {
-                    width:170px !important;
-                    height:150px !important;
-                    position:relative;
-                    top: 50px;
-                    left: 150px;
-                  }
-                  div#acrs_gauge {
-                    width:170px !important;
-                    height:150px !important;
-                    position:relative;
-                    top: 50px;
-                    left: 150px;
-                  }
-                  div#gwp_gauge {
-                    width:170px !important;
-                    height:150px !important;
-                    position:relative;
-                    top: 50px;
-                    left: 150px;
-                  }
+                  
                   .card-footer {
                     max-height: 200px;
                   }
 
-                  div#social_pike {
+                  div#social_Pike {
                     width:170px !important;
                     height:150px !important;
                   }
-                  div#physical_pike {
+                  div#physical_Pike {
                     width:170px !important;
                   height:150px !important;
                   }
-                  div#positive_pike {
+                  div#positive_Pike {
                     width:170px !important;
                   height:150px !important;
                   }
-                  div#services_pike {
+                  div#services_Pike {
                     width:170px !important;
                   height:150px !important;
                   }
-                  div#independence_pike {
+                  div#independence_Pike {
                     width:170px !important;
                   height:150px !important;
                   }
-                  div#general_pike {
+                  div#general_Pike {
                     width:170px !important;
                   height:150px !important;
                   }
@@ -130,27 +64,27 @@
                   height:150px !important;
                   }
 
-                  div#social_greenwood {
+                  div#social_Greenwood {
                     width:170px !important;
                   height:150px !important;
                   }
-                  div#physical_greenwood {
+                  div#physical_Greenwood {
                   width:170px !important;
                   height:150px !important;
                   }
-                  div#positive_greenwood {
+                  div#positive_Greenwood {
                   width:170px !important;
                   height:150px !important;
                   }
-                  div#services_greenwood {
+                  div#services_Greenwood {
                   width:170px !important;
                   height:150px !important;
                   }
-                  div#independence_greenwood {
+                  div#independence_Greenwood {
                   width:170px !important;
                   height:150px !important;
                   }
-                  div#general_greenwood {
+                  div#general_Greenwood {
                   width:170px !important;
                   height:150px !important;
                   }
@@ -180,27 +114,27 @@
                   height:150px !important;
                   }
                   
-                  div#social_ballard {
+                  div#social_Ballard {
                     width:170px !important;
                   height:150px !important;
                   }
-                  div#physical_ballard {
+                  div#physical_Ballard {
                   width:170px !important;
                   height:150px !important;
                   }
-                  div#positive_ballard {
+                  div#positive_Ballard {
                   width:170px !important;
                   height:150px !important;
                   }
-                  div#services_ballard {
+                  div#services_Ballard {
                   width:170px !important;
                   height:150px !important;
                   }
-                  div#independence_ballard {
+                  div#independence_Ballard {
                   width:170px !important;
                   height:150px !important;
                   }
-                  div#general_ballard {
+                  div#general_Ballard {
                   width:170px !important;
                   height:150px !important;
                   }
@@ -306,27 +240,27 @@
                   height:150px !important;
                   }
 
-                  div#social_acrs {
+                  div#social_ACRS {
                   width:170px !important;
                   height:150px !important;
                   }
-                  div#physical_acrs {
+                  div#physical_ACRS {
                   width:170px !important;
                   height:150px !important;
                   }
-                  div#positive_acrs {
+                  div#positive_ACRS {
                   width:170px !important;
                   height:150px !important;
                   }
-                  div#services_acrs {
+                  div#services_ACRS {
                   width:170px !important;
                   height:150px !important;
                   }
-                  div#independence_acrs {
+                  div#independence_ACRS {
                   width:170px !important;
                   height:150px !important;
                   }
-                  div#general_acrs {
+                  div#general_ACRS {
                   width:170px !important;
                   height:150px !important;
                   }
@@ -431,4 +365,8 @@
                       position: relative;
                       top: -12px;
                       right: -30px;
+                    }
+                    
+                    #SingleCenters .plotly {
+                      height: 200px;
                     }

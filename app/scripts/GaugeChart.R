@@ -16,7 +16,7 @@ services.index <- ServicesIndex(data.2019, "all")
 independence.index <- IndependenceIndex(data.2019, "all")
 satisfaction.index <- OverallIndex(data.2019, "all")
 
-GaugeChart <- function(data, FUN, site, year, colored) {
+GaugeChart <- function(data, FUN, site, year, colored, title) {
 
   yr1 <- paste0(year,"-1")
   yr2 <- paste0(year, "-2")
@@ -26,7 +26,7 @@ GaugeChart <- function(data, FUN, site, year, colored) {
   fig <- plot_ly(
     domain = list(x = c(0, 1), y = c(0, 1)),
     value = index,
-    title = list(text = deparse(substitute(FUN))),
+    title = title,
     type = "indicator",
     mode = "gauge+number+delta",
     delta = list(reference = social.index.2018),
