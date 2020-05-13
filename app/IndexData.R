@@ -2,7 +2,7 @@ library(dplyr)
 library(plotly)
 
 
-allData <- read.csv(file="data/total.csv", stringsAsFactors=FALSE)
+allData <- read.csv(file="data/TOTAL.csv", stringsAsFactors=FALSE)
 
 # Convert df to index scale (1-3)
 IndexData <- function(df) {
