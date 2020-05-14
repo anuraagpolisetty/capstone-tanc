@@ -38,34 +38,36 @@ fluidPage(
       skin='dark',
 
       bs4SidebarMenu(
-        bs4SidebarMenuItem(
-          'Home',
-          tabName = 'home',
-          icon = 'home'
-        ),
-        bs4SidebarMenuItem(
-          'Single Centers',
-          tabName = 'single',
-          icon = 'wheelchair',
-          lapply(1:length(centers), function(i){
-            bs4SidebarMenuSubItem(text = centers[i],
-                                  tabName = paste0('sub_', centers[i]))
-          })
-        ),
-        bs4SidebarMenuItem(
-          'Comparing Centers',
-          tabName = 'compare',
-          icon = 'sliders'
-        ),
-        bs4SidebarMenuItem(
-          'General Info',
-          tabName = 'general',
-          icon = 'map-pin'
-        ),
-        bs4SidebarMenuItem(
-          'Survey',
-          tabName = 'survey',
-          icon = 'id-card'
+        bs4SidebarMenu(
+          bs4SidebarMenuItem(
+            'Home',
+            tabName = 'home',
+            icon = 'home'
+          ),
+          bs4SidebarMenuItem(
+            'Single Centers',
+            tabName = 'single',
+            icon = 'wheelchair',
+            lapply(1:length(centers), function(i){
+              bs4SidebarMenuSubItem(text = centers[i],
+                                    tabName = paste0('sub_', centers[i]))
+            })
+          ),
+          bs4SidebarMenuItem(
+            'Comparing Centers',
+            tabName = 'compare',
+            icon = 'sliders'
+          ),
+          bs4SidebarMenuItem(
+            'General Info',
+            tabName = 'general',
+            icon = 'map-pin'
+          ),
+          bs4SidebarMenuItem(
+            'Survey',
+            tabName = 'survey',
+            icon = 'id-card'
+          )
         )
       )
     ),

@@ -59,6 +59,7 @@ output$SingleCenters <- renderUI({
     list(
       bs4TabItem(
         tabName = "home",
+        class = 'active',
         lapply(1:length(centers), function(i){
           fluidRow(
             bs4Card(
