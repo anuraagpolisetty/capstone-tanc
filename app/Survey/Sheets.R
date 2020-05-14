@@ -25,7 +25,7 @@ gs4_auth(token = drive_token())
 folder <- drive_get("ADS Survey Responses")
 
 
-centers <- c("ACRS", "Ballard", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", 
+centers <- c("ACRS", "Ballard", "Greenwood", "IDIC", "PMSC", "Sunshine Garden",
              "Wallingford", "West Seattle", "CISC", "South Park", "GWP", "Southeast")
 
 ss_centers <- centers
@@ -36,7 +36,7 @@ batches <- c("2016-1", "2016-2", "2017-1", "2017-2", "2018-1", "2018-2",
   # for(c in centers) {
   #   sheet <- gs4_create(c)
   #   drive_mv(file = sheet, path = as_id(folder))
-  # 
+  #
   # }
   # drive_ls(folder)
 
@@ -53,7 +53,7 @@ batches <- c("2016-1", "2016-2", "2017-1", "2017-2", "2018-1", "2018-2",
 # ss_SouthPark <- drive_get(paste0(folder, "/South Park"))
 # ss_GWP <- drive_get(paste0(folder, "/GWP"))
 # ss_Southeast <- drive_get(paste0(folder, "/Southeast"))
-# 
+#
 # ss_ACRS %>% sheet_append()
 
 # Add column names to google sheet
@@ -63,7 +63,7 @@ saveData <- function(data) {
   print(typeof(df))
   # center_name <- data[1, "which_center"]
   # ss <- drive_get(paste0(folder, "/", center_name))
-  # 
+  #
   # sheet_append(ss$id, df)
 }
 
