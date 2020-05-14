@@ -367,6 +367,19 @@
                       right: -30px;
                     }
                     
-                    #SingleCenters .plotly {
-                      height: 200px;
+                    #Indices div.plotly {
+                      height: 153px !important;
+                    } 
+                    
+                    #shiny-tab-compare {
+                      visibility:hidden;
                     }
+                    
+                    #shiny-tab-compare div:first-child {
+                      visibility:visible;
+                    }
+                    
+                    
+
+
+                    
