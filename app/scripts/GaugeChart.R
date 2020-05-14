@@ -30,6 +30,8 @@ GaugeChart <- function(data, FUN, site, year, colored, title) {
     type = "indicator",
     mode = "gauge+number+delta",
     delta = list(reference = social.index.2018),
+    width = '250',
+    height = '190',
     gauge = list(
       axis =list(range = list(NULL, 3)),
       bar = list(color="lightgreen")
@@ -43,14 +45,14 @@ GaugeChart <- function(data, FUN, site, year, colored, title) {
       #   value = 490)
     ))
   fig <- fig %>%
-    layout(margin = list(l=20,r=30),
-           autosize = F, width = '250', height = '190') %>% 
-    #layout(plot_bgcolor='rgb(254, 247, 234)') 
+  #   layout(margin = list(l=20,r=30),
+  #          autosize = F, width = '250', height = '190') %>% 
+  #   #layout(plot_bgcolor='rgb(254, 247, 234)') 
     layout(paper_bgcolor=colored)
   return(fig)
 }
 
-# social = GaugeChart(data.2019, SocialIndex, "all", "2019")
+# social = GaugeChart(data.2019, SocialIndex, "all", "2019", 'rgb(255, 255, 255)',"Chart")
 # physical = GaugeChart(data.2019, PhysicalIndex, "all", "2019")
 # positive = GaugeChart(data.2019, PositiveIndex, "all", "2019")
 # services = GaugeChart(data.2019, ServicesIndex, "all", "2019")

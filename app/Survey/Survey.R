@@ -59,6 +59,7 @@ observe({
 #             row.names = FALSE, quote = TRUE)
 # }
 
+field <- "Would recommend the senior center to a friend or family member"
 
 # Saves and formats the submit data
 formData <- reactive({
