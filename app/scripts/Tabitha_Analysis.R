@@ -1,7 +1,7 @@
 library(dplyr)
 library(ggplot2)
 library(tidyverse)
-data <- read.csv(file="./data/total.csv", stringsAsFactors=FALSE)
+data <- read.csv(file="./data/TOTAL.csv", stringsAsFactors=FALSE)
 
 
 # Gets the data ready for a single center

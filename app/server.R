@@ -20,6 +20,9 @@ labelMandatory <- function(label) {
   )
 }
 
+grouped.data <- data %>% group_by(SiteID) %>% summarise(count=n())
+batches.inputted <- data %>% group_by(Batch) %>% summarise(count=n())
+
 function(input, output, session) {
   # source('Single_Center/pike_server.R', local = T)
   # source('Single_Center/wallingford_server.R', local = T)
@@ -64,16 +67,16 @@ function(input, output, session) {
                      selectInput(paste0(centers[k],"_gauge"), label=h3('Filter By Batch'),
                                  choices = batches,
                                  selected = batches[k]),
-                     bs4Card(
+                     bs4Card(inputId = 'Indices',
                        title = paste('Index for ', centers[k], ' Senior Center'),
                        closable=FALSE,
                        width=10,
-                       plotlyOutput(paste0("social_", centers[k])),
-                       plotlyOutput(paste0("physical_", centers[k])),
-                       plotlyOutput(paste0("positive_", centers[k])),
-                       plotlyOutput(paste0("services_", centers[k])),
-                       plotlyOutput(paste0("independence_", centers[k])),
-                       plotlyOutput(paste0("general_", centers[k]))
+                       plotlyOutput(paste0("Social_", centers[k])),
+                       plotlyOutput(paste0("Physical_", centers[k])),
+                       plotlyOutput(paste0("Positivity_", centers[k])),
+                       plotlyOutput(paste0("Services_", centers[k])),
+                       plotlyOutput(paste0("Independence_", centers[k])),
+                       plotlyOutput(paste0("Overall_", centers[k]))
                      )
                    )
                  )
@@ -85,6 +88,8 @@ function(input, output, session) {
         bs4TabItem(
           tabName = "home",
           class = 'active',
+          bs4Card(width=12, title='Description Here...',
+                  closable=FALSE),
           lapply(1:length(centers), function(i){
             fluidRow(
               bs4Card(
@@ -116,21 +121,21 @@ function(input, output, session) {
                       titlePanel("General Center information"),
                       fluidRow(
                         bs4ValueBox(width=4,
-                                    value=4405,
+                                    value=nrow(data),
                                     subtitle ='Total Responses',
                                     footer=NULL,
                                     href=NULL,
                                     elevation=NULL,
                                     status='primary'),
                         bs4ValueBox(width=4,
-                                    value=11,
+                                    value=nrow(grouped.data),
                                     subtitle ='Total Senior Centers',
                                     footer=NULL,
                                     href=NULL,
                                     elevation=NULL,
                                     status='primary'),
                         bs4ValueBox(width=4,
-                                    value=6,
+                                    value=nrow(batches.inputted),
                                     subtitle ='Batches Inputted',
                                     footer=NULL,
                                     href=NULL,
@@ -148,110 +153,30 @@ function(input, output, session) {
                       shinyjs::inlineCSS(appCSS),
                       div(
                         id = "form",
+                        h5("Think about your life since you started since you started attending the senior center. Below
+                           are some ways that senior centers might make a difference. Please select the choice that best
+                           matches your response for each statement."),
                         selectInput(
-                          "which_center",
-                          label = h5(labelMandatory("What senior center do you currently reside in?")),
-                          choices = centers,
-                          selected = centers[1]
+                          "SiteID",
+                          label = h6(labelMandatory("Which senior center do you currently attend?")),
+                          choices = centers, #centers,
+                          selected = centers[1] #centers[1]
                         ),
                         textInput("zipcode", labelMandatory("What is your zipcode"), ""),
-                        bs4Card(
-                          title = "I do more volunteer work at my Senior Center",
-                          width = 14,
-                          collapsible = FALSE,
-                          closable=FALSE,
-                          radioButtons("do_more_volunteer_work", label="", choices = answers, inline=FALSE, selected = character(0))
-                        ),
-                        bs4Card(
-                          title = "I see friends more often/make new friends at my Senior Center",
-                          width = 14,
-                          collapsible = FALSE,
-                          closable=FALSE,
-                          radioButtons("see_friends", label="", choices = answers, inline=FALSE, selected = character(0))
-                        ),
-                        bs4Card(
-                          title = "I take better care of my health at my Senior Center",
-                          width = 14,
-                          collapsible = FALSE,
-                          closable=FALSE,
-                          radioButtons("better_health", label="", choices = answers, inline=FALSE, selected = character(0))
-                        ),
-                        bs4Card(
-                          title = "I eat meals that are better for me at my Senior Center",
-                          width = 14,
-                          collapsible = FALSE,
-                          closable=FALSE,
-                          radioButtons("better_meals", label="", choices = answers, inline=FALSE, selected = character(0))
-                        ),
-                        bs4Card(
-                          title = "I have more energy",
-                          width = 14,
-                          collapsible = FALSE,
-                          closable=FALSE,
-                          radioButtons("more_energy", label="", choices = answers, inline=FALSE, selected = character(0))
-                        ),
-                        bs4Card(
-                          title = "I feel happier or more satisfied with my life",
-                          width = 14,
-                          collapsible = FALSE,
-                          closable=FALSE,
-                          radioButtons("happier_life", label="", choices = answers, inline=FALSE, selected = character(0))
-                        ),
-                        bs4Card(
-                          title = "I know where to ask if I need service such as a ride to doctor",
-                          width = 14,
-                          collapsible = FALSE,
-                          closable=FALSE,
-                          radioButtons("ask_services", label="", choices = answers, inline=FALSE, selected = character(0))
-                        ),
-                        bs4Card(
-                          title = "I feel more able to stay independent",
-                          width = 14,
-                          collapsible = FALSE,
-                          closable=FALSE,
-                          radioButtons("more_independent", label="", choices = answers, inline=FALSE, selected = character(0))
-                        ),
-                        bs4Card(
-                          title = "I feel that the senior center has had a positive effect on my life",
-                          width = 14,
-                          collapsible = FALSE,
-                          closable=FALSE,
-                          radioButtons("positive_effect", label="", choices = answers, inline=FALSE, selected = character(0))
-                        ),
-                        bs4Card(
-                          title = "I learn new things at my senior center",
-                          width = 14,
-                          collapsible = FALSE,
-                          closable=FALSE,
-                          radioButtons("learn_new_things", label="", choices = answers, inline=FALSE, selected = character(0))
-                        ),
-                        bs4Card(
-                          title = "I have learned about services and benefits at my senior center",
-                          width = 14,
-                          collapsible = FALSE,
-                          closable=FALSE,
-                          radioButtons("learn_new_services", label="", choices = answers, inline=FALSE, selected = character(0))
-                        ),
-                        bs4Card(
-                          title = "I am more physically active",
-                          width = 14,
-                          collapsible = FALSE,
-                          closable=FALSE,
-                          radioButtons("physically_active", label="", choices = answers, inline=FALSE, selected = character(0))
-                        ),
-                        bs4Card(
-                          title = labelMandatory("I would recommend my senior center to a friend or family member"),
-                          width = 14,
-                          collapsible = FALSE,
-                          closable=FALSE,
-                          radioButtons("would_recommend", label="", choices = answers, inline=FALSE, selected = character(0))
-                        ),
-                        # textInput("free_response", "Please tell us how participating in the senior center has changed your life"),
+                        h3("Because I go to the senior center, I ..."),
+                        lapply(1:length(questions), function(i) {
+                          bs4Card(
+                            title = labelMandatory(all_questions[i]),
+                            width = 14,
+                            collapsible = FALSE,
+                            closable=FALSE,
+                            radioButtons(all_questions[i], label="", choices = answers, inline=FALSE, selected = character(0))
+                          )
+                        }),
                         
                         # Submit button to upload responses
-                        actionButton("submit", "Submit"),
-                        source(file = "Survey/survey_ui.R", local=T)[1]
-                      ),
+                        actionButton("submit", "Submit")
+                        ),
                       shinyjs::hidden(
                         div(
                           id = "thankyou_msg",
@@ -265,7 +190,7 @@ function(input, output, session) {
     )
     do.call(tabItems, items)
   })
-
+  
   
   lapply(1:length(centers), function(i) {
     cleaned_data <- cleaned_data %>% filter(SiteID == centers[i])
@@ -283,7 +208,7 @@ function(input, output, session) {
         GaugeChart(filtered.by.batch, get(index[j]), 'all', date, 'rgb(255, 255, 255)', sectors[j])
       })
     })
-
+    
     output[[(paste0(centers[i], '_timeplot'))]] <- renderPlotly({
       if(input[[paste0(centers[i], "_answer")]] == sectors[1]) {
         time.data <- cleaned_data %>% group_by(Batch) %>%  summarise(mean1 = mean(Do.more.volunteer.work), mean2 = mean(See.friends.more.often.make.new.friends))
@@ -305,11 +230,11 @@ function(input, output, session) {
         social.life.means <-  time.data %>% select(mean1, mean2) %>% rowMeans()
         time.data$total_mean <- social.life.means
       }
-
+      
       else if(input[[paste0(centers[i], "_answer")]] == sectors[5]) {
         time.data <- cleaned_data %>% group_by(Batch) %>%  summarise(total_mean = mean(Feel.more.able.to.stay.independent))
       }
-
+      
       else if(input[[paste0(centers[i], "_answer")]] == sectors[6]) {
         time.data <- cleaned_data %>% group_by(Batch) %>%  summarise(mean1 = mean(Would.recommend.the.senior.center.to.a.friend.or.family.member), mean2 = mean(Feel.that.the.senior.center.has.had.a.positive.effect.on.my.life))
         social.life.means <-  time.data %>% select(mean1, mean2) %>% rowMeans()
@@ -318,53 +243,53 @@ function(input, output, session) {
       time.data <- time.data %>% mutate(Mean = round(total_mean, digits=2))
       ggplot(time.data, aes(x=Batch, y=Mean, group = 1)) + geom_point(color='#0275d8') + geom_line(color='#0275d8') + ylim(1,3) + ylab('Mean Index')
     })
-      output[[(paste0(centers[i], '_bar'))]] <- renderPlotly({
-        if(input[[paste0(centers[i], '_answer')]]== sectors[1]) {
-          sum1 <- bar_data %>% group_by(Do.more.volunteer.work) %>% summarise(count1 = n())
-          sum2 <- bar_data %>% group_by(See.friends.more.often.make.new.friends) %>% summarise(count2 = n())
-          sum1$total_count <- sum1$count1 + sum2$count2
-          names(sum1)[1] <- 'categories'
-        }
-        else if(input[[paste0(centers[i], '_answer')]] == sectors[2]) {
-          sum1 <- bar_data %>% group_by(Take.better.care.of.my.health) %>% summarise(count1 = n())
-          sum2 <- bar_data %>% group_by(Eat.meals.that.are.better.for.me) %>% summarise(count2 = n())
-          sum3 <- bar_data %>% group_by(Have.more.energy) %>% summarise(count3 = n())
-          sum4 <- bar_data %>% group_by(Am.more.physically.active) %>% summarise(count4 = n())
-          sum1$total_count <- sum1$count1 + sum2$count2 + sum3$count3 + sum4$count4
-          names(sum1)[1] <- 'categories'
-        }
-        else if(input[[paste0(centers[i], '_answer')]] == sectors[3]) {
-          sum1 <- bar_data %>% group_by(Feel.happier.or.more.satisfied.with.my.life) %>% summarise(count1 = n())
-          sum2 <- bar_data %>% group_by(Have.something.to.look.forward.to.each.day) %>% summarise(count2 = n())
-          sum1$total_count <- sum1$count1 + sum2$count2
-          names(sum1)[1] <- 'categories'
-        }
-        else if(input[[paste0(centers[i], '_answer')]] == sectors[4]) {
-          sum1 <- bar_data %>% group_by(Know.where.to.ask.if.I.need.a.service.such.as.a.ride.to.a.doctor.or.an.aide) %>% summarise(count1 = n())
-          sum2 <- bar_data %>% group_by(Have.learned.about.services.and.benefits) %>% summarise(count2 = n())
-          sum1$total_count <- sum1$count1 + sum2$count2
-          names(sum1)[1] <- 'categories'
-        }
-
-        else if(input[[paste0(centers[i], '_answer')]] == sectors[5]) {
-          sum1 <- bar_data %>% group_by(Feel.more.able.to.stay.independent) %>% summarise(total_count = n())
-          names(sum1)[1] <- 'categories'
-        }
-
-        else if(input[[paste0(centers[i], '_answer')]] == sectors[6]) {
-          sum1 <- bar_data %>% group_by(Would.recommend.the.senior.center.to.a.friend.or.family.member) %>% summarise(count1 = n())
-          sum2 <- bar_data %>% group_by(Feel.that.the.senior.center.has.had.a.positive.effect.on.my.life) %>% summarise(count2 = n())
-          sum1$total_count <- sum1$count1 + sum2$count2
-          names(sum1)[1] <- 'categories'
-        }
-        sum1 <- sum1 %>% drop_na() %>% mutate(Categories = fct_reorder(categories, -total_count), Count = total_count)
-        ggplot(sum1, aes(x=Categories,y=Count))+geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ xlab('Survey Responses') + ylab('Count')
-      })
+    output[[(paste0(centers[i], '_bar'))]] <- renderPlotly({
+      if(input[[paste0(centers[i], '_answer')]]== sectors[1]) {
+        sum1 <- bar_data %>% group_by(Do.more.volunteer.work) %>% summarise(count1 = n())
+        sum2 <- bar_data %>% group_by(See.friends.more.often.make.new.friends) %>% summarise(count2 = n())
+        sum1$total_count <- sum1$count1 + sum2$count2
+        names(sum1)[1] <- 'categories'
+      }
+      else if(input[[paste0(centers[i], '_answer')]] == sectors[2]) {
+        sum1 <- bar_data %>% group_by(Take.better.care.of.my.health) %>% summarise(count1 = n())
+        sum2 <- bar_data %>% group_by(Eat.meals.that.are.better.for.me) %>% summarise(count2 = n())
+        sum3 <- bar_data %>% group_by(Have.more.energy) %>% summarise(count3 = n())
+        sum4 <- bar_data %>% group_by(Am.more.physically.active) %>% summarise(count4 = n())
+        sum1$total_count <- sum1$count1 + sum2$count2 + sum3$count3 + sum4$count4
+        names(sum1)[1] <- 'categories'
+      }
+      else if(input[[paste0(centers[i], '_answer')]] == sectors[3]) {
+        sum1 <- bar_data %>% group_by(Feel.happier.or.more.satisfied.with.my.life) %>% summarise(count1 = n())
+        sum2 <- bar_data %>% group_by(Have.something.to.look.forward.to.each.day) %>% summarise(count2 = n())
+        sum1$total_count <- sum1$count1 + sum2$count2
+        names(sum1)[1] <- 'categories'
+      }
+      else if(input[[paste0(centers[i], '_answer')]] == sectors[4]) {
+        sum1 <- bar_data %>% group_by(Know.where.to.ask.if.I.need.a.service.such.as.a.ride.to.a.doctor.or.an.aide) %>% summarise(count1 = n())
+        sum2 <- bar_data %>% group_by(Have.learned.about.services.and.benefits) %>% summarise(count2 = n())
+        sum1$total_count <- sum1$count1 + sum2$count2
+        names(sum1)[1] <- 'categories'
+      }
+      
+      else if(input[[paste0(centers[i], '_answer')]] == sectors[5]) {
+        sum1 <- bar_data %>% group_by(Feel.more.able.to.stay.independent) %>% summarise(total_count = n())
+        names(sum1)[1] <- 'categories'
+      }
+      
+      else if(input[[paste0(centers[i], '_answer')]] == sectors[6]) {
+        sum1 <- bar_data %>% group_by(Would.recommend.the.senior.center.to.a.friend.or.family.member) %>% summarise(count1 = n())
+        sum2 <- bar_data %>% group_by(Feel.that.the.senior.center.has.had.a.positive.effect.on.my.life) %>% summarise(count2 = n())
+        sum1$total_count <- sum1$count1 + sum2$count2
+        names(sum1)[1] <- 'categories'
+      }
+      sum1 <- sum1 %>% drop_na() %>% mutate(Categories = fct_reorder(categories, -total_count), Count = total_count)
+      ggplot(sum1, aes(x=Categories,y=Count))+geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ xlab('Survey Responses') + ylab('Count')
     })
+  })
   # })
   
   source('Compare/compare_server.R', local=T)
-
+  
   source('Survey/Survey.R', local = T)
   output$map <- renderPlotly({
     ggplotly(p, tooltip = 'text')

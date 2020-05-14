@@ -1,13 +1,13 @@
 # File to store all constant variables that can be accessed from any other file
 # Be sure to use '<<-' to store global variables
 
+
 centers <<- c("ACRS", "Ballard", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", 
               "Wallingford", "West Seattle", "CISC", "South Park", "GWP", "Southeast")
 
-images <<- c('acrs.jpg', 'sunshine.jpg', 'greenwood.jpg', 'idic.jpg', 'pike.jpg', 'sunshine.jpg', 'wallingford.jpg', 'wallingford.jpg', 'idic.jpg', 'sunshine.jpg', 'southeast.jpg', 'southeast.jpg')
+images <<- c('acrs.jpg', 'ballard.jpg', 'greenwood.jpg', 'idic.jpg', 'pike.jpg',
+             'sunshine.jpg', 'wallingford.jpg', 'west.png', 'sunshine.jpg', 'southpark.jpg', 'gwp.png', 'southeast.jpg', 'southeast.jpg')
 
-batches <<- c("2015-1", "2015-2", "2016-1", "2016-2", "2017-1", "2017-2", "2018-1", "2018-2",
-              "2019-1", "2019-2", "2020-1", "2020-2") # Add in 2021-1 and 2021-2 in here when necessary
 
 all_questions <<- c("Do more volunteer work",
                     "See friends more often make new friends",
@@ -22,10 +22,12 @@ all_questions <<- c("Do more volunteer work",
                     "Learn new things",
                     "Have learned about services and benefits",
                     "Am more physically active",
-                    "Would recommend the senior center to a friend or family member"
+                    "Would recommend the senior center to a friend or family member")
                     # ,"Extra question"
-                    )
 
+
+batches <<- c("2015-1", "2015-2", "2016-1", "2016-2", "2017-1", "2017-2", "2018-1", "2018-2",
+              "2019-1", "2019-2", "2020-1", "2020-2") # Add in 2021-1 and 2021-2 in here when necessary
 
 answers <<- c("Almost Never", "Sometimes", "Most of the Time", "Not applicable")
 

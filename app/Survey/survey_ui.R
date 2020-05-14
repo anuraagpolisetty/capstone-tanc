@@ -1,10 +1,9 @@
-
-labelMandatory <- function(label) {
-  tagList(
-    label,
-    span("*", class = "mandatory_star")
-  )
-}
+# labelMandatory <- function(label) {
+#   tagList(
+#     label,
+#     span("*", class = "mandatory_star")
+#   )
+# }
 
 list(
   titlePanel("Senior Center Survey Form"),
@@ -18,9 +17,8 @@ list(
       selectInput(
         "SiteID",
         label = h6(labelMandatory("Which senior center do you currently attend?")),
-        choices = c("ACRS", "Ballard", "Greenwood", "IDIC", "PMSC", "Sunshine Garden",
-                    "Wallingford", "West Seattle", "CISC", "South Park", "GWP", "Southeast"), #centers,
-        selected = "Greenwood" #centers[1]
+        choices = centers, #centers,
+        selected = centers[1] #centers[1]
       ),
       textInput("zipcode", labelMandatory("What is your zipcode"), ""),
       h3("Because I go to the senior center, I ..."),

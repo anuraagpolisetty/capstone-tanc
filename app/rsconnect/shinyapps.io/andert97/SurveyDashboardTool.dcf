@@ -5,8 +5,8 @@ account: andert97
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1946598
-bundleId: 3144852
+bundleId: 3145218
 url: https://andert97.shinyapps.io/SurveyDashboardTool/
-when: 1589415597.49795
+when: 1589423426.3931
 asMultiple: FALSE
 asStatic: FALSE
