@@ -33,28 +33,28 @@ batches <- c("2016-1", "2016-2", "2017-1", "2017-2", "2018-1", "2018-2",
              "2019-1", "2019-2", "2020-1", "2020-2")
 
 # Create google Sheets for each center (only once)
-  # for(c in centers) {
-  #   sheet <- gs4_create(c)
-  #   drive_mv(file = sheet, path = as_id(folder))
-  #
-  # }
-  # drive_ls(folder)
+  for(c in centers) {
+    sheet <- gs4_create(c)
+    drive_mv(file = sheet, path = as_id(folder))
+
+  }
+  drive_ls(folder)
 
 # Store all Spreadsheet IDs
-# ss_ACRS <- drive_get(paste0(folder, "/ACRS"))
-# ss_Ballard <- drive_get(paste0(folder, "/Ballard"))
-# ss_Greenwood <- drive_get(paste0(folder, "/Greenwood"))
-# ss_IDIC <- drive_get(paste0(folder, "/IDIC"))
-# ss_PMSC <- drive_get(paste0(folder, "/PMSC"))
-# ss_SG <- drive_get(paste0(folder, "/Sunshine Garden"))
-# ss_Wallingford <- drive_get(paste0(folder, "/Wallingford"))
-# ss_WestSeattle <- drive_get(paste0(folder, "/West Seattle"))
-# ss_CISC <- drive_get(paste0(folder, "/CISC"))
-# ss_SouthPark <- drive_get(paste0(folder, "/South Park"))
-# ss_GWP <- drive_get(paste0(folder, "/GWP"))
-# ss_Southeast <- drive_get(paste0(folder, "/Southeast"))
-#
-# ss_ACRS %>% sheet_append()
+ss_ACRS <- drive_get(paste0(folder, "/ACRS"))
+ss_Ballard <- drive_get(paste0(folder, "/Ballard"))
+ss_Greenwood <- drive_get(paste0(folder, "/Greenwood"))
+ss_IDIC <- drive_get(paste0(folder, "/IDIC"))
+ss_PMSC <- drive_get(paste0(folder, "/PMSC"))
+ss_SG <- drive_get(paste0(folder, "/Sunshine Garden"))
+ss_Wallingford <- drive_get(paste0(folder, "/Wallingford"))
+ss_WestSeattle <- drive_get(paste0(folder, "/West Seattle"))
+ss_CISC <- drive_get(paste0(folder, "/CISC"))
+ss_SouthPark <- drive_get(paste0(folder, "/South Park"))
+ss_GWP <- drive_get(paste0(folder, "/GWP"))
+ss_Southeast <- drive_get(paste0(folder, "/Southeast"))
+
+ss_ACRS %>% sheet_append()
 
 # Add column names to google sheet
 saveData <- function(data) {

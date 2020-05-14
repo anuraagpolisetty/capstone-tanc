@@ -272,7 +272,7 @@ function(input, output, session) {
     
     output[[(paste0(centers[i], '_gauge'))]] <- renderPlotly({
       cleaned.data.2019 <- data.2019 %>% filter(SiteID == centers[i])
-      GaugeChart(cleaned_data, OverallIndex, "all", "2019", 'rgb(255,255,255)', 'Overall Index')
+      GaugeChart(cleaned_data, OverallIndex, "all", "2021", 'rgb(255,255,255)', 'Overall Index')
     })
     lapply(1:length(sectors), function(j) {
       sector.center <- paste0(sectors[j], '_', centers[i])
