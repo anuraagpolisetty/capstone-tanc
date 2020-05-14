@@ -22,8 +22,9 @@ all_questions <<- c("Do more volunteer work",
                     "Learn new things",
                     "Have learned about services and benefits",
                     "Am more physically active",
-                    "Would recommend the senior center to a friend or family member")
+                    "Would recommend the senior center to a friend or family member"
                     # ,"Extra question"
+                    )
 
 
 answers <<- c("Almost Never", "Sometimes", "Most of the Time", "Not applicable")

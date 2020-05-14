@@ -62,7 +62,7 @@ observe({
 
 # Saves and formats the submit data
 formData <- reactive({
-  data <- sapply(fieldsAll, function(x) input[[x]])
+  data <- sapply(all_questions, function(x) input[[x]])
   data <- c(data, timestamp = epochTime())
   data <- t(data)
   data
