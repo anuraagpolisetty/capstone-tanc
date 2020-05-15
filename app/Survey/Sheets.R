@@ -11,17 +11,7 @@ gs4_auth()
 # Only run this section once
 #
 # # Initialize google drive authentication
-drive_auth(
-  email = NULL, #gargle::gargle_oauth_email(), # use gargle to automatically sign in to your email
-  path = NULL,
-  scopes = "https://www.googleapis.com/auth/drive",
-  cache = gargle::gargle_oauth_cache(),
-  use_oob = gargle::gargle_oob_default(),
-  token = "AIzaSyAA5mBonx7TOh8fWO3PrDDIi06aXttbWvw"
-)
 
-drive_auth_configure(api_key = "AIzaSyAA5mBonx7TOh8fWO3PrDDIi06aXttbWvw")
-gs4_deauth()
 
 # #Initialize Google Sheets authentication
 # gs4_auth(token = drive_token())
