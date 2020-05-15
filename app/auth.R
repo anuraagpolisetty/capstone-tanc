@@ -18,8 +18,17 @@ gs4_auth(token = drive_token())
 # Comment lines 10, 13 and 15 and uncomment lines 21 and 22
 # You tell gargle to search the token in the secrets folder and to look
 # for an auth given to a certain email (enter your email linked to googledrive!)
-drive_auth(cache = ".secrets", email = "enter_your_email@here")
-sheets_auth(token = drive_token())
+drive_auth(cache = ".secrets", email = "adscenterdata@gmail.com")
+gs4_auth(token = drive_token())
+
+drive_ls()
+
+row <- c("Data 3", "Data 4")
+
+ss_ACRS <- read_sheet("1KR37m3GOSVplXXBYkgqdP6YytE-ZAFQCyNLcJV4vrsA")
+ss_ACRS <- sheet_append()
+
+# gonna have to store every single sheet in constants folder
 
 # THIRD STEP---
 # Now you can deploy your app in shinyapps.io!!

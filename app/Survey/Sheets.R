@@ -70,11 +70,11 @@ drive_ls(folders)
 #   df <- data.frame(matrix(unlist(data), ncol=length(data)), stringsAsFactors=FALSE)
 #   print(df)
 #   print(typeof(df))
-#   # center_name <- data[1, "which_center"]
-#   # ss <- drive_get(paste0(folder, "/", center_name))
-#   #
-#   # sheet_append(ss$id, df)
-# }
+  # center_name <- data[1, "which_center"]
+  # ss <- drive_get(paste0(folder, "/", center_name))
+  #
+  # sheet_append(ss$id, df)
+}
 #
 #
 #
