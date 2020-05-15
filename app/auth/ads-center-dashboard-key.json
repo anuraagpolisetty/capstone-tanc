@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ads-center-survey-dashboard",
+  "private_key_id": "d026de258ecbc2de59fb2d169d29070fd9e9107e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCa/vj5lME1L+EZ\n3RR/n+xP3ll5xwPc+5mFCIoNgDChZkmddomethCAtha3fJxI/f4Fb/c/DCNmU3bQ\nrtwAQ6vaUGPxqZKMgsT7TWBIJjSAAtaim9tCazJNum2fNLNHD98H1tMuNyd2ipov\nN//iYWH80kS+UP3uZANsER2n/F8QONR8hLgzPccnEdbcBeLynm1iyGxLc8bEqkLq\niiCmJLv21jmnhxRZbIyq+XwZqlZ9eVlh4Ku8IXHnCHfTMQOrK45u9jvEEpMPZKHa\nLXYrZ+NMAtA/rvnZMlTOlajTHmwSqhlrL0dcrzxJxiXIJYFh+oWcA6sd0BTBdV4V\nv/X2n35JAgMBAAECggEAGAaNc+yTzWmMUEzFfGn/ALtj7b1Ec0j52VYDRkf4YdBf\n+V1SREyO/tCa8VrKxALBETkzn22DgD1QVdVBC3Zx6V+cOm3RZl/v5k9ubQilCzHF\ncQPNRzykGcnb67mIz6tdZFLvvcJ1Zsnh0A9zZfU38e9rEgAueHk+0Y3Opcc4OiSD\nHpxNagOi9e8kAfcZP9APhgX/klbDMVw9NxrQ6ageuB2n2xa6tas/y3cjFfpcLQy8\ndwC8ozVILmiXFVmDp51u8jknGBkWH6eBdi+PcQdDUkRq4ia2x+ble72EClXB8HKI\nIGFfk9ued55GtYQVMzJrAghpaZPl07eO6ry1KB3gPQKBgQDVbhQIFI50dKEwWz6v\nFojOQNArZVpyYuVs+YtVS9Xn3tTC4P+nScEwwMY+3Jgx4qgWa/MQf93S1pz+yB4e\nYZxMGs9aofoOR3ZkD6tqSkFYpHpuIctNDq8qgD3ImC9cbDcUMM/RQVT/42EblXSx\nStuKRIpsFLo7RR3W9+V82WnD1QKBgQC56TPy/HsfOW8B8DqBfybeafjEiO0iaEWu\nYAaGJEwcKn43j8LVbE4wfwhkRtS216PE3EHFS6aXNAh5mwA47dReUMw7xwMmW2Qk\niS7QZinQqllgEUlz9lY/ze/bJMG0+CRYJPWQ4D9SDAv2XVWQj3xRN9MSpWLzghCv\n9u9sWTQupQKBgHEVVf/CBIinkxAwCFJ0uh+uL54OoZGh3LWUssKK39dvNYPb+xkD\n9xyBx4hfETS9Rxo6MBs55Kplk+Fa3rpyNYINYng/AmK2coAp3UT/+wegfk4EEdfO\nQ/lc4V97YvyxSa2k/zd8SjEapMUctyuI4jGshzsk8FefE2RnDGzONT/RAoGADC2X\nhpI9anUzrVfULUlr/WPJtO4XQoq8DckihET6a1npPLCBHcPjd0/K9+6f3n5PrwSS\nll73Qa5Z48VghVom8CqwxjWqIigYbkBCPcqDcLTH+AAJ5Lu9OJ6/2IYW3kjm8JMz\nNtNJspExc2j3wulzRkq22+DTk4nwl+ZAFsPdJDUCgYAulVk1l6DFQyfpkt3AYeLv\neBEO3zcLwP/9dFkLyG4TNmfYwPWlwymq7lU1wQydFGf++K0iz8GJcwGw9rZnREgZ\nUZluu6PGilsq+oLUFskY9V6YJDrdN1rOvASYhHZhC2FFS+JIwMTuems5TnlNNB1l\nGHtR7fIf6nnEyx0LXp6TPg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "ads-center-data@ads-center-survey-dashboard.iam.gserviceaccount.com",
+  "client_id": "106758372548784903654",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ads-center-data%40ads-center-survey-dashboard.iam.gserviceaccount.com"
+}

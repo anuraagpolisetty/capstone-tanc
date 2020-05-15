@@ -1,0 +1,12 @@
+name: SurveyVisualizationDashboard
+title: SurveyVisualizationDashboard
+username:
+account: anuraagpolisetty
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2302081
+bundleId: 3149597
+url: https://anuraagpolisetty.shinyapps.io/SurveyVisualizationDashboard/
+when: 1589501985.58994
+asMultiple: FALSE
+asStatic: FALSE
