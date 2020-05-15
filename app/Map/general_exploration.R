@@ -1,9 +1,17 @@
-all.data <- read.csv("data/total.csv")
+all.data <- read.csv("./data/TOTAL.csv")
 locations.data <- read.csv("data/Senior_Center_Locations_Cleaned.csv")
 
 column.names <- names(all.data)
 questions <- column.names[12:25]
 
+# To change global variable questions to total.csv
+# column name format.
+names <- colnames(all.data)
+for(name in all_questions){
+  #print(name)
+  print(gsub(' ', '.', name))
+  print(all.data %>% group_by(SiteID) %>% count(gsub(' ', '.', name)) %>% mutate(Percent = n / sum(n)))
+}
 #  Find why 2017 isn't showing for west seattle and ballard
 
 grouped_for_ballard <- all.data %>% filter(SiteID == 'Ballard')
@@ -98,7 +106,7 @@ filtered2 <- filter(data, SiteID == 'Greenwood')
 filtered3 <- rbind(filtered1, filtered2)
 x_value <- filtered3$Do.more.volunteer.work
 
-filtered4 <- filtered3 %>% group_by(SiteID) %>% count(Do.more.volunteer.work) %>% mutate(perc = n / sum(n)) 
+filtered4 <- filtered3 %>% drop_na(Do.more.volunteer.work) %>% group_by(SiteID) %>% count(Do.more.volunteer.work) %>% mutate(perc = n / sum(n)) 
 #filtered4 <- filtered4 %>% mutate(Question = colnames(filtered4)[2])
 colnames(filtered4)[2] <- 'Question'
 
@@ -108,7 +116,7 @@ ggplot(filtered4, aes_string(x=colnames(filtered4)[2], y = Question, fill=colnam
   coord_flip()
 
 data1 <- filtered1
-data2 <- data1 %>% count(Do.more.volunteer.work) %>% mutate(perc = n / sum(n))
+data2 <- data1 %>% drop_na(Do.more.volunteer.work) %>% count(Do.more.volunteer.work) %>% mutate(perc = n / sum(n))
 ggplot(data2, aes_string(colnames(), y = perc)) + geom_bar(stat='identity')
 
 

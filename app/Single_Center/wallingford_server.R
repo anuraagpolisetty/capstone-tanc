@@ -119,7 +119,7 @@ output$general_wallingford <- renderPlotly({
     wallingford.date.data <- wallingford_cleaned_data %>%  filter(Batch == '2019-1' | Batch == '2019-2')
     date <- '2019'    
   }
-  GaugeChart(wallingford.date.data, OverallSatisfactionIndex, 'all', date,'rgb(255,255,255)')
+  GaugeChart(wallingford.date.data, OverallIndex, 'all', date,'rgb(255,255,255)')
   
 })
 
