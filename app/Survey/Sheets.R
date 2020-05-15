@@ -2,8 +2,8 @@ library(googledrive)
 library(googlesheets4)
 library(httr)
 
-options(httr_oob_default = TRUE)
-gs4_auth()
+# options(httr_oob_default = TRUE)
+# gs4_auth()
 
 # auth code: 4/zwFqGrQ4zNoypjD1CPHOToq4sy2R5Z33lsDCTNIoM8NA_yJC6hqjmhc
 # library(dplyr)
@@ -20,8 +20,8 @@ gs4_auth()
 # # folder <- drive_mkdir("ADS Survey Responses")
 #
 # # Stores the location of the drive folder
-folders <- drive_get("ADS Survey Responses")
-drive_ls(folders)
+# folders <- drive_get("ADS Survey Responses")
+# drive_ls(folders)
 #
 #
 # centers <- c("ACRS", "Ballard", "Greenwood", "IDIC", "PMSC", "Sunshine Garden",
@@ -64,7 +64,7 @@ drive_ls(folders)
   # ss <- drive_get(paste0(folder, "/", center_name))
   #
   # sheet_append(ss$id, df)
-}
+# }
 #
 #
 #

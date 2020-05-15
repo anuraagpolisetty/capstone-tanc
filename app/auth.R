@@ -10,9 +10,9 @@ options(gargle_oauth_cache = ".secrets")
 # options(gargle_quiet = FALSE) # So you can know what is happening
 # Authenticate in interactive mode (run the app) ONCE and check if the token 
 # has been stored inside the .secrets folder, after that just comment this line
-drive_auth() # Authenticate to produce the token in the cache folder
+#drive_auth() # Authenticate to produce the token in the cache folder (commented after generating)
 # Grant permission to googlesheets to access to the token produced
-gs4_auth(token = drive_token())
+#gs4_auth(token = drive_token()) (commented after authenticated)
 
 # SECOND STEP----
 # Comment lines 10, 13 and 15 and uncomment lines 21 and 22
@@ -21,12 +21,17 @@ gs4_auth(token = drive_token())
 drive_auth(cache = ".secrets", email = "adscenterdata@gmail.com")
 gs4_auth(token = drive_token())
 
-drive_ls()
+# drive_ls()
+# 
+# data <- list("Data 3", "Data 4")
+# df <- data.frame(do.call("rbind", lapply(data, data.frame)))
 
-row <- c("Data 3", "Data 4")
+# df <- data.frame(matrix(unlist(data), ncol=length(data)), stringsAsFactors=FALSE)
 
-ss_ACRS <- read_sheet("1KR37m3GOSVplXXBYkgqdP6YytE-ZAFQCyNLcJV4vrsA")
-ss_ACRS <- sheet_append()
+
+ss_ACRS <- "1KR37m3GOSVplXXBYkgqdP6YytE-ZAFQCyNLcJV4vrsA"
+
+sheet_append(ss_ACRS, data=df)
 
 # gonna have to store every single sheet in constants folder
 
@@ -39,6 +44,8 @@ ss_ACRS <- sheet_append()
 # library(rsconnect)
 # deployApp()
 # Enjoy your new App!!
+
+folder_ss <- "1VrhYtDr3awzLxH5HVkCz3pqXGZaxP8uj"
 
 
 
