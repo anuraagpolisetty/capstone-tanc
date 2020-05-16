@@ -1,59 +1,66 @@
 library(googledrive)
 library(googlesheets4)
-library(httr)
+library(dplyr)
 
-# options(httr_oob_default = TRUE)
-# gs4_auth()
+# Root folder for storing all files:
+# Title: ADS Survey Responses
+# adsCenterData@gmail.com
+# Password: Kingcounty1
+
+folder_url="https://drive.google.com/drive/folders/1VrhYtDr3awzLxH5HVkCz3pqXGZaxP8uj"
+
+folder_id <- "1VrhYtDr3awzLxH5HVkCz3pqXGZaxP8uj"
+folder <- drive_get(folder_url)
+folder_name <- folder$name
+test <- drive_ls(path = "ADS Survey Responses")
+drive_ls(folder_url)
+drive_ls("ADS Survey Responses")
+
+file_names <-drive_ls("ADS Survey Responses", q= "not name contains \'total\'", type="spreadsheet")$name
+total <-drive_ls("ADS Survey Responses", q= " name contains \'total\'", type="spreadsheet")
+
+
+
+# Create google Sheets for each center if it doesn't exist yet
+update_center_ids <- function() {
+  for(center in centers) {
+    id <- drive_get(center)$id
+    
+    # if no sheet is found, create a new Google Sheet and store in drive
+    if (length(id) == 0) {
+        sheet <- gs4_create(center)
+        drive_mv(file = sheet, path = as_id(folder))
+        
+        # get center Id of sheet and add to center_ids data frame
+        new_center_id <- drive_get(center)$id
+        center_ids[nrow(center_ids) + 1,] = list(center, new_center_id) 
+    }
+    
+    
+  }
+}
+
+# ((drive_get("ACRS")$id))
+# mkGoogleSheets()
+# length(drive_get("ACRS"))
+
+
+# ids <- vector()
+# for (i in centers) {
+#   center <- drive_get(i)
+#   center_id <- unclass(as_sheets_id(center))
+#   ids[i] <- center_id
+# }
+# center_ids <- data.frame(center=centers, id=ids)
+# 
+# center_ids["ACRS","id"]
+# 
+# center_ids %>% select(center)
+
+
 
 # auth code: 4/zwFqGrQ4zNoypjD1CPHOToq4sy2R5Z33lsDCTNIoM8NA_yJC6hqjmhc
-# library(dplyr)
-#
-# Only run this section once
-#
-# # Initialize google drive authentication
 
-
-# #Initialize Google Sheets authentication
-# gs4_auth(token = drive_token())
-#
-# # Create inital drive folder
-# # folder <- drive_mkdir("ADS Survey Responses")
-#
-# # Stores the location of the drive folder
-# folders <- drive_get("ADS Survey Responses")
-# drive_ls(folders)
-#
-#
-# centers <- c("ACRS", "Ballard", "Greenwood", "IDIC", "PMSC", "Sunshine Garden",
-#              "Wallingford", "West Seattle", "CISC", "South Park", "GWP", "Southeast")
-#
-# ss_centers <- centers
-# batches <- c("2016-1", "2016-2", "2017-1", "2017-2", "2018-1", "2018-2",
-#              "2019-1", "2019-2", "2020-1", "2020-2")
-#
-# # Create google Sheets for each center (only once)
-#   # for(c in centers) {
-#   #   sheet <- gs4_create(c)
-#   #   drive_mv(file = sheet, path = as_id(folder))
-#   #
-#   # }
-#   # drive_ls(folder)
-#
-# # Store all Spreadsheet IDs
-# # ss_ACRS <- drive_get(paste0(folder, "/ACRS"))
-# # ss_Ballard <- drive_get(paste0(folder, "/Ballard"))
-# # ss_Greenwood <- drive_get(paste0(folder, "/Greenwood"))
-# # ss_IDIC <- drive_get(paste0(folder, "/IDIC"))
-# # ss_PMSC <- drive_get(paste0(folder, "/PMSC"))
-# # ss_SG <- drive_get(paste0(folder, "/Sunshine Garden"))
-# # ss_Wallingford <- drive_get(paste0(folder, "/Wallingford"))
-# # ss_WestSeattle <- drive_get(paste0(folder, "/West Seattle"))
-# # ss_CISC <- drive_get(paste0(folder, "/CISC"))
-# # ss_SouthPark <- drive_get(paste0(folder, "/South Park"))
-# # ss_GWP <- drive_get(paste0(folder, "/GWP"))
-# # ss_Southeast <- drive_get(paste0(folder, "/Southeast"))
-# #
-# # ss_ACRS %>% sheet_append()
 #
 # # Add column names to google sheet
 # saveData <- function(data) {

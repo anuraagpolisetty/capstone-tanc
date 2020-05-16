@@ -1,4 +1,4 @@
-# Aging and Disability Services Dashboard app folder
+# ADS Dashboard app folder
 This folder holds all the source code for creating the ADS Dashboard. 
 
 ## Structure

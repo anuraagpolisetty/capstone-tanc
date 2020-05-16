@@ -10,7 +10,7 @@ options(gargle_oauth_cache = ".secrets")
 # options(gargle_quiet = FALSE) # So you can know what is happening
 # Authenticate in interactive mode (run the app) ONCE and check if the token 
 # has been stored inside the .secrets folder, after that just comment this line
-#drive_auth() # Authenticate to produce the token in the cache folder (commented after generating)
+# drive_auth() # Authenticate to produce the token in the cache folder (commented after generating)
 # Grant permission to googlesheets to access to the token produced
 #gs4_auth(token = drive_token()) (commented after authenticated)
 

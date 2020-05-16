@@ -2,11 +2,11 @@
 # Anything changes or additions to this file will update accordingly in the overall dashboard.
 # You can add a new center to the 'centers' variable which will automatically create a new
 # tab for the center.
-# Be sure to use '<<-' to store global variables
+# Be sure to use '<<-' to store global variables that can be accessed from any other file
 
 
 # If you would like to add a new center, add it to the end of this comma-seperated list.
-# Replace the "New Center" line with the name of the center and remove the '#' symbol
+# Replace the "New Center" line with the name of the center and delete the '#' symbol
 centers <<- c("ACRS", "Ballard", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", 
               "Wallingford", "West Seattle", "CISC", "South Park", "GWP", "Southeast"
               # ,"New_Center"
@@ -35,8 +35,9 @@ all_questions <<- c("Do more volunteer work",
                     "Learn new things",
                     "Have learned about services and benefits",
                     "Am more physically active",
-                    "Would recommend the senior center to a friend or family member")
+                    "Would recommend the senior center to a friend or family member"
                     # ,"Extra question"
+                    )
 
 
 batches <<- c("2015-1", "2015-2", "2016-1", "2016-2", "2017-1", "2017-2", "2018-1", "2018-2",
@@ -47,12 +48,17 @@ answers <<- c("Almost Never", "Sometimes", "Most of the Time", "Not applicable")
 sectors <<- c('Social', 'Physical', 'Positivity', 'Services', 'Independence', 'Overall')
 index <<- c('SocialIndex', 'PhysicalIndex', 'PositiveIndex', 'ServicesIndex', 'IndependenceIndex', 'OverallIndex')
 
-income_brackets <- c("Very Low: Less than $18550 for 1 person; or $21,2000 for 2 people",
+income_brackets <<- c("Very Low: Less than $18550 for 1 person; or $21,2000 for 2 people",
                      "Low: Less for than $30,900 for 1 person; or $35,300 for 2 people",
                      "Moderate: Less than $44,750 for 1 person; or $51,150 for 2 people",
                      "Above Moderate: More than $44,750 for 1 person; or $51,150 for 2 people")
 
-
-# Do more volunteer work	See friends more often/make new friends	Take better care of my health	Eat meals that are better for me	Have more energy	Feel happier or more satisfied with my life	Have something to look forward to each day	Know where to ask if I need a service such as a ride to a doctor or an aide	Feel more able to stay independent	Feel that the senior center has had a positive effect on my life	Learn new things	Have learned about services and benefits	Am more physically active	Would recommend the senior center to a friend or family member	Please tell us how participating in the senior center has changed your life	I participate in the following activities at the senior center	Race - American Indian or Alaska Native	Race - Asian, Asian-American	Race - Black, African-American, Other African	Race - Hawaiian Native or Pacific Islander	Race - Hispanic, Latino	Race - Other	Race - White or Caucasian	Race	What is your zip code	Other (please specify)	What is your estimated annual income	Extra
+race_ethnicity <<- c("American Indian or Alaska Native",
+                    "Asian, Asian-American",
+                    "Black, African-American, Other African",
+                    "Hawaiian Native or Pacific Islander",
+                    "Hispanic, Latino",
+                    "Other",
+                    "White or Caucasian")
 
 # 

@@ -31,9 +31,26 @@ list(
           radioButtons(all_questions[i], label="", choices = answers, inline=FALSE, selected = character(0))
         )
       }),
-      
+      textInput("free_response1", "Please tell us how participating in the senior center has changed your life"),
+      textInput("free_response2", "I participate in the following activities at the senior Center"),
+      bs4Card(
+        title = labelMandatory("How would you describe your race/ethnicity"),
+        width = 14,
+        collapsible = FALSE,
+        closable=FALSE,
+        radioButtons("Race/Ethnicity", label="", choices = race_ethnicity, inline=FALSE, selected = character(0))
+      ),
+      bs4Card(
+        title = labelMandatory("What is your estimated annual income"),
+        width = 14,
+        collapsible = FALSE,
+        closable=FALSE,
+        radioButtons("What is your estimated annual income", label="", choices = income_brackets, inline=FALSE, selected = character(0))
+      ),
       # Submit button to upload responses
-      actionButton("submit", "Submit")
+      actionButton("submit", "Submit"),
+      span("Please make sure every question has been answered", class = "mandatory_star")
+      
   ),
   shinyjs::hidden(
     div(

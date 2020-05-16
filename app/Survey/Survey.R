@@ -49,15 +49,6 @@ observe({
   shinyjs::toggleClass(id = "submit", condition = mandatoryFilled, class = "btn-primary")
 })
 
-# #Downloads the file as a csv
-# saveData <- function(data) {
-#   fileName <- sprintf("%s_%s.csv",
-#                       humanTime(),
-#                       digest::digest(data))
-#   
-#   write.csv(x = data, file = file.path(responsesDir, fileName),
-#             row.names = FALSE, quote = TRUE)
-# }
 
 field <- "Would recommend the senior center to a friend or family member"
 
