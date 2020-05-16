@@ -183,7 +183,9 @@ function(input, output, session) {
                         }),
                         
                         # Submit button to upload responses
-                        actionButton("submit", "Submit")
+                        actionButton("submit", "Submit"),
+                        span("Please make sure every question has been answered", class = "mandatory_star")
+                        
                         ),
                       shinyjs::hidden(
                         div(
