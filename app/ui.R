@@ -50,7 +50,7 @@ fluidPage(
             icon = 'wheelchair',
             lapply(1:length(centers), function(i){
               bs4SidebarMenuSubItem(text = centers[i],
-                                    tabName = paste0('sub_', centers[i]))
+                                    tabName = paste0('sub_', gsub(' ', '', centers[i])))
             })
           ),
           bs4SidebarMenuItem(

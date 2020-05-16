@@ -23,6 +23,15 @@ GaugeChart <- function(data, FUN, site, year, colored, title) {
   index <- (FUN(data, site))
   # print(year)
   
+  if(substr(year, 6, 6) == '1') {
+    new.year <- paste0(as.character(as.numeric(substr(year, 1, 4)) - 1), '-2')
+  }
+  else if(substr(year, 6,6) == '2') {
+    new.year <- gsub('-2', '-1', year)
+  }
+  
+  delta <-
+  
   fig <- plot_ly(
     domain = list(x = c(0, 1), y = c(0, 1)),
     value = index,
