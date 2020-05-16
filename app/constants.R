@@ -1,12 +1,25 @@
-# File to store all constant variables that can be accessed from any other file
+# This file is used to store all constant variables that can be accessed from any other file.
+# Anything changes or additions to this file will update accordingly in the overall dashboard.
+# You can add a new center to the 'centers' variable which will automatically create a new
+# tab for the center.
 # Be sure to use '<<-' to store global variables
 
 
+# If you would like to add a new center, add it to the end of this comma-seperated list.
+# Replace the "New Center" line with the name of the center and remove the '#' symbol
 centers <<- c("ACRS", "Ballard", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", 
-              "Wallingford", "West Seattle", "CISC", "South Park", "GWP", "Southeast")
+              "Wallingford", "West Seattle", "CISC", "South Park", "GWP", "Southeast"
+              # ,"New_Center"
+              )
 
+# Adding a new center also requires a new image for that specific center. Otherwise,
+# the default image will show up in the home page next to the center name.
+# Find and download a jpg file, name it appropriately, and save it in the 'www' folder. 
 images <<- c('acrs.jpg', 'ballard.jpg', 'greenwood.jpg', 'idic.jpg', 'pike.jpg',
-             'sunshine.jpg', 'wallingford.jpg', 'west.png', 'sunshine.jpg', 'southpark.jpg', 'gwp.png', 'southeast.jpg', 'southeast.jpg')
+             'sunshine.jpg', 'wallingford.jpg', 'west.png', 'sunshine.jpg', 
+             'southpark.jpg', 'gwp.png', 'southeast.jpg', 'southeast.jpg'
+             # , "new_center.jpg"  # Make sure this file name matches the one in the 'www' folder!
+             )
 
 
 all_questions <<- c("Do more volunteer work",
