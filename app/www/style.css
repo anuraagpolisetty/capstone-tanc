@@ -1,9 +1,15 @@
+                  /*
                   div#shiny-tab-home .plot-container {
                     width:170px !important;
                     height:150px !important;
                     position:relative;
                     top: 50px;
                     left: 150px;
+                  } */
+                  
+                  div#shiny-tab-home .plot-container {
+                    position: relative;
+
                   }
                   
                   div#shiny-tab-home .card-body {
@@ -290,17 +296,27 @@
                   width:170px !important;
                   height:150px !important;
                   }
-
+/*
                   div#shiny-tab-home .svg-container{
                     top: -30px;
                     left:150px;
-                  }
-
-
+                  }*/
+/*
                   div#shiny-tab-home div.card-header {
                     position:absolute;
                     top: 5%;
                     left: 27%;
+                  }
+                  */
+                  div#shiny-tab-home div.card-header {
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      position: absolute;
+                      top: 50%;
+                      left: 50%;
+                      margin-right: -50%;
+                      transform: translate(-50%, -50%);
                   }
                   h3.card-title {
                     font-size: 30px;
@@ -322,12 +338,20 @@
 
                     flex-direction: row;
                   }
-
+/*
                   .info-box {
                     top: 100px;
-                    left: 125px;
+                    left: 90px;
                     box-shadow: None !important;
                     padding: 0rem;
+                  } */
+                  
+                  .info-box {
+                    top: 2rem;
+                    left: -4.5rem;
+                    padding:0rem;
+                    box-shadow: None !important;
+                    width: 200px;
                   }
                   
                   .elevation-3 {
@@ -345,6 +369,7 @@
                     padding: 0px;
                   }
                 
+                
 
                   .card-body p {
                     position: relative;
@@ -357,9 +382,8 @@
                     
                     .info-box-text {
                       position: relative;
-                      right: 110px;
-                      top:50px;
-                    }
+                      top:55%;
+                      right:100%;}
                     
                     .fa-chart-bar {
                       position: relative;
@@ -389,6 +413,43 @@
                       font-size: 2.5rem;
                     }
                     
+                    .main-svg element.style {
+                      background:rgb(245,245,245);
+                    }
                     
+                    rect.bg {
+                      fill: rgb(245, 245, 245) !important;
+                    
+                    }
+                    
+                    svg.main-svg {
+                      background: transparent !important;
+                    }
+                    
+                    .col-sm-8 .card {
+                      align-items: center;
+                    }
+                    
+                    label:not(.form-check-label):not(.custom-file-label) {
+                      font-weight:400;
+                      font-size:1.5rem;
+                    }
+                    
+                    .selectize-control {
+                      width:80%;
+                      left:15px;
+                    }
+                    
+                    .item {
+                      font-size: large;
+                    }
+                    
+                    .option {
+                      font-size: large;
+                    }
+    
+                    .attachment-block .attachment-img {
+                      border-radius:3px;
+                    }
 
                     

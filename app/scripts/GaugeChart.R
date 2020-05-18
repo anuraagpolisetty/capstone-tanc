@@ -16,7 +16,7 @@ services.index <- ServicesIndex(data.2019, "all")
 independence.index <- IndependenceIndex(data.2019, "all")
 satisfaction.index <- OverallIndex(data.2019, "all")
 
-GaugeChart <- function(data, FUN, site, year, colored, title) {
+GaugeChart <- function(data, FUN, site, year, colored, title, chosen.center) {
 
   yr1 <- paste0(year,"-1")
   yr2 <- paste0(year, "-2")
@@ -30,7 +30,8 @@ GaugeChart <- function(data, FUN, site, year, colored, title) {
     new.year <- gsub('-2', '-1', year)
   }
   
-  delta <-
+  cleaned_data <- cleaned_data %>% filter(SiteID == chosen.center)
+  delta <- FUN((IndexData(cleaned_data) %>% filter(Batch == new.year)), 'all')
   
   fig <- plot_ly(
     domain = list(x = c(0, 1), y = c(0, 1)),
@@ -38,7 +39,7 @@ GaugeChart <- function(data, FUN, site, year, colored, title) {
     title = title,
     type = "indicator",
     mode = "gauge+number+delta",
-    delta = list(reference = social.index.2018),
+    delta = list(reference = delta),
     gauge = list(
       axis =list(range = list(NULL, 3)),
       bar = list(color="lightgreen")
@@ -58,6 +59,9 @@ GaugeChart <- function(data, FUN, site, year, colored, title) {
     layout(paper_bgcolor=colored)
   return(fig)
 }
+
+# GaugeChart(cleaned_data, OverallIndex, "all", "2019-2", 'rgb(255,255,255)', "Overall Index")
+
 
 # social = GaugeChart(data.2019, SocialIndex, "all", "2019")
 # physical = GaugeChart(data.2019, PhysicalIndex, "all", "2019")

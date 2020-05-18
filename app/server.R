@@ -38,14 +38,13 @@ function(input, output, session) {
   output$SingleCenters <- renderUI({
     subCenters <- lapply(1:length(centers), function(k) {
       bs4TabItem(tabName = paste0('sub_', gsub(' ', '', centers[k])),
-                 titlePanel(centers[k]),
-                 br(),
                  fluidRow(
                    column(
                      width = 8,
-                     selectInput(paste0(gsub(' ', '', centers[k]), '_answer'),
-                                 label = h3('Pick a Sector to Evaluate'),
-                                 choices = sectors),
+                     bs4Card(title = h1(centers[k]), collapsible = FALSE, closable=FALSE, width = 12,
+                             selectInput(paste0(gsub(' ', '', centers[k]), '_answer'),
+                                         label = h3('Pick a Sector to Evaluate'),
+                                         choices = sectors)),
                      
                      bs4Card(
                        title = "Mean Index Over Time",
@@ -64,23 +63,68 @@ function(input, output, session) {
                    ),
                    column(
                      width= 4,
-                     selectInput(paste0(gsub(' ', '', centers[k]),"_gauge"), label=h3('Filter By Batch'),
-                                 choices = batches,
-                                 selected = batches[k]),
                      bs4Card(inputId = 'Indices',
-                       title = paste('Index for ', centers[k], ' Senior Center'),
-                       closable=FALSE,
-                       width=10,
-                       plotlyOutput(paste0("Social_", gsub(' ', '', centers[k]))),
-                       plotlyOutput(paste0("Physical_", gsub(' ', '', centers[k]))),
-                       plotlyOutput(paste0("Positivity_", gsub(' ', '', centers[k]))),
-                       plotlyOutput(paste0("Services_", gsub(' ', '', centers[k]))),
-                       plotlyOutput(paste0("Independence_", gsub(' ', '', centers[k]))),
-                       plotlyOutput(paste0("Overall_", gsub(' ', '', centers[k])))
+                             title = 
+                               selectInput(label = paste("Mean Index for Each Sector"),paste0(gsub(' ', '', centers[k]),"_gauge"),
+                                           choices = batches,
+                                           selected = batches[k]), 
+                             closable=FALSE,
+                             collapsible = FALSE,
+                             width=10,
+                             plotlyOutput(paste0("Social_", gsub(' ', '', centers[k]))),
+                             plotlyOutput(paste0("Physical_", gsub(' ', '', centers[k]))),
+                             plotlyOutput(paste0("Positivity_", gsub(' ', '', centers[k]))),
+                             plotlyOutput(paste0("Services_", gsub(' ', '', centers[k]))),
+                             plotlyOutput(paste0("Independence_", gsub(' ', '', centers[k]))),
+                             plotlyOutput(paste0("Overall_", gsub(' ', '', centers[k])))
                      )
                    )
                  )
       )
+      # bs4TabItem(tabName = paste0('sub_', gsub(' ', '', centers[k])),
+      #            bs4Card(title = h1(centers[k]), collapsible = FALSE, closable=FALSE, width = 8),
+      #            br(),
+      #            fluidRow(
+      #              column(
+      #                width = 8,
+      #                selectInput(paste0(gsub(' ', '', centers[k]), '_answer'),
+      #                            label = h3('Pick a Sector to Evaluate'),
+      #                            choices = sectors),
+      #                
+      #                bs4Card(
+      #                  title = "Mean Index Over Time",
+      #                  width = 14,
+      #                  collapsible = TRUE,
+      #                  closable = FALSE,
+      #                  plotlyOutput(paste0(gsub(' ', '', centers[k]), '_timeplot'))
+      #                ),
+      #                bs4Card(
+      #                  title = "Response For Sector",
+      #                  width = 14,
+      #                  collapsible=TRUE,
+      #                  closable=FALSE,
+      #                  plotlyOutput(paste0(gsub(' ', '', centers[k]), '_bar'))
+      #                )
+      #              ),
+      #              column(
+      #                width= 4,
+      #                selectInput(paste0(gsub(' ', '', centers[k]),"_gauge"), label=h3('Filter By Batch'),
+      #                            choices = batches,
+      #                            selected = batches[k]),
+      #                bs4Card(inputId = 'Indices',
+      #                  title = paste('Index for ', centers[k], ' Senior Center'),
+      #                  closable=FALSE,
+      #                  width=10,
+      #                  plotlyOutput(paste0("Social_", gsub(' ', '', centers[k]))),
+      #                  plotlyOutput(paste0("Physical_", gsub(' ', '', centers[k]))),
+      #                  plotlyOutput(paste0("Positivity_", gsub(' ', '', centers[k]))),
+      #                  plotlyOutput(paste0("Services_", gsub(' ', '', centers[k]))),
+      #                  plotlyOutput(paste0("Independence_", gsub(' ', '', centers[k]))),
+      #                  plotlyOutput(paste0("Overall_", gsub(' ', '', centers[k])))
+      #                )
+      #              )
+      #            )
+      # )
     })
     
     items <- c(
@@ -100,23 +144,41 @@ function(input, output, session) {
             fluidRow(
               bs4Card(
                 width = 12,
-                title = paste(centers[i], "Senior Center"),
+                height = 200,
+                title = h3(paste(centers[i], "Senior Center")),
                 headerBorder = FALSE,
                 closable = FALSE,
                 collapsible = FALSE,
-                attachmentBlock(
-                  src=images[i]
-                ),
+                plotlyOutput(paste0(gsub(' ', '', centers[i]), "_gauge")),
                 bs4InfoBox(title='View Data',
                            tabName = paste0('sub_', gsub(' ', '', centers[i])),
                            gradientColor = 'primary',
-                           width=3,
-                           icon='chart-bar'),
+                           width=2,
+                           icon='chart-bar')
                 # bs4InfoBoxOutput(paste0(centers[i], '_infobox')),
-                
-                plotlyOutput(paste0(gsub(' ', '', centers[i]), "_gauge"))
+              
               )
             )
+            # fluidRow(
+            #   bs4Card(
+            #     width = 12,
+            #     title = paste(centers[i], "Senior Center"),
+            #     headerBorder = FALSE,
+            #     closable = FALSE,
+            #     collapsible = FALSE,
+            #     attachmentBlock(
+            #       src=images[i]
+            #     ),
+            #     bs4InfoBox(title='View Data',
+            #                tabName = paste0('sub_', gsub(' ', '', centers[i])),
+            #                gradientColor = 'primary',
+            #                width=3,
+            #                icon='chart-bar'),
+            #     # bs4InfoBoxOutput(paste0(centers[i], '_infobox')),
+            #     
+            #     plotlyOutput(paste0(gsub(' ', '', centers[i]), "_gauge"))
+            #   )
+            # )
           })
         )
       ),
@@ -150,8 +212,11 @@ function(input, output, session) {
                                     elevation=NULL,
                                     status='primary')
                       ),
+                      br(),
                       mainPanel(
                         width = 12,
+                        plotlyOutput("race"),
+                        br(),
                         plotlyOutput("map")
                       )
       )),
@@ -217,15 +282,14 @@ function(input, output, session) {
     
     output[[(paste0(gsub(' ', '', centers[i]), '_gauge'))]] <- renderPlotly({
       cleaned.data.2019 <- data.2019 %>% filter(SiteID == centers[i])
-      GaugeChart(cleaned_data, OverallIndex, "all", "2019-2", 'rgb(255,255,255)', 'Overall Index')
+      GaugeChart(cleaned_data, OverallIndex, "all", "2019-2", 'rgb(255,255,255)', 'Overall Index', centers[i])
     })
     lapply(1:length(sectors), function(j) {
       sector.center <- paste0(sectors[j], '_', gsub(' ', '', centers[i]))
       selected.batch <- paste0(gsub(' ', '', centers[i]), '_gauge')
       output[[sector.center]] <- renderPlotly({
         filtered.by.batch <- cleaned_data %>% filter(Batch == input[[selected.batch]])
-        date <- substr(selected.batch, 1, 4)
-        GaugeChart(filtered.by.batch, get(index[j]), 'all', date, 'rgb(255, 255, 255)', sectors[j])
+        GaugeChart(filtered.by.batch, get(index[j]), 'all', input[[selected.batch]], 'rgb(255, 255, 255)', sectors[j], centers[i])
       })
     })
     
@@ -263,6 +327,8 @@ function(input, output, session) {
       time.data <- time.data %>% mutate(Mean = round(total_mean, digits=2))
       ggplot(time.data, aes(x=Batch, y=Mean, group = 1)) + geom_point(color='#0275d8') + geom_line(color='#0275d8') + ylim(1,3) + ylab('Mean Index')
     })
+    
+    bar_data <- allData %>% filter(SiteID == centers[i])
     output[[(paste0(gsub(' ', '', centers[i]), '_bar'))]] <- renderPlotly({
       if(input[[paste0(gsub(' ', '', centers[i]), '_answer')]]== sectors[1]) {
         sum1 <- bar_data %>% group_by(Do.more.volunteer.work) %>% summarise(count1 = n())
@@ -313,6 +379,12 @@ function(input, output, session) {
   source('Survey/Survey.R', local = T)
   output$map <- renderPlotly({
     ggplotly(p, tooltip = 'text')
+  })
+  
+  output$race <- renderPlotly({
+    race.break <- data %>% unite('Race.Breakdown', Race...American.Indian.or.Alaska.Native:Race...White.or.Caucasian, na.rm = TRUE, remove=TRUE)
+    grouped.by.race <- race.break %>% group_by(Race.Breakdown) %>% summarise(count=n()) %>% filter((count > 5) & (Race.Breakdown != '')) %>% mutate(Race.Breakdown = reorder(Race.Breakdown,count))
+    ggplotly(ggplot(grouped.by.race, aes(x=Race.Breakdown, y=count)) + geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ coord_flip() + ylab("Count") + xlab("Racial Breakdown")+ ggtitle("Racial Breakdown of All Centers") + theme(axis.title.x = element_text(margin = margin(l = 20)))) 
   })
   
   
