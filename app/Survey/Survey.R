@@ -2,27 +2,17 @@ library(shiny)
 library(bs4Dash)
 source('Survey/Sheets.R')
 
-# 
-fieldsMandatory <- c("which_center","zipcode",
-                     # "do_more_volunteer_work", "see_friends", "physically_active", 
-                     "would_recommend")
-fieldsAll <- c("which_center","zipcode", "do_more_volunteer_work", "see_friends", "better_health",
-               "better_meals", "more_energy", "happier_life", "ask_services", "more_independent", 
-               "positive_effect", "learn_new_things", "learn_new_services","physically_active", 
-               "would_recommend", "free_response")
+# Reads and saves all the survey answers and sends to Sheets.R to upload to Google Sheets
 
-id.questions <- all_questions[1:11]
-survey.questions <- all_questions[12:28]
 
-questions <- for(q in survey.questions) {
-  return (bs4Card(
-    title = q,
-    width = 14,
-    collapsible = FALSE,
-    closable=FALSE,
-    radioButtons(q, label="", choices = answers, inline=FALSE, selected = character(0))
-  ))
-}
+survey.fields <- all_questions
+response.fields <- c("Please tell us how participating in the senior center has changed your life",
+                     "I participate in the following activities at the senior Center")
+id.fields <- c("Race/Ethnicity", "Zipcode", "What is your estimated annual income")
+
+fieldsMandatory <- c(survey.fields, response.fields, id.fields) 
+
+all.columns <- c("Batch", "SiteID", "Date", fieldsMandatory)
 
 responsesDir <- file.path("Survey/responses")
 epochTime <- function() {
@@ -30,8 +20,18 @@ epochTime <- function() {
 }
 
 humanTime <- function() {
-  format(Sys.time(), "%Y%m%d-%H%M%OS")
+  format(Sys.time(), "%Y-%m-%d %H:%M:%OS")
 }
+
+# Calculate the batch column based on month of survey taken
+# ex. If taken in January - June, batch is 1 (ex. "2020-1")
+calc_batch <- function(time) {
+  year <- substr(time, 1, 4)
+  month <- as.numeric(substr(time, 6, 7))
+  batch <- if(month <= 6) paste0(year, "-1") else paste0(year, "-2")
+  batch
+}
+
 
 v <- reactiveValues(data = character(0))
 
@@ -47,22 +47,23 @@ observe({
   # enable/disable the submit button
   shinyjs::toggleState(id = "submit", condition = mandatoryFilled)
   shinyjs::toggleClass(id = "submit", condition = mandatoryFilled, class = "btn-primary")
+  shinyjs::toggle(id="submit_msg", condition = !mandatoryFilled)
 })
 
 
-field <- "Would recommend the senior center to a friend or family member"
-
 # Saves and formats the submit data
 formData <- reactive({
-  data <- sapply(all_questions, function(x) input[[x]])
-  data <- c(data, timestamp = epochTime())
+  data <- sapply(fieldsMandatory, function(x) input[[x]])
+  siteID <- data[1]
+  # Columns match with Batch #, SitID, TimeStamp, and the rest of the questions
+  data <- c(calc_batch(humanTime()), siteID, humanTime(), data[-1])
   data <- t(data)
   data
 })
 
 # action to take when submit button is pressed
 observeEvent(input$submit, {
-  saveData(formData()) # saves the data in function in Sheets.R
+  saveData(formData(), columns = all.columns) # saves the data in function in Sheets.R
   shinyjs::reset("form")
   shinyjs::hide("form")
   shinyjs::show("thankyou_msg")

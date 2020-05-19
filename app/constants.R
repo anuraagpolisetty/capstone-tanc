@@ -1,3 +1,4 @@
+source("auth.R")
 # This file is used to store all constant variables that can be accessed from any other file.
 # Anything changes or additions to this file will update accordingly in the overall dashboard.
 # You can add a new center to the 'centers' variable which will automatically create a new
@@ -51,7 +52,7 @@ index <<- c('SocialIndex', 'PhysicalIndex', 'PositiveIndex', 'ServicesIndex', 'I
 income_brackets <<- c("Very Low: Less than $18550 for 1 person; or $21,2000 for 2 people",
                      "Low: Less for than $30,900 for 1 person; or $35,300 for 2 people",
                      "Moderate: Less than $44,750 for 1 person; or $51,150 for 2 people",
-                     "Above Moderate: More than $44,750 for 1 person; or $51,150 for 2 people")
+                     "Above Moderate: More than $44,750 for 1 person; or $51,150 for 2 people", "N/A")
 
 race_ethnicity <<- c("American Indian or Alaska Native",
                     "Asian, Asian-American",
@@ -59,6 +60,14 @@ race_ethnicity <<- c("American Indian or Alaska Native",
                     "Hawaiian Native or Pacific Islander",
                     "Hispanic, Latino",
                     "Other",
-                    "White or Caucasian")
+                    "White or Caucasian",
+                    "N/A")
 
-# 
+# Keep all spreadsheet IDs and center names in a single globally-accessible dataframe
+ids <- vector()
+for (i in centers) {
+  center <- drive_get(i)
+  center_id <- unclass(as_sheets_id(center))
+  ids[i] <- center_id
+} 
+center_ids <<- data.frame(center=centers, id=ids)
