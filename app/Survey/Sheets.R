@@ -1,5 +1,7 @@
-source("auth.R", local = T)
-source("Survey/Survey.R", local=T)
+library("googledrive")
+library("googlesheets4")
+# source("auth.R", local=T)
+# source("Survey/Survey.R", local=T)
 ## Receives and uploads data from survey to Google Sheet corresponding to correct center
 
 # Root folder for storing all files:
@@ -23,10 +25,7 @@ total <-drive_ls("ADS Survey Responses", q= " name contains \'total\'", type="sp
 # saves data to specific center's google sheet
 saveData <- function(data, columns) {
   df <- data.frame(matrix(unlist(data), ncol=length(data)), stringsAsFactors=FALSE)
-  # print(data)
-  # print(df)
-  print(colnames(data))
-  print(colnames(df))
+
   colnames(df) <- columns
   
   # Access center name and Google sheet id

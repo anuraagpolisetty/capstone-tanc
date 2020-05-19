@@ -1,5 +1,5 @@
 library("googledrive")
-library("googlesheets4") # I am using the developing version 0.1.0.9000
+library("googlesheets4")
 library("shiny")
 
 # You want to deploy an app in Shinyapps.io or other server
@@ -22,7 +22,7 @@ drive_auth(cache = ".secrets", email = "adscenterdata@gmail.com")
 gs4_auth(token = drive_token())
 
 # drive_ls()
-# 
+
 # data <- list("Data 3", "Data 4")
 # df <- data.frame(do.call("rbind", lapply(data, data.frame)))
 
@@ -45,45 +45,3 @@ gs4_auth(token = drive_token())
 folder_ss <- "1VrhYtDr3awzLxH5HVkCz3pqXGZaxP8uj"
 
 
-
-# library(googledrive)
-# library(googlesheets4)
-# library(googleAuthR)
-# library(httr)
-# library(shiny)
-
-
-# options(gargle_oauth_cache = ".secrets")
-# options(gargle_quiet = FALSE)
-# 
-# gs4_auth()
-
-
-# file.remove('.httr-oauth')
-# options(httr_oob_default=TRUE) 
-# 
-# gs4_deauth()
-# ss <- "1KR37m3GOSVplXXBYkgqdP6YytE-ZAFQCyNLcJV4vrsA"
-# read_sheet(ss)
-# 
-# oauth2.0_token(
-#   endpoint = oauth_endpoints("google"),
-#   app = oauth_app(
-#     "google", 
-#     key = getOption("googlesheets4.client_id"),
-#     secret = getOption("googlesheets4.client_secret")
-#   ),
-#   scope = c(
-#     "https://spreadsheets.google.com/feeds", 
-#     "https://www.googleapis.com/auth/drive"),
-#   use_oob = TRUE,
-#   cache = TRUE
-# )
-# 
-# gs_ls() # Test
-
-# drive_auth(path = "auth/ads-center-dashboard-key2.json")
-# 
-# # # Stores the location of the drive folder
-# folders <- drive_get("ADS Survey Responses")
-# drive_ls("ADS Survey Responses")
