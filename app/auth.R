@@ -10,7 +10,7 @@ options(gargle_oauth_cache = ".secrets")
 # options(gargle_quiet = FALSE) # So you can know what is happening
 # Authenticate in interactive mode (run the app) ONCE and check if the token 
 # has been stored inside the .secrets folder, after that just comment this line
-#drive_auth() # Authenticate to produce the token in the cache folder (commented after generating)
+# drive_auth() # Authenticate to produce the token in the cache folder (commented after generating)
 # Grant permission to googlesheets to access to the token produced
 #gs4_auth(token = drive_token()) (commented after authenticated)
 
@@ -29,11 +29,8 @@ gs4_auth(token = drive_token())
 # df <- data.frame(matrix(unlist(data), ncol=length(data)), stringsAsFactors=FALSE)
 
 
-ss_ACRS <- "1KR37m3GOSVplXXBYkgqdP6YytE-ZAFQCyNLcJV4vrsA"
+# store every single sheet in constants folder
 
-sheet_append(ss_ACRS, data=df)
-
-# gonna have to store every single sheet in constants folder
 
 # THIRD STEP---
 # Now you can deploy your app in shinyapps.io!!
@@ -56,10 +53,10 @@ folder_ss <- "1VrhYtDr3awzLxH5HVkCz3pqXGZaxP8uj"
 # library(shiny)
 
 
-options(gargle_oauth_cache = ".secrets")
-options(gargle_quiet = FALSE)
-
-gs4_auth()
+# options(gargle_oauth_cache = ".secrets")
+# options(gargle_quiet = FALSE)
+# 
+# gs4_auth()
 
 
 # file.remove('.httr-oauth')

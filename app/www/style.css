@@ -452,4 +452,17 @@
                       border-radius:3px;
                     }
 
+                    .shiny-input-radiogroup:not(.shiny-input-container-inline) {
+                      width: 70%;
+                    }
+
+                    label:not(.form-check-label):not(.custom-file-label)  {
+                        font-weight: 500;
+                        width: 100%;
+                    }
+
+                    .shiny-input-container:not(.shiny-input-container-inline) {
+                      width: 500px;
+                    }
+
                     

@@ -18,22 +18,73 @@ list(
         "SiteID",
         label = h6(labelMandatory("Which senior center do you currently attend?")),
         choices = centers, #centers,
-        selected = centers[1] #centers[1]
+        selected = centers[1]
       ),
-      textInput("zipcode", labelMandatory("What is your zipcode"), ""),
+      numericInput("Zipcode", labelMandatory("What is your zipcode"), ""),
       h3("Because I go to the senior center, I ..."),
       lapply(1:length(questions), function(i) {
         bs4Card(
-          title = labelMandatory(all_questions[i]),
+          title = h4(labelMandatory(all_questions[i])),
           width = 14,
           collapsible = FALSE,
           closable=FALSE,
           radioButtons(all_questions[i], label="", choices = answers, inline=FALSE, selected = character(0))
         )
       }),
-      
+      bs4Card(
+        title = h4(labelMandatory("Please tell us how participating in the senior center has changed your life")),
+        width = 14,
+        collapsible = FALSE,
+        closable=FALSE,
+        textInput("Please tell us how participating in the senior center has changed your life", label="")
+      ),
+      bs4Card(
+        title = h4(labelMandatory("I participate in the following activities at the senior Center")),
+        width = 14,
+        collapsible = FALSE,
+        closable=FALSE,
+        textInput("I participate in the following activities at the senior Center", label="")
+      ),
+  
+      # bs4Card(
+      #   title = h3(labelMandatory("Please tell us how participating in the senior center has changed your life")),
+      #   width = 14,
+      #   collapsible = FALSE,
+      #   closable=FALSE,
+      #   # textAreaInput("free_response1",
+      #   #               NULL,
+      #   #               "summary",
+      #   #               # placeholder = "Type your answer in here...",
+      #   #               # resize = "both",
+      #   #               width = validateCssUnit(800)
+      #   #               ),
+      # ),
+      # textAreaInput("free_response2",
+      #               span("I participate in the following activities at the senior Center"),
+      #               placeholder = "Type your activities in here...",
+      #               resize = "both",
+      #               width = validateCssUnit(800)
+      #               ),
+      bs4Card(
+        title = labelMandatory("How would you describe your race/ethnicity"),
+        width = 14,
+        collapsible = FALSE,
+        closable=FALSE,
+        radioButtons("Race/Ethnicity", label="", choices = race_ethnicity, inline=FALSE, selected = character(0))
+      ),
+      bs4Card(
+        title = labelMandatory("What is your estimated annual income"),
+        width = 14,
+        collapsible = FALSE,
+        closable=FALSE,
+        radioButtons("What is your estimated annual income", label="", choices = income_brackets, inline=FALSE, selected = character(0))
+      ),
       # Submit button to upload responses
-      actionButton("submit", "Submit")
+      actionButton("submit", "Submit"),
+      div(
+        id="submit_msg",
+        span("Please make sure every question has been answered", id="submit_message",class = "mandatory_star")
+      )
   ),
   shinyjs::hidden(
     div(
@@ -44,128 +95,3 @@ list(
   )
   
 )
-# list(
-#   titlePanel("Senior Center Survey Form"),
-#   shinyjs::useShinyjs(),
-#   shinyjs::inlineCSS(appCSS),
-  # div(
-  #   id = "form",
-  #   h5("Think about your life since you started since you started attending the senior center. Below
-  #      are some ways that senior centers might make a difference. Please select the choice that best
-  #      matches your response for each statement."),
-  #   selectInput(
-  #     "SiteID",
-  #     label = h6(labelMandatory("Which senior center do you currently attend?")),
-  #     choices = c("ACRS", "Ballard", "Greenwood", "IDIC", "PMSC", "Sunshine Garden",
-  #                 "Wallingford", "West Seattle", "CISC", "South Park", "GWP", "Southeast"), #centers,
-  #     selected = "Greenwood" #centers[1]
-  #   ),
-  #   textInput("zipcode", labelMandatory("What is your zipcode"), ""),
-  #   h3("Because I go to the senior center, I ..."),
-# 
-#     bs4Card(
-#       title = "I do more volunteer work at my Senior Center",
-#       width = 14,
-#       collapsible = FALSE,
-#       closable=FALSE,
-#       radioButtons("do_more_volunteer_work", label="", choices = answers, inline=FALSE, selected = character(0))
-#     ),
-#     bs4Card(
-#       title = "I see friends more often/make new friends at my Senior Center",
-#       width = 14,
-#       collapsible = FALSE,
-#       closable=FALSE,
-#       radioButtons("see_friends", label="", choices = answers, inline=FALSE, selected = character(0))
-#     ),
-#     bs4Card(
-#       title = "I take better care of my health at my Senior Center",
-#       width = 14,
-#       collapsible = FALSE,
-#       closable=FALSE,
-#       radioButtons("better_health", label="", choices = answers, inline=FALSE, selected = character(0))
-#     ),
-#     bs4Card(
-#       title = "I eat meals that are better for me at my Senior Center",
-#       width = 14,
-#       collapsible = FALSE,
-#       closable=FALSE,
-#       radioButtons("better_meals", label="", choices = answers, inline=FALSE, selected = character(0))
-#     ),
-#     bs4Card(
-#       title = "I have more energy",
-#       width = 14,
-#       collapsible = FALSE,
-#       closable=FALSE,
-#       radioButtons("more_energy", label="", choices = answers, inline=FALSE, selected = character(0))
-#     ),
-#     bs4Card(
-#       title = "I feel happier or more satisfied with my life",
-#       width = 14,
-#       collapsible = FALSE,
-#       closable=FALSE,
-#       radioButtons("happier_life", label="", choices = answers, inline=FALSE, selected = character(0))
-#     ),
-#     bs4Card(
-#       title = "I know where to ask if I need service such as a ride to doctor",
-#       width = 14,
-#       collapsible = FALSE,
-#       closable=FALSE,
-#       radioButtons("ask_services", label="", choices = answers, inline=FALSE, selected = character(0))
-#     ),
-#     bs4Card(
-#       title = "I feel more able to stay independent",
-#       width = 14,
-#       collapsible = FALSE,
-#       closable=FALSE,
-#       radioButtons("more_independent", label="", choices = answers, inline=FALSE, selected = character(0))
-#     ),
-#     bs4Card(
-#       title = "I feel that the senior center has had a positive effect on my life",
-#       width = 14,
-#       collapsible = FALSE,
-#       closable=FALSE,
-#       radioButtons("positive_effect", label="", choices = answers, inline=FALSE, selected = character(0))
-#     ),
-#     bs4Card(
-#       title = "I learn new things at my senior center",
-#       width = 14,
-#       collapsible = FALSE,
-#       closable=FALSE,
-#       radioButtons("learn_new_things", label="", choices = answers, inline=FALSE, selected = character(0))
-#     ),
-#     bs4Card(
-#       title = "I have learned about services and benefits at my senior center",
-#       width = 14,
-#       collapsible = FALSE,
-#       closable=FALSE,
-#       radioButtons("learn_new_services", label="", choices = answers, inline=FALSE, selected = character(0))
-#     ),
-#     bs4Card(
-#       title = "I am more physically active",
-#       width = 14,
-#       collapsible = FALSE,
-#       closable=FALSE,
-#       radioButtons("physically_active", label="", choices = answers, inline=FALSE, selected = character(0))
-#     ),
-#     bs4Card(
-#       title = labelMandatory("I would recommend my senior center to a friend or family member"),
-#       width = 14,
-#       collapsible = FALSE,
-#       closable=FALSE,
-#       radioButtons("would_recommend", label="", choices = answers, inline=FALSE, selected = character(0))
-#     ),
-#     textInput("free_response", "Please tell us how participating in the senior center has changed your life"),
-# 
-#   
-    # # Submit button to upload responses
-    # actionButton("submit", "Submit")
-#   # 
-#     ),
-# shinyjs::hidden(
-#     div(
-#       id = "thankyou_msg",
-#       h3("Thanks, your response was submitted successfully!"),
-#       actionLink("submit_another", "Submit another response")
-#     )
-#   )
-# )
