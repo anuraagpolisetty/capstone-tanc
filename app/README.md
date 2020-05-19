@@ -1,5 +1,7 @@
 # ADS Dashboard app folder
-This folder holds all the source code for creating the ADS Dashboard. 
+This folder holds all the source code for creating the ADS Dashboard, which is published 
+[here](https://anuraagpolisetty.shinyapps.io/SurveyVisualizationDashboard)
+
 
 ## Structure
 Each sub folder contains files that build different parts of the dashboard. 

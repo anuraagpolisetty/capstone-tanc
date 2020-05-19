@@ -18,21 +18,53 @@ list(
         "SiteID",
         label = h6(labelMandatory("Which senior center do you currently attend?")),
         choices = centers, #centers,
-        selected = centers[1] #centers[1]
+        selected = centers[1]
       ),
-      textInput("zipcode", labelMandatory("What is your zipcode"), ""),
+      numericInput("Zipcode", labelMandatory("What is your zipcode"), ""),
       h3("Because I go to the senior center, I ..."),
       lapply(1:length(questions), function(i) {
         bs4Card(
-          title = labelMandatory(all_questions[i]),
+          title = h4(labelMandatory(all_questions[i])),
           width = 14,
           collapsible = FALSE,
           closable=FALSE,
           radioButtons(all_questions[i], label="", choices = answers, inline=FALSE, selected = character(0))
         )
       }),
-      textInput("free_response1", "Please tell us how participating in the senior center has changed your life"),
-      textInput("free_response2", "I participate in the following activities at the senior Center"),
+      bs4Card(
+        title = h4(labelMandatory("Please tell us how participating in the senior center has changed your life")),
+        width = 14,
+        collapsible = FALSE,
+        closable=FALSE,
+        textInput("Please tell us how participating in the senior center has changed your life", label="")
+      ),
+      bs4Card(
+        title = h4(labelMandatory("I participate in the following activities at the senior Center")),
+        width = 14,
+        collapsible = FALSE,
+        closable=FALSE,
+        textInput("I participate in the following activities at the senior Center", label="")
+      ),
+  
+      # bs4Card(
+      #   title = h3(labelMandatory("Please tell us how participating in the senior center has changed your life")),
+      #   width = 14,
+      #   collapsible = FALSE,
+      #   closable=FALSE,
+      #   # textAreaInput("free_response1",
+      #   #               NULL,
+      #   #               "summary",
+      #   #               # placeholder = "Type your answer in here...",
+      #   #               # resize = "both",
+      #   #               width = validateCssUnit(800)
+      #   #               ),
+      # ),
+      # textAreaInput("free_response2",
+      #               span("I participate in the following activities at the senior Center"),
+      #               placeholder = "Type your activities in here...",
+      #               resize = "both",
+      #               width = validateCssUnit(800)
+      #               ),
       bs4Card(
         title = labelMandatory("How would you describe your race/ethnicity"),
         width = 14,
@@ -49,8 +81,10 @@ list(
       ),
       # Submit button to upload responses
       actionButton("submit", "Submit"),
-      span("Please make sure every question has been answered", class = "mandatory_star")
-      
+      div(
+        id="submit_msg",
+        span("Please make sure every question has been answered", id="submit_message",class = "mandatory_star")
+      )
   ),
   shinyjs::hidden(
     div(

@@ -1,5 +1,7 @@
+source("auth.R", local = T)
+# source("Survey/Sheets.R", local = T)
 # This file is used to store all constant variables that can be accessed from any other file.
-# Anything changes or additions to this file will update accordingly in the overall dashboard.
+# Anyt changes or additions to this file will update accordingly in the overall dashboard.
 # You can add a new center to the 'centers' variable which will automatically create a new
 # tab for the center.
 # Be sure to use '<<-' to store global variables that can be accessed from any other file
@@ -22,6 +24,7 @@ images <<- c('acrs.jpg', 'ballard.jpg', 'greenwood.jpg', 'idic.jpg', 'pike.jpg',
              )
 
 
+# Add new survey questions by adding it to the end of this comma-seperated list
 all_questions <<- c("Do more volunteer work",
                     "See friends more often make new friends",
                     "Take better care of my health",
@@ -51,7 +54,7 @@ index <<- c('SocialIndex', 'PhysicalIndex', 'PositiveIndex', 'ServicesIndex', 'I
 income_brackets <<- c("Very Low: Less than $18550 for 1 person; or $21,2000 for 2 people",
                      "Low: Less for than $30,900 for 1 person; or $35,300 for 2 people",
                      "Moderate: Less than $44,750 for 1 person; or $51,150 for 2 people",
-                     "Above Moderate: More than $44,750 for 1 person; or $51,150 for 2 people")
+                     "Above Moderate: More than $44,750 for 1 person; or $51,150 for 2 people", "N/A")
 
 race_ethnicity <<- c("American Indian or Alaska Native",
                     "Asian, Asian-American",
@@ -59,6 +62,29 @@ race_ethnicity <<- c("American Indian or Alaska Native",
                     "Hawaiian Native or Pacific Islander",
                     "Hispanic, Latino",
                     "Other",
-                    "White or Caucasian")
+                    "White or Caucasian",
+                    "N/A")
 
-# 
+
+# Keep all spreadsheet IDs and center names in a single globally-accessible dataframe
+# Updates google sheets even when a new center is added
+# drive_auth(path = ".secrets")
+# options(
+#   gargle_oauth_cache = ".secrets",
+#   gargle_oauth_email = TRUE
+# )
+ids <- vector()
+for (c in centers) {
+  id <- drive_get(c)$id
+  
+    # IF no sheet id is found, create a new google sheet (with column names)
+    if(length(id) == 0) {
+      id <- createNewSheet(c)
+    }
+  
+  # Continue saving sheet id to center_ids dataframe
+  ids[c] <- id
+} 
+
+## Store all center IDs in globally-accessible dataframe
+center_ids <<- data.frame(center=centers, id=ids)
