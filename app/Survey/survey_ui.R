@@ -18,7 +18,7 @@ list(
         "SiteID",
         label = h6(labelMandatory("Which senior center do you currently attend?")),
         choices = centers, #centers,
-        selected = character(0) #centers[1]
+        selected = centers[1]
       ),
       numericInput("Zipcode", labelMandatory("What is your zipcode"), ""),
       h3("Because I go to the senior center, I ..."),

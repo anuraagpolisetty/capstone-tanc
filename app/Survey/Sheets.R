@@ -1,5 +1,5 @@
 source("auth.R", local = T)
-
+source("Survey/Survey.R", local=T)
 ## Receives and uploads data from survey to Google Sheet corresponding to correct center
 
 # Root folder for storing all files:
@@ -23,6 +23,10 @@ total <-drive_ls("ADS Survey Responses", q= " name contains \'total\'", type="sp
 # saves data to specific center's google sheet
 saveData <- function(data, columns) {
   df <- data.frame(matrix(unlist(data), ncol=length(data)), stringsAsFactors=FALSE)
+  # print(data)
+  # print(df)
+  print(colnames(data))
+  print(colnames(df))
   colnames(df) <- columns
   
   # Access center name and Google sheet id
@@ -31,18 +35,7 @@ saveData <- function(data, columns) {
   
   # IF no sheet id is found, create a new google sheet (with column names)
   if(is.na(id)) {
-    print("No id found, creating a new Google Sheet...")
-    sheet <- gs4_create(center_name)
-    drive_mv(file = sheet, path = as_id(folder_url))
-    # Add row of column names
-    column.names <- do.call(rbind.data.frame, list(columns))
-    sheet_append(sheet, column.names)
-    
-    # get center Id of sheet and add to center_ids data frame (in constants.R)
-    new_center_id <- sheet
-    center_ids[nrow(center_ids) + 1,] = list(center_name, new_center_id)
-    
-    id <- center_ids[center_name, "id"]
+    id <- createNewSheet(center_name)
   }
   
   # Finally, add df to the sheet id
@@ -50,20 +43,22 @@ saveData <- function(data, columns) {
   
 }
 
-
-
-
-# ids <- vector()
-# for (i in centers) {
-#   center <- drive_get(i)
-#   center_id <- unclass(as_sheets_id(center))
-#   ids[i] <- center_id
-# }
-# center_ids <- data.frame(center=centers, id=ids)
-# 
-# center_ids["ACRS","id"]
-# 
-# center_ids %>% select(center)
+# Creates a new google sheet and returns its id
+createNewSheet <- function(center_name){
+  print("Creating a new Google Sheet...")
+  
+  sheet <- gs4_create(center_name)
+  drive_mv(file = sheet, path = as_id(folder_url))
+  # Add row of column names
+  column.names <- do.call(rbind.data.frame, list(all.columns))
+  sheet_append(sheet, column.names)
+  
+  # get center Id of sheet and add to center_ids data frame (in constants.R)
+  new_center_id <- sheet
+  center_ids[nrow(center_ids) + 1,] = list(center_name, new_center_id)
+  
+  new_center_id
+}
 
 
 
