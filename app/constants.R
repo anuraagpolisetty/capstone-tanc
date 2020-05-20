@@ -1,6 +1,3 @@
-# source("auth.R", local = T)
-# library(googledrive)
-# source("Survey/Sheets.R", local = T)
 # This file is used to store all constant variables that can be accessed from any other file.
 # Anyt changes or additions to this file will update accordingly in the overall dashboard.
 # You can add a new center to the 'centers' variable which will automatically create a new
@@ -87,5 +84,5 @@ for (c in centers) {
   ids[c] <- id
 }
 # 
-# ## Store all center IDs in globally-accessible dataframe
-# center_ids <<- data.frame(center=centers, id=ids)
+## Store all center IDs in globally-accessible dataframe
+center_ids <<- data.frame(center=centers, id=ids)

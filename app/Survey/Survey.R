@@ -14,7 +14,6 @@ fieldsMandatory <- c(survey.fields, response.fields, id.fields)
 
 all.columns <<- c("Batch", "SiteID", "Date", fieldsMandatory)
 
-responsesDir <- file.path("Survey/responses")
 epochTime <- function() {
   as.integer(Sys.time())
 }
