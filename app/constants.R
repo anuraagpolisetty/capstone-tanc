@@ -1,4 +1,5 @@
-source("auth.R", local = T)
+# source("auth.R", local = T)
+# library(googledrive)
 # source("Survey/Sheets.R", local = T)
 # This file is used to store all constant variables that can be accessed from any other file.
 # Anyt changes or additions to this file will update accordingly in the overall dashboard.
@@ -76,15 +77,15 @@ race_ethnicity <<- c("American Indian or Alaska Native",
 ids <- vector()
 for (c in centers) {
   id <- drive_get(c)$id
-  
+
     # IF no sheet id is found, create a new google sheet (with column names)
     if(length(id) == 0) {
       id <- createNewSheet(c)
     }
-  
+
   # Continue saving sheet id to center_ids dataframe
   ids[c] <- id
-} 
-
-## Store all center IDs in globally-accessible dataframe
-center_ids <<- data.frame(center=centers, id=ids)
+}
+# 
+# ## Store all center IDs in globally-accessible dataframe
+# center_ids <<- data.frame(center=centers, id=ids)

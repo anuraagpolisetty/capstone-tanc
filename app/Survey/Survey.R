@@ -54,13 +54,10 @@ observe({
 # Saves and formats the submit data
 formData <- reactive({
   data <- sapply(c("SiteID",fieldsMandatory), function(x) input[[x]])
-  print(data)
   siteID <- data[1]
   # Columns match with Batch #, SitID, TimeStamp, and the rest of the questions
   data <- c(calc_batch(humanTime()), siteID, humanTime(), data[-1])
-  print(data)
   data <- t(data)
-  print(data)
   data
 })
 

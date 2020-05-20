@@ -1,5 +1,5 @@
-source("auth.R", local = T)
-source("Survey/Survey.R", local=T)
+library(googledrive)
+library(googlesheets4)
 ## Receives and uploads data from survey to Google Sheet corresponding to correct center
 
 # Root folder for storing all files:
@@ -10,6 +10,11 @@ source("Survey/Survey.R", local=T)
 # if changing the location of ADS Survey Responses folder, paste url here:
 folder_url="https://drive.google.com/drive/folders/1VrhYtDr3awzLxH5HVkCz3pqXGZaxP8uj"
 
+options(
+  gargle_oauth_cache = here::here(".secrets"),
+  gargle_oauth_email = TRUE
+)
+
 folder_id <- "1VrhYtDr3awzLxH5HVkCz3pqXGZaxP8uj"
 folder <- drive_get(folder_url)
 folder_name <- folder$name
@@ -17,16 +22,12 @@ folder_name <- folder$name
 # drive_ls(folder_url)
 # drive_ls("ADS Survey Responses")
 
-file_names <-drive_ls("ADS Survey Responses", q= "not name contains \'total\'", type="spreadsheet")$name
-total <-drive_ls("ADS Survey Responses", q= " name contains \'total\'", type="spreadsheet")
+# file_names <-drive_ls("ADS Survey Responses", q= "not name contains \'total\'", type="spreadsheet")$name
+# total <-drive_ls("ADS Survey Responses", q= " name contains \'total\'", type="spreadsheet")
 
 # saves data to specific center's google sheet
 saveData <- function(data, columns) {
   df <- data.frame(matrix(unlist(data), ncol=length(data)), stringsAsFactors=FALSE)
-  # print(data)
-  # print(df)
-  print(colnames(data))
-  print(colnames(df))
   colnames(df) <- columns
   
   # Access center name and Google sheet id
