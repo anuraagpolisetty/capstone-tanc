@@ -180,3 +180,33 @@ time.data <- pike_cleaned_data %>% group_by(Batch) %>%  summarise(mean1 = mean(W
 social.life.means <-  time.data %>% select(mean1, mean2) %>% rowMeans()
 time.data$total_mean <- social.life.means
 
+
+################## Get New Racial Breakdown #######################3
+
+race.break <- data %>% unite('Race.Breakdown', Race...American.Indian.or.Alaska.Native:Race...White.or.Caucasian, na.rm = TRUE, remove=FALSE)
+`%notin%` = Negate(`%in%`)
+two.or.more <- race.break %>% filter((!is.na(Race.Breakdown)) & (Race.Breakdown != '') & (Race.Breakdown != 'American Indian or Alaska Native') & (Race.Breakdown != 'Asian, Asian-American') & (Race.Breakdown %notin% 'Black, African-American, Other African') & ('Hawaiian Native or Pacific Islander' != Race.Breakdown) & ('Hispanic, Latino' != Race.Breakdown) &('Other' != Race.Breakdown) & ('White or Caucasian' != Race.Breakdown)) 
+grouped.by.race <- race.break %>% group_by(Race.Breakdown) %>% summarise(count=n()) %>% filter((Race.Breakdown != '')) %>% mutate(Race.Breakdown = reorder(Race.Breakdown,count))
+
+races <- c()
+counts <- c()
+for(i in colnames(data[28:34])) {
+  subset <- data %>% filter(!is.na(!!sym(i))) %>% group_by(!!sym(i)) %>% summarise(count = n())
+  races <- c(races,toString(subset[,1]))
+  counts <- c(counts, as.integer(subset[,2]))
+}
+
+races <- c(races, 'Two or More')
+counts <- c(counts, nrow(two.or.more))
+
+grouped.race.data <- data.frame('Race' = races, 'Count' = counts)
+grouped.race.data <- grouped.race.data %>% mutate(Race = reorder(Race,Count))
+ggplotly(ggplot(grouped.race.data, aes(x=Race, y=Count)) + geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ coord_flip() + ylab("Count") + xlab("Racial Breakdown")+ ggtitle("Racial Breakdown of All Centers") + theme(axis.title.x = element_text(margin = margin(l = 20)))) 
+
+# count <- c()
+# for(i in data[28:34]){
+#   print(!is.na(i))
+#   n <- sum(!is.na(i), na.rm = FALSE)
+#   count <- c(count,n)
+# }
+# race.data <- data.frame('race' = colnames(data)[28:34], 'counts' = count)

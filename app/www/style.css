@@ -318,6 +318,12 @@
                       margin-right: -50%;
                       transform: translate(-50%, -50%);
                   }
+                  
+                  div#shiny-tab-home h1 {
+                    position:relative;
+                    top:-3rem;
+                  }
+                  
                   h3.card-title {
                     font-size: 30px;
                   }
@@ -429,15 +435,15 @@
                     .col-sm-8 .card {
                       align-items: center;
                     }
-                    
+                    /*
                     label:not(.form-check-label):not(.custom-file-label) {
                       font-weight:400;
-                      font-size:1rem;
-                    }
+                      font-size:1.5rem;
+                    } */
                     
-                    .selectize-control {
-                      width:80%;
-                      left:15px;
+                    #SingleCenters .card-header .selectize-control {
+                      width:50%;
+                      left:25%;
                     }
                     
                     .item {
@@ -465,4 +471,7 @@
                       width: 500px;
                     }
 
+                    #SingleCenters .shiny-input-container:not(.shiny-input-container-inline) {
+                      width: 300px;
+                    }
                     

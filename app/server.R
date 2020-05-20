@@ -23,6 +23,7 @@ labelMandatory <- function(label) {
 grouped.data <- data %>% group_by(SiteID) %>% summarise(count=n())
 batches.inputted <- data %>% group_by(Batch) %>% summarise(count=n())
 
+
 function(input, output, session) {
   # source('Single_Center/pike_server.R', local = T)
   # source('Single_Center/wallingford_server.R', local = T)
@@ -66,8 +67,8 @@ function(input, output, session) {
                      bs4Card(inputId = 'Indices',
                              title = 
                                selectInput(label = paste("Mean Index for Each Sector"),paste0(gsub(' ', '', centers[k]),"_gauge"),
-                                           choices = batches,
-                                           selected = batches[k]), 
+                                           #choices = batches[k]),
+                                           choices = cleaned_data %>% filter(SiteID == centers[k]) %>% group_by(Batch) %>% summarise(count = n()) %>% pull(Batch)), 
                              closable=FALSE,
                              collapsible = FALSE,
                              width=10,
@@ -385,9 +386,41 @@ function(input, output, session) {
   })
   
   output$race <- renderPlotly({
-    race.break <- data %>% unite('Race.Breakdown', Race...American.Indian.or.Alaska.Native:Race...White.or.Caucasian, na.rm = TRUE, remove=TRUE)
-    grouped.by.race <- race.break %>% group_by(Race.Breakdown) %>% summarise(count=n()) %>% filter((count > 5) & (Race.Breakdown != '')) %>% mutate(Race.Breakdown = reorder(Race.Breakdown,count))
-    ggplotly(ggplot(grouped.by.race, aes(x=Race.Breakdown, y=count)) + geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ coord_flip() + ylab("Count") + xlab("Racial Breakdown")+ ggtitle("Racial Breakdown of All Centers") + theme(axis.title.x = element_text(margin = margin(l = 20)))) 
+    race.break <- data %>% unite('Race.Breakdown', Race...American.Indian.or.Alaska.Native:Race...White.or.Caucasian, na.rm = TRUE, remove=FALSE)
+    `%notin%` = Negate(`%in%`)
+    two.or.more <- race.break %>% filter((!is.na(Race.Breakdown)) & (Race.Breakdown != '') & (Race.Breakdown != 'American Indian or Alaska Native') & (Race.Breakdown != 'Asian, Asian-American') & (Race.Breakdown %notin% 'Black, African-American, Other African') & ('Hawaiian Native or Pacific Islander' != Race.Breakdown) & ('Hispanic, Latino' != Race.Breakdown) &('Other' != Race.Breakdown) & ('White or Caucasian' != Race.Breakdown)) 
+    grouped.by.race <- race.break %>% group_by(Race.Breakdown) %>% summarise(count=n()) %>% filter((Race.Breakdown != '')) %>% mutate(Race.Breakdown = reorder(Race.Breakdown,count))
+    
+    races <- c()
+    counts <- c()
+    for(i in colnames(data[28:34])) {
+      subset <- data %>% filter(!is.na(!!sym(i))) %>% group_by(!!sym(i)) %>% summarise(count = n())
+      races <- c(races,toString(subset[,1]))
+      print(toString(subset[,1]))
+      counts <- c(counts, as.integer(subset[,2]))
+      print(as.integer(subset[,2]))
+    }
+    
+    races <- c(races, 'Two or More')
+    counts <- c(counts, nrow(two.or.more))
+    
+    grouped.race.data <- data.frame('Race' = races, 'Count' = counts)
+    grouped.race.data <- grouped.race.data %>% mutate(Race = reorder(Race,Count))
+    ggplotly(ggplot(grouped.race.data, aes(x=Race, y=Count)) + geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ coord_flip() + ylab("Count") + xlab("Racial Breakdown")+ ggtitle("Racial Breakdown of All Centers") + theme(axis.title.x = element_text(margin = margin(l = 20)))) 
+    
+    
+    # race.break <- data %>% unite('Race.Breakdown', Race...American.Indian.or.Alaska.Native:Race...White.or.Caucasian, na.rm = TRUE, remove=TRUE)
+    # grouped.by.race <- race.break %>% group_by(Race.Breakdown) %>% summarise(count=n()) %>% filter((count > 5) & (Race.Breakdown != '')) %>% mutate(Race.Breakdown = reorder(Race.Breakdown,count))
+    
+    # count <- c()
+    # for(i in data[28:34]){
+    #   print(!is.na(i))
+    #   n <- sum(!is.na(i), na.rm = FALSE)
+    #   count <- c(count,n)
+    # }
+    # race.data <- data.frame('race' = colnames(data)[28:34], 'counts' = count)
+    # 
+    # ggplotly(ggplot(race.data, aes(x=race, y=counts)) + geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ coord_flip() + ylab("Count") + xlab("Racial Breakdown")+ ggtitle("Racial Breakdown of All Centers") + theme(axis.title.x = element_text(margin = margin(l = 20)))) 
   })
   
   
