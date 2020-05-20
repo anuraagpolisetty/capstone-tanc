@@ -1,7 +1,14 @@
 library(plotly)
 source("./IndexData.R")
+library(googledrive)
+library(googlesheets4)
 
-allData <- read.csv(file="./data/TOTAL.csv", stringsAsFactors=FALSE)
+
+total <- drive_get("total")
+total_id <- unclass(as_sheets_id(total))
+total_data <- range_speedread(total_id)
+View(total_data)
+allData <- data.frame(total_data)
 
 data.2019 <- IndexData(allData) %>% filter(Batch=="2019-1"|Batch=="2019-2")
 social.index.2019 <- SocialIndex(data.2019, "all")

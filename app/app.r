@@ -1,10 +1,16 @@
 library(shiny)
 library(dplyr)
 library(ggplot2)
-data <- read.csv("./TOTAL.csv")
+library(googledrive)
+library(googlesheets4)
+total <- drive_get("total")
+total_id <- unclass(as_sheets_id(total))
+total_data <- range_speedread(total_id)
+View(total_data)
+data <- data.frame(total_data)
+#data <- read.csv("./TOTAL.csv")
 test <- unique(data$SiteID)
 filtered <- filter(data, SiteID == "GWP")
-View(filtered)
 # Define UI for application that draws a histogram
 ui <- fluidPage(
 

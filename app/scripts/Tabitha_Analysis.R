@@ -1,8 +1,14 @@
 library(dplyr)
 library(ggplot2)
 library(tidyverse)
-data <- read.csv(file="./data/TOTAL.csv", stringsAsFactors=FALSE)
+library(googledrive)
+library(googlesheets4)
 
+total <- drive_get("total")
+total_id <- unclass(as_sheets_id(total))
+total_data <- range_speedread(total_id)
+View(total_data)
+data <- data.frame(total_data)
 
 # Gets the data ready for a single center
 data_single_center <- data %>% filter(SiteID == 'ACRS')

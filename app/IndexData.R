@@ -1,8 +1,13 @@
 library(dplyr)
 library(plotly)
+library(googledrive)
+library(googlesheets4)
 
-
-allData <- read.csv(file="data/TOTAL.csv", stringsAsFactors=FALSE)
+total <- drive_get("total")
+total_id <- unclass(as_sheets_id(total))
+total_data <- range_speedread(total_id)
+View(total_data)
+allData <- data.frame(total_data)
 
 # Convert df to index scale (1-3)
 IndexData <- function(df) {

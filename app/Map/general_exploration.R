@@ -1,4 +1,10 @@
-all.data <- read.csv("./data/TOTAL.csv")
+library(googledrive)
+library(googlesheets4)
+total <- drive_get("total")
+total_id <- unclass(as_sheets_id(total))
+total_data <- range_speedread(total_id)
+View(total_data)
+all.data <- data.frame(total_data)
 locations.data <- read.csv("data/Senior_Center_Locations_Cleaned.csv")
 
 column.names <- names(all.data)
