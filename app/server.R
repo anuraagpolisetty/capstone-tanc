@@ -396,9 +396,7 @@ function(input, output, session) {
     for(i in colnames(data[28:34])) {
       subset <- data %>% filter(!is.na(!!sym(i))) %>% group_by(!!sym(i)) %>% summarise(count = n())
       races <- c(races,toString(subset[,1]))
-      print(toString(subset[,1]))
       counts <- c(counts, as.integer(subset[,2]))
-      print(as.integer(subset[,2]))
     }
     
     races <- c(races, 'Two or More')
