@@ -475,3 +475,7 @@
                       width: 300px;
                     }
                     
+                    #form label.control-label {
+                                    width: 500px          
+                    }
+                    
