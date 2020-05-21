@@ -3,6 +3,7 @@ library(ggplot2)
 library(bs4Dash)
 library(plotly)
 library(OpenImageR)
+library(shinyalert)
 
 answers <- c("Almost Never", "Sometimes", "Most of the Time", "Not applicable")
 source('constants.R')
