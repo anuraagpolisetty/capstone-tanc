@@ -1,14 +1,18 @@
 library(dplyr)
 library(ggplot2)
 library(tidyverse)
+library(googledrive)
+library(googlesheets4)
 # data <- final_data
 # data <- read.csv(file="./data/TOTAL.csv", stringsAsFactors=FALSE)
 
+drive_auth(cache = ".secrets", email = TRUE)
+gs4_auth(token = drive_token())
 
 total <- drive_get("total")
 total_id <- unclass(as_sheets_id(total))
 total_data <- range_speedread(total_id)
-View(total_data)
+# View(total_data)
 data <- data.frame(total_data)
 
 # Gets the data ready for a single center
@@ -83,22 +87,22 @@ for (question in questions) {
 # Data exploration
 
 
-batch <- data %>% group_by(Batch) %>% summarise(count = n())
-
-social.life <- cleaned_data %>% group_by(Batch) %>% summarise(mean1 = mean(Do.more.volunteer.work), mean2 = mean(See.friends.more.often.make.new.friends))
-
-social.life.means <- social.life %>% select(mean1, mean2) %>% rowMeans()
-
-social.life$total_mean <- social.life.means
+# batch <- data %>% group_by(Batch) %>% summarise(count = n())
+# 
+# social.life <- cleaned_data %>% group_by(Batch) %>% summarise(mean1 = mean(Do.more.volunteer.work), mean2 = mean(See.friends.more.often.make.new.friends))
+# 
+# social.life.means <- social.life %>% select(mean1, mean2) %>% rowMeans()
+# 
+# social.life$total_mean <- social.life.means
 
 # Explore Bar
 
-grouped_data <- bar_data %>% group_by(Do.more.volunteer.work, See.friends.more.often.make.new.friends) %>% summarise(count = n()) #%>% filter(Do.more.volunteer.work == See.friends.more.often.make.new.friends)
-
-single_center_bar <- ggplot(grouped_data, aes(x=reorder(Do.more.volunteer.work, -count),count))+geom_bar(stat="identity")
-
-first <- bar_data %>% group_by(Do.more.volunteer.work) %>% summarise(count1 = n())# %>% rename(c(Do.more.volunteer.work = 'categories'))
-second <- bar_data %>% group_by(See.friends.more.often.make.new.friends) %>% summarise(count2 = n())
+# grouped_data <- bar_data %>% group_by(Do.more.volunteer.work, See.friends.more.often.make.new.friends) %>% summarise(count = n()) #%>% filter(Do.more.volunteer.work == See.friends.more.often.make.new.friends)
+# 
+# single_center_bar <- ggplot(grouped_data, aes(x=reorder(Do.more.volunteer.work, -count),count))+geom_bar(stat="identity")
+# 
+# first <- bar_data %>% group_by(Do.more.volunteer.work) %>% summarise(count1 = n())# %>% rename(c(Do.more.volunteer.work = 'categories'))
+# second <- bar_data %>% group_by(See.friends.more.often.make.new.friends) %>% summarise(count2 = n())
 
 #cleaned_data <- cleaned_data %>% group_by(SiteID) %>% summarise(count=n())
 

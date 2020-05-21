@@ -9,9 +9,6 @@ answers <- c("Almost Never", "Sometimes", "Most of the Time", "Not applicable")
 source('constants.R')
 
 
-path = file.path(getwd(), 'imgs', 'pike2.jpg')
-im = readImage(path)
-
 labelMandatory <- function(label) {
   tagList(
     label,

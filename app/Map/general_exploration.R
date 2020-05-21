@@ -138,10 +138,10 @@ ggplot(sum1, aes(x=reorder(categories, -total_count),total_count))+geom_bar(stat
 
 
 ########################## Get image to appear ########
-library(OpenImageR)
-path <- file.path(getwd(), 'imgs', 'pike2.jpg')
-im <- readImage(path)
-hold.image <-imageShow(im)
+# library(OpenImageR)
+# path <- file.path(getwd(), 'imgs', 'pike2.jpg')
+# im <- readImage(path)
+# hold.image <-imageShow(im)
 
 
 
