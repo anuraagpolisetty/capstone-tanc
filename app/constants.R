@@ -1,4 +1,5 @@
 library(googledrive)
+# source("auth.R", local = T)
 # This file is used to store all constant variables that can be accessed from any other file.
 # Anyt changes or additions to this file will update accordingly in the overall dashboard.
 # You can add a new center to the 'centers' variable which will automatically create a new
@@ -11,7 +12,7 @@ library(googledrive)
 centers <<- c("Asian Counseling and Referral Service", "Greenwood", "International Drop-In Center", "Pike Market Senior Center", "Sunshine Garden", 
               "Wallingford", "Sound Generations", "South Park", "Generations With Pride", "Southeast", "Central Area Senior Center"
               # ,"New_Center"
-              )
+)
 
 # Add new survey questions by adding it to the end of this comma-seperated list
 all_questions <<- c("Do more volunteer work",
@@ -52,28 +53,27 @@ race_ethnicity <<- c("American Indian or Alaska Native",
                     "Hispanic, Latino",
                     "Other",
                     "White or Caucasian",
+                    "Two or More",
                     "N/A")
-
 
 # Keep all spreadsheet IDs and center names in a single globally-accessible dataframe
 # Updates google sheets even when a new center is added
 # drive_auth(path = ".secrets")
-# options(
-#   gargle_oauth_cache = ".secrets",
-#   gargle_oauth_email = TRUE
-# )
-ids <- vector()
-for (c in centers) {
-  id <- drive_get(c)$id
 
-    # IF no sheet id is found, create a new google sheet (with column names)
-    if(length(id) == 0) {
-      id <- createNewSheet(c)
-    }
-
-  # Continue saving sheet id to center_ids dataframe
-  ids[c] <- id
-}
+# drive_auth(cache = ".secrets", email = TRUE)
 # 
+# ids <- vector()
+# for (c in centers) {
+#   id <- drive_get(c)$id
+# 
+#     # IF no sheet id is found, create a new google sheet (with column names)
+#     if(length(id) == 0) {
+#       id <- createNewSheet(c)
+#     }
+# 
+#   # Continue saving sheet id to center_ids dataframe
+#   ids[c] <- id
+# }
+#
 ## Store all center IDs in globally-accessible dataframe
-center_ids <<- data.frame(center=centers, id=ids)
+# center_ids <<- data.frame(center=centers, id=ids)

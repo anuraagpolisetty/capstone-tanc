@@ -1,6 +1,6 @@
 library(plotly)
 source("./IndexData.R")
-
+#allData <- final_data
 allData <- read.csv(file="./data/TOTAL.csv", stringsAsFactors=FALSE)
 
 data.2019 <- IndexData(allData) %>% filter(Batch=="2019-1"|Batch=="2019-2")

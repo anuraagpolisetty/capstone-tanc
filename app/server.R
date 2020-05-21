@@ -25,17 +25,7 @@ batches.inputted <- data %>% group_by(Batch) %>% summarise(count=n())
 
 
 function(input, output, session) {
-  # source('Single_Center/pike_server.R', local = T)
-  # source('Single_Center/wallingford_server.R', local = T)
-  # source('Single_Center/greenwood_server.R', local = T)
-  # source('Single_Center/southpark_server.R', local = T)
-  # source('Single_Center/idic_server.R', local = T)
-  # source('Single_Center/southeast_server.R', local = T)
-  # source('Single_Center/sunshine_server.R', local = T)
-  # source('Single_Center/acrs_server.R', local = T)
-  # source('Single_Center/gwp_server.R', local=T)
-  # source('Single_Center/west_server.R', local=T)
-  # source('Single_Center/ballard_server.R', local=T)
+
   output$SingleCenters <- renderUI({
     subCenters <- lapply(1:length(centers), function(k) {
       bs4TabItem(tabName = paste0('sub_', gsub(' ', '', centers[k])),
@@ -114,7 +104,6 @@ function(input, output, session) {
                            icon='chart-bar')
               )
             )
-
           })
         )
       ),
@@ -157,16 +146,13 @@ function(input, output, session) {
                       )
       )),
       list(bs4TabItem('survey',
-                      source("Survey/survey_ui.R", local=T)[1]
-
-      )
+                      source("Survey/survey_ui.R", local=T)[1])
       )
       
     )
     do.call(tabItems, items)
   })
-  
-  
+
   lapply(1:length(centers), function(i) {
     cleaned_data <- cleaned_data %>% filter(SiteID == centers[i])
     
@@ -218,7 +204,7 @@ function(input, output, session) {
       ggplot(time.data, aes(x=Batch, y=Mean, group = 1)) + geom_point(color='#0275d8') + geom_line(color='#0275d8') + ylim(1,3) + ylab('Mean Index')
     })
     
-    bar_data <- allData %>% filter(SiteID == centers[i])
+    bar_data <- data %>% filter(SiteID == centers[i])
     output[[(paste0(gsub(' ', '', centers[i]), '_bar'))]] <- renderPlotly({
       if(input[[paste0(gsub(' ', '', centers[i]), '_answer')]]== sectors[1]) {
         sum1 <- bar_data %>% group_by(Do.more.volunteer.work) %>% summarise(count1 = n())
@@ -272,31 +258,10 @@ function(input, output, session) {
   })
   
   output$race <- renderPlotly({
-    # race.break <- data %>% unite('Race.Breakdown', Race...American.Indian.or.Alaska.Native:Race...White.or.Caucasian, na.rm = TRUE, remove=FALSE)
-    # `%notin%` = Negate(`%in%`)
-    # two.or.more <- race.break %>% filter((!is.na(Race.Breakdown)) & (Race.Breakdown != '') & (Race.Breakdown != 'American Indian or Alaska Native') & (Race.Breakdown != 'Asian, Asian-American') & (Race.Breakdown %notin% 'Black, African-American, Other African') & ('Hawaiian Native or Pacific Islander' != Race.Breakdown) & ('Hispanic, Latino' != Race.Breakdown) &('Other' != Race.Breakdown) & ('White or Caucasian' != Race.Breakdown)) 
-    # grouped.by.race <- race.break %>% group_by(Race.Breakdown) %>% summarise(count=n()) %>% filter((Race.Breakdown != '')) %>% mutate(Race.Breakdown = reorder(Race.Breakdown,count))
-    # 
-    # races <- c()
-    # counts <- c()
-    # for(i in colnames(data[28:34])) {
-    #   subset <- data %>% filter(!is.na(!!sym(i))) %>% group_by(!!sym(i)) %>% summarise(count = n())
-    #   races <- c(races,toString(subset[,1]))
-    #   counts <- c(counts, as.integer(subset[,2]))
-    # }
-    # 
-    # races <- c(races, 'Two or More')
-    # counts <- c(counts, nrow(two.or.more))
-    # 
-    # grouped.race.data <- data.frame('Race' = races, 'Count' = counts)
-    # grouped.race.data <- grouped.race.data %>% mutate(Race = reorder(Race,Count))
-    # ggplotly(ggplot(grouped.race.data, aes(x=Race, y=Count)) + geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ coord_flip() + ylab("Count") + xlab("Racial Breakdown")+ ggtitle("Racial Breakdown of All Centers") + theme(axis.title.x = element_text(margin = margin(l = 20)))) 
-    # 
     
-    grouped.race.data <- data %>% group_by(Race) %>% summarise(Count = n()) %>% filter((Race == 'White or Caucasian') | (Race == 'American Indian or Alaska Native') | (Race == 'Asian, Asian-American') | (Race == 'Hispanic, Latino') | (Race == 'Black, African-American, Other African') | (Race == 'Other') | (Race == 'Two or More') | (Race == 'Hawaiian Native or Pacific Islander'))
+    grouped.race.data <- data %>% group_by(Race) %>% summarise(Count = n()) %>% filter((Race == 'White or Caucasian') | (Race == 'American Indian or Alaska Native') | (Race == 'Asian, Asian-American') | (Race == 'Hispanic, Latino') | (Race == 'Black, African-American, Other African') | (Race == 'Other') | (Race == 'Two or More') | (Race == 'Hawaiian Native or Pacific Islander')) %>% mutate(Race = reorder(Race,Count))
     ggplotly(ggplot(grouped.race.data, aes(x=Race, y=Count)) + geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ coord_flip() + ylab("Count") + xlab("Racial Breakdown")+ ggtitle("Racial Breakdown of All Centers") + theme(axis.title.x = element_text(margin = margin(l = 20)))) 
     
- 
   })
   
   
