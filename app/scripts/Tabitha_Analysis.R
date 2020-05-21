@@ -100,3 +100,13 @@ second <- bar_data %>% group_by(See.friends.more.often.make.new.friends) %>% sum
 
 cleaned_data %>% group_by(SiteID) %>% summarise(count=n())
 west_cleaned <- cleaned_data %>% filter(SiteID == 'West Seattle')
+
+############## Fix Total CSV Racial Columns ###########################
+
+new.csv.data <- data %>% unite('New.Race', Race...American.Indian.or.Alaska.Native:Race...White.or.Caucasian, na.rm = TRUE, remove=FALSE)
+`%notin%` = Negate(`%in%`)
+#new.csv.data <- new.csv.data[(new.csv.data$New.Race != ''), "New.Race"]
+new.csv.data[(new.csv.data$New.Race != '') &(new.csv.data$New.Race != 'American Indian or Alaska Native') & (new.csv.data$New.Race != 'Asian, Asian-American') & (new.csv.data$New.Race %notin% 'Black, African-American, Other African') & ('Hawaiian Native or Pacific Islander' != new.csv.data$New.Race) & ('Hispanic, Latino' != new.csv.data$New.Race) &('Other' != new.csv.data$New.Race) & ('White or Caucasian' != new.csv.data$New.Race), "New.Race" ] <- "Two or More"
+new.csv.data <- new.csv.data %>% unite('Final.Race', c('Race', 'New.Race'), sep='', na.rm= TRUE, remove = FALSE)
+filePath <- file.path("C:\\Users\\Tabit\\OneDrive\\Capstone\\", "new.total.csv")
+write.csv(new.csv.data, filePath)

@@ -210,3 +210,8 @@ ggplotly(ggplot(grouped.race.data, aes(x=Race, y=Count)) + geom_bar(stat="identi
 #   count <- c(count,n)
 # }
 # race.data <- data.frame('race' = colnames(data)[28:34], 'counts' = count)
+
+############## Fix Total CSV Racial Columns ###########################
+
+data <- all.data %>% unite('New.Race', Race...American.Indian.or.Alaska.Native:Race...White.or.Caucasian, na.rm = TRUE, remove=FALSE)
+
