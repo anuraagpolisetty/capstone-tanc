@@ -102,7 +102,7 @@ function(input, output, session) {
               bs4Card(
                 width = 12,
                 height = 200,
-                title = h3(paste(centers[i], "Senior Center")),
+                title = h3(paste(centers[i])),
                 headerBorder = FALSE,
                 closable = FALSE,
                 collapsible = FALSE,
@@ -272,24 +272,28 @@ function(input, output, session) {
   })
   
   output$race <- renderPlotly({
-    race.break <- data %>% unite('Race.Breakdown', Race...American.Indian.or.Alaska.Native:Race...White.or.Caucasian, na.rm = TRUE, remove=FALSE)
-    `%notin%` = Negate(`%in%`)
-    two.or.more <- race.break %>% filter((!is.na(Race.Breakdown)) & (Race.Breakdown != '') & (Race.Breakdown != 'American Indian or Alaska Native') & (Race.Breakdown != 'Asian, Asian-American') & (Race.Breakdown %notin% 'Black, African-American, Other African') & ('Hawaiian Native or Pacific Islander' != Race.Breakdown) & ('Hispanic, Latino' != Race.Breakdown) &('Other' != Race.Breakdown) & ('White or Caucasian' != Race.Breakdown)) 
-    grouped.by.race <- race.break %>% group_by(Race.Breakdown) %>% summarise(count=n()) %>% filter((Race.Breakdown != '')) %>% mutate(Race.Breakdown = reorder(Race.Breakdown,count))
+    # race.break <- data %>% unite('Race.Breakdown', Race...American.Indian.or.Alaska.Native:Race...White.or.Caucasian, na.rm = TRUE, remove=FALSE)
+    # `%notin%` = Negate(`%in%`)
+    # two.or.more <- race.break %>% filter((!is.na(Race.Breakdown)) & (Race.Breakdown != '') & (Race.Breakdown != 'American Indian or Alaska Native') & (Race.Breakdown != 'Asian, Asian-American') & (Race.Breakdown %notin% 'Black, African-American, Other African') & ('Hawaiian Native or Pacific Islander' != Race.Breakdown) & ('Hispanic, Latino' != Race.Breakdown) &('Other' != Race.Breakdown) & ('White or Caucasian' != Race.Breakdown)) 
+    # grouped.by.race <- race.break %>% group_by(Race.Breakdown) %>% summarise(count=n()) %>% filter((Race.Breakdown != '')) %>% mutate(Race.Breakdown = reorder(Race.Breakdown,count))
+    # 
+    # races <- c()
+    # counts <- c()
+    # for(i in colnames(data[28:34])) {
+    #   subset <- data %>% filter(!is.na(!!sym(i))) %>% group_by(!!sym(i)) %>% summarise(count = n())
+    #   races <- c(races,toString(subset[,1]))
+    #   counts <- c(counts, as.integer(subset[,2]))
+    # }
+    # 
+    # races <- c(races, 'Two or More')
+    # counts <- c(counts, nrow(two.or.more))
+    # 
+    # grouped.race.data <- data.frame('Race' = races, 'Count' = counts)
+    # grouped.race.data <- grouped.race.data %>% mutate(Race = reorder(Race,Count))
+    # ggplotly(ggplot(grouped.race.data, aes(x=Race, y=Count)) + geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ coord_flip() + ylab("Count") + xlab("Racial Breakdown")+ ggtitle("Racial Breakdown of All Centers") + theme(axis.title.x = element_text(margin = margin(l = 20)))) 
+    # 
     
-    races <- c()
-    counts <- c()
-    for(i in colnames(data[28:34])) {
-      subset <- data %>% filter(!is.na(!!sym(i))) %>% group_by(!!sym(i)) %>% summarise(count = n())
-      races <- c(races,toString(subset[,1]))
-      counts <- c(counts, as.integer(subset[,2]))
-    }
-    
-    races <- c(races, 'Two or More')
-    counts <- c(counts, nrow(two.or.more))
-    
-    grouped.race.data <- data.frame('Race' = races, 'Count' = counts)
-    grouped.race.data <- grouped.race.data %>% mutate(Race = reorder(Race,Count))
+    grouped.race.data <- data %>% group_by(Race) %>% summarise(Count = n()) %>% filter((Race == 'White or Caucasian') | (Race == 'American Indian or Alaska Native') | (Race == 'Asian, Asian-American') | (Race == 'Hispanic, Latino') | (Race == 'Black, African-American, Other African') | (Race == 'Other') | (Race == 'Two or More') | (Race == 'Hawaiian Native or Pacific Islander'))
     ggplotly(ggplot(grouped.race.data, aes(x=Race, y=Count)) + geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ coord_flip() + ylab("Count") + xlab("Racial Breakdown")+ ggtitle("Racial Breakdown of All Centers") + theme(axis.title.x = element_text(margin = margin(l = 20)))) 
     
  

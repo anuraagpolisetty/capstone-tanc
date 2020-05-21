@@ -8,20 +8,10 @@ library(googledrive)
 
 # If you would like to add a new center, add it to the end of this comma-seperated list.
 # Replace the "New Center" line with the name of the center and delete the '#' symbol
-centers <<- c("ACRS", "Ballard", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", 
-              "Wallingford", "West Seattle", "CISC", "South Park", "GWP", "Southeast"
+centers <<- c("Asian Counseling and Referral Service", "Greenwood", "International Drop-In Center", "Pike Market Senior Center", "Sunshine Garden", 
+              "Wallingford", "Sound Generations", "South Park", "Generations With Pride", "Southeast", "Central Area Senior Center"
               # ,"New_Center"
               )
-
-# Adding a new center also requires a new image for that specific center. Otherwise,
-# the default image will show up in the home page next to the center name.
-# Find and download a jpg file, name it appropriately, and save it in the 'www' folder. 
-images <<- c('acrs.jpg', 'ballard.jpg', 'greenwood.jpg', 'idic.jpg', 'pike.jpg',
-             'sunshine.jpg', 'wallingford.jpg', 'west.png', 'sunshine.jpg', 
-             'southpark.jpg', 'gwp.png', 'southeast.jpg', 'southeast.jpg'
-             # , "new_center.jpg"  # Make sure this file name matches the one in the 'www' folder!
-             )
-
 
 # Add new survey questions by adding it to the end of this comma-seperated list
 all_questions <<- c("Do more volunteer work",
