@@ -47,9 +47,6 @@ saveData <- function(data, columns) {
   if(length(id) == 0) {
     id <- createNewSheet(center_name)
   }
-  # if(is.na(id)) {
-  #   id <- createNewSheet(center_name)
-  # }
 
   # Finally, add df to the sheet id
   sheet_append(id, df)
