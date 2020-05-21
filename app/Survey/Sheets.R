@@ -30,7 +30,8 @@ folder_name <- folder$name
 saveData <- function(data, columns) {
   df <- data.frame(matrix(unlist(data), ncol=length(data)), stringsAsFactors=FALSE)
   colnames(df) <- columns
-  
+  total <- drive_get("tester")
+  total_id <- unclass(as_sheets_id(total))
   # Access center name and Google sheet id
   center_name <- df[1, "SiteID"]
   id <- center_ids[center_name, "id"]
@@ -42,6 +43,9 @@ saveData <- function(data, columns) {
 
   # Finally, add df to the sheet id
   sheet_append(id, df)
+  
+  # Add row to our total df as well
+  sheet_append(total_id, df)
   
 }
 
