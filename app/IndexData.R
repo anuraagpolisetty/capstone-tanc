@@ -1,12 +1,12 @@
 library(dplyr)
 library(plotly)
 
-
-allData <- read.csv(file="data/TOTAL.csv", stringsAsFactors=FALSE)
+#allData <- final_data
+#allData <- read.csv(file="data/TOTAL.csv", stringsAsFactors=FALSE)
 
 # Convert df to index scale (1-3)
 IndexData <- function(df) {
-  questions <- colnames(df)[12:25]
+  questions <- colnames(df)[4:17]
   for (q in questions) {
     df[is.na(df[q]), q] <- '0'
     df[df[q] == 'Not Applicable',q] <- '0'
@@ -24,7 +24,7 @@ IndexData <- function(df) {
 SocialIndex <- function(df, site){
   if(site == "all"){
     # social.questions <- c(12, 13)
-    social.life <- df[,c(12, 13)] #social.questions]
+    social.life <- df[,c(4, 5)] #social.questions]
   }
   index <- mean(colMeans(social.life))
   return (index)
@@ -35,7 +35,7 @@ SocialIndex <- function(df, site){
 PhysicalIndex <- function(df, site) {
   if(site == "all"){
     # physical.questions <- c(14, 15, 16, 24)
-    physical.health <- df[,c(14, 15, 16, 24)] #physical.questions]
+    physical.health <- df[,c(6, 7, 8, 16)] #physical.questions]
   }
   index <- mean(colMeans(physical.health), na.rm=TRUE)
   return (index)
@@ -46,7 +46,7 @@ PhysicalIndex <- function(df, site) {
 PositiveIndex <- function(df, site) {
   if(site == "all") {
     # positive.questions <- c(17, 18, 22)
-    positive.outlook <- df[, c(17, 18, 22)] #positive.questions]
+    positive.outlook <- df[, c(9, 10, 14)] #positive.questions]
   }
   index <- mean(colMeans(positive.outlook, na.rm=TRUE))
   return (index)
@@ -58,7 +58,7 @@ PositiveIndex <- function(df, site) {
 ServicesIndex <- function(df, site) {
   if(site == "all") {
     # services.questions <- c(19, 23)
-    access.to.services <- df[,c(19, 23)] #services.questions]
+    access.to.services <- df[,c(11, 15)] #services.questions]
   }
   index <- mean(colMeans(access.to.services, na.rm=TRUE))
   return (index)
@@ -69,7 +69,7 @@ ServicesIndex <- function(df, site) {
 IndependenceIndex <- function(df, site) {
   if(site == "all"){
     # independence.questions <- c(20)
-    independence <- df[, 20] # independence.questions]
+    independence <- df[, 12] # independence.questions]
   }
   index <- mean(independence, na.rm = TRUE)
   return (index)
@@ -80,7 +80,7 @@ IndependenceIndex <- function(df, site) {
 OverallIndex <- function(df, site) {
   if(site == "all") {
     # satisfaction.questions <- c(21,25)
-    overall.satisfaction <- df[,c(21,25)] # satisfaction.questions]
+    overall.satisfaction <- df[,c(13,17)] # satisfaction.questions]
   }
   index <- mean(colMeans(overall.satisfaction, na.rm=TRUE))
   return (index)

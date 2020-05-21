@@ -1,6 +1,7 @@
 library(shiny)
 library(bs4Dash)
 source('Survey/Sheets.R')
+library(shinyalert)
 
 # Reads and saves all the survey answers and sends to Sheets.R to upload to Google Sheets
 
@@ -36,13 +37,13 @@ v <- reactiveValues(data = character(0))
 
 observe({
   mandatoryFilled <-
-    vapply(fieldsMandatory, 
+    vapply(fieldsMandatory,
            function(x) {
              !is.null(input[[x]]) && input[[x]] != ""
            },
            logical(1))
   mandatoryFilled <- all(mandatoryFilled)
-  
+
   # enable/disable the submit button
   shinyjs::toggleState(id = "submit", condition = mandatoryFilled)
   shinyjs::toggleClass(id = "submit", condition = mandatoryFilled, class = "btn-primary")
@@ -53,7 +54,7 @@ observe({
 # Saves and formats the submit data
 formData <- reactive({
   data <- sapply(c("SiteID",fieldsMandatory), function(x) input[[x]])
-  siteID <- data[1]
+  siteID <<- data[1]
   # Columns match with Batch #, SitID, TimeStamp, and the rest of the questions
   data <- c(calc_batch(humanTime()), siteID, humanTime(), data[-1])
   data <- t(data)
@@ -62,11 +63,29 @@ formData <- reactive({
 
 # action to take when submit button is pressed
 observeEvent(input$submit, {
-  saveData(formData(), columns = all.columns) # saves the data in function in Sheets.R
-  shinyjs::reset("form")
-  shinyjs::hide("form")
-  shinyjs::show("thankyou_msg")
+  shinyalert(title = paste0("Are you sure you want to submit to ", input$SiteID, "?"),
+             showCancelButton = TRUE, 
+             cancelButtonText = "No, go back",
+             showConfirmButton = TRUE,
+             confirmButtonCol = '#0275d8',
+             confirmButtonText = 'Yes!',
+             callbackR = function(x) {
+               # saves data if user clicks Confirm, otherwise does nothing
+               if(x != FALSE) {
+                 shinyjs::reset("form")
+                 shinyjs::hide("form")
+                 shinyjs::show("loading-content")
+                 saveData(formData(), columns = all.columns) # saves the data in function in Sheets.R
+                 shinyjs::hide("loading-content")
+                 shinyjs::show("thankyou_msg")
+               }
+
+             }
+  )
+
 })
+  
+
 
 # rerenders the form 
 observeEvent(input$submit_another, {

@@ -1,12 +1,4 @@
-                  /*
-                  div#shiny-tab-home .plot-container {
-                    width:170px !important;
-                    height:150px !important;
-                    position:relative;
-                    top: 50px;
-                    left: 150px;
-                  } */
-                  
+
                   div#shiny-tab-home .plot-container {
                     position: relative;
 
@@ -477,5 +469,17 @@
                     
                     #form label.control-label {
                                     width: 500px          
+                    }
+                    
+                    #loading-content {
+                      position: absolute;
+                      background: #000000;
+                      opacity: 0.2;
+                      z-index: 100;
+                      left: 0;
+                      right: 0;
+                      height: 100%;
+                      text-align: center;
+                      color: #FFFFFF;
                     }
                     

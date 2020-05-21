@@ -21,8 +21,8 @@ labelMandatory <- function(label) {
 appCSS <- ".mandatory_star { color: red;)"
 
 fluidPage(
-  
   theme = "style.css",
+  useShinyalert(),
   # tags$link(rel ='stylesheet', type='text/css', href='bootstrap.css'),
   bs4DashPage(
     title = 'Survey Visualization Tool',

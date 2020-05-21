@@ -1,10 +1,5 @@
-# labelMandatory <- function(label) {
-#   tagList(
-#     label,
-#     span("*", class = "mandatory_star")
-#   )
-# }
-
+# Constructs the UI for the survey page
+# Sourced into server.R so this file must be formatted as a 'list' object
 list(
   titlePanel("Senior Center Survey Form"),
   shinyjs::useShinyjs(),
@@ -46,25 +41,6 @@ list(
         textInput("I participate in the following activities at the senior Center", label="")
       ),
   
-      # bs4Card(
-      #   title = h3(labelMandatory("Please tell us how participating in the senior center has changed your life")),
-      #   width = 14,
-      #   collapsible = FALSE,
-      #   closable=FALSE,
-      #   # textAreaInput("free_response1",
-      #   #               NULL,
-      #   #               "summary",
-      #   #               # placeholder = "Type your answer in here...",
-      #   #               # resize = "both",
-      #   #               width = validateCssUnit(800)
-      #   #               ),
-      # ),
-      # textAreaInput("free_response2",
-      #               span("I participate in the following activities at the senior Center"),
-      #               placeholder = "Type your activities in here...",
-      #               resize = "both",
-      #               width = validateCssUnit(800)
-      #               ),
       bs4Card(
         title = labelMandatory("How would you describe your race/ethnicity"),
         width = 14,
@@ -88,9 +64,15 @@ list(
   ),
   shinyjs::hidden(
     div(
+      id = "loading-content",
+      h2("Loading...")
+    )
+  ),
+  shinyjs::hidden(
+    div(
       id = "thankyou_msg",
-      h3("Thanks, your response was submitted successfully!"),
-      actionLink("submit_another", "Submit another response")
+      h3("Your response has been submitted. Thank you for your filling out our survey!"),
+      actionLink("submit_another", "Click here to submit another response")
     )
   )
   
