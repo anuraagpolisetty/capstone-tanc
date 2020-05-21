@@ -11,10 +11,9 @@
 # Replace the "New Center" line with the name of the center and delete the '#' symbol
 centers <<- c("Asian Counseling and Referral Service", "Greenwood", "International Drop-In Center", "Pike Market Senior Center", "Sunshine Garden", 
               "Wallingford", "Sound Generations", "South Park", "Generations With Pride", "Southeast", "Central Area Senior Center"
-              # ,"New_Center"
+              # , "New_center"
+
 )
-
-
 # Add new survey questions by adding it to the end of this comma-seperated list
 all_questions <<- c("Do more volunteer work",
                     "See friends more often make new friends",
