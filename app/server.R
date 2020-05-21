@@ -33,6 +33,7 @@ function(input, output, session) {
                    column(
                      width = 8,
                      bs4Card(title = h1(centers[k]), collapsible = FALSE, closable=FALSE, width = 12,
+                             "On this page...",
                              selectInput(paste0(gsub(' ', '', centers[k]), '_answer'),
                                          label = h3('Pick a Sector to Evaluate'),
                                          choices = sectors)),
