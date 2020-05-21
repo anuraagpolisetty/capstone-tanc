@@ -20,18 +20,28 @@ options(gargle_quiet = FALSE) # So you can know what is happening
 # gs4_auth(token = drive_token()) #(comment after authenticated)
 
 # SECOND STEP----
-# Comment lines 10, 13 and 15 and uncomment lines 21 and 22
+# Comment lines 14, 18 and 20 and uncomment lines 27 and 28
 # You tell gargle to search the token in the secrets folder and to look
 # for an auth given to a certain email (enter your email linked to googledrive!)
-drive_auth(cache = ".secrets", email = "adscenterdata@gmail.com")
-# drive_auth(cache = ".secrets", email = TRUE) # Use only if EXACTLY 1 email is preauthorized
+# drive_auth(cache = ".secrets", email = "adscenterdata@gmail.com")
+drive_auth(cache = ".secrets", email = TRUE) # Use only if EXACTLY 1 email is preauthorized
 gs4_auth(token = drive_token())
-
+options(
+  gargle_oauth_cache = ".secrets",
+  gargle_oauth_email = TRUE
+)
 # test
 # drive_ls()
 
 
 # THIRD STEP---
+
+# Add these lines in any downstream google functions if necessary
+# options(
+#   gargle_oauth_cache = ".secrets",
+#   gargle_oauth_email = TRUE
+# )
+
 # Now you can deploy your app in shinyapps.io!!
 # Test if your app runs properly in the local version
 # Authenticate in ShinyApps.io
@@ -41,10 +51,7 @@ gs4_auth(token = drive_token())
 # deployApp()
 # Enjoy your new App!!
 
-# options(
-#   gargle_oauth_cache = ".secrets",
-#   gargle_oauth_email = TRUE
-# )
+
 
 
 

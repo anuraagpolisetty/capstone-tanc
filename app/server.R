@@ -25,17 +25,7 @@ batches.inputted <- data %>% group_by(Batch) %>% summarise(count=n())
 
 
 function(input, output, session) {
-  # source('Single_Center/pike_server.R', local = T)
-  # source('Single_Center/wallingford_server.R', local = T)
-  # source('Single_Center/greenwood_server.R', local = T)
-  # source('Single_Center/southpark_server.R', local = T)
-  # source('Single_Center/idic_server.R', local = T)
-  # source('Single_Center/southeast_server.R', local = T)
-  # source('Single_Center/sunshine_server.R', local = T)
-  # source('Single_Center/acrs_server.R', local = T)
-  # source('Single_Center/gwp_server.R', local=T)
-  # source('Single_Center/west_server.R', local=T)
-  # source('Single_Center/ballard_server.R', local=T)
+
   output$SingleCenters <- renderUI({
     subCenters <- lapply(1:length(centers), function(k) {
       bs4TabItem(tabName = paste0('sub_', gsub(' ', '', centers[k])),
@@ -82,50 +72,6 @@ function(input, output, session) {
                    )
                  )
       )
-      # bs4TabItem(tabName = paste0('sub_', gsub(' ', '', centers[k])),
-      #            bs4Card(title = h1(centers[k]), collapsible = FALSE, closable=FALSE, width = 8),
-      #            br(),
-      #            fluidRow(
-      #              column(
-      #                width = 8,
-      #                selectInput(paste0(gsub(' ', '', centers[k]), '_answer'),
-      #                            label = h3('Pick a Sector to Evaluate'),
-      #                            choices = sectors),
-      #                
-      #                bs4Card(
-      #                  title = "Mean Index Over Time",
-      #                  width = 14,
-      #                  collapsible = TRUE,
-      #                  closable = FALSE,
-      #                  plotlyOutput(paste0(gsub(' ', '', centers[k]), '_timeplot'))
-      #                ),
-      #                bs4Card(
-      #                  title = "Response For Sector",
-      #                  width = 14,
-      #                  collapsible=TRUE,
-      #                  closable=FALSE,
-      #                  plotlyOutput(paste0(gsub(' ', '', centers[k]), '_bar'))
-      #                )
-      #              ),
-      #              column(
-      #                width= 4,
-      #                selectInput(paste0(gsub(' ', '', centers[k]),"_gauge"), label=h3('Filter By Batch'),
-      #                            choices = batches,
-      #                            selected = batches[k]),
-      #                bs4Card(inputId = 'Indices',
-      #                  title = paste('Index for ', centers[k], ' Senior Center'),
-      #                  closable=FALSE,
-      #                  width=10,
-      #                  plotlyOutput(paste0("Social_", gsub(' ', '', centers[k]))),
-      #                  plotlyOutput(paste0("Physical_", gsub(' ', '', centers[k]))),
-      #                  plotlyOutput(paste0("Positivity_", gsub(' ', '', centers[k]))),
-      #                  plotlyOutput(paste0("Services_", gsub(' ', '', centers[k]))),
-      #                  plotlyOutput(paste0("Independence_", gsub(' ', '', centers[k]))),
-      #                  plotlyOutput(paste0("Overall_", gsub(' ', '', centers[k])))
-      #                )
-      #              )
-      #            )
-      # )
     })
     
     items <- c(
@@ -156,30 +102,9 @@ function(input, output, session) {
                            gradientColor = 'primary',
                            width=2,
                            icon='chart-bar')
-                # bs4InfoBoxOutput(paste0(centers[i], '_infobox')),
-              
+
               )
             )
-            # fluidRow(
-            #   bs4Card(
-            #     width = 12,
-            #     title = paste(centers[i], "Senior Center"),
-            #     headerBorder = FALSE,
-            #     closable = FALSE,
-            #     collapsible = FALSE,
-            #     attachmentBlock(
-            #       src=images[i]
-            #     ),
-            #     bs4InfoBox(title='View Data',
-            #                tabName = paste0('sub_', gsub(' ', '', centers[i])),
-            #                gradientColor = 'primary',
-            #                width=3,
-            #                icon='chart-bar'),
-            #     # bs4InfoBoxOutput(paste0(centers[i], '_infobox')),
-            #     
-            #     plotlyOutput(paste0(gsub(' ', '', centers[i]), "_gauge"))
-            #   )
-            # )
           })
         )
       ),
@@ -223,64 +148,13 @@ function(input, output, session) {
       )),
       list(bs4TabItem('survey',
                       source("Survey/survey_ui.R", local=T)[1]
-                      # titlePanel("Senior Center Survey Form"),
-                      # shinyjs::useShinyjs(),
-                      # shinyjs::inlineCSS(appCSS),
-                      # div(
-                      #   id = "form",
-                      #   h5("Think about your life since you started since you started attending the senior center. Below
-                      #      are some ways that senior centers might make a difference. Please select the choice that best
-                      #      matches your response for each statement."),
-                      #   selectInput(
-                      #     "SiteID",
-                      #     label = h6(labelMandatory("Which senior center do you currently attend?")),
-                      #     choices = centers, #centers,
-                      #     selected = centers[1] #centers[1]
-                      #   ),
-                      #   textInput("zipcode", labelMandatory("What is your zipcode"), ""),
-                      #   h3("Because I go to the senior center, I ..."),
-                      #   lapply(1:length(questions), function(i) {
-                      #     bs4Card(
-                      #       title = labelMandatory(all_questions[i]),
-                      #       width = 14,
-                      #       collapsible = FALSE,
-                      #       closable=FALSE,
-                      #       radioButtons(all_questions[i], label="", choices = answers, inline=FALSE, selected = character(0))
-                      #     )
-                      #   }),
-                      #   
-                      #   # Submit button to upload responses
-                      #   actionButton("submit", "Submit"),
-                      #   span("Please make sure every question has been answered", class = "mandatory_star")
-                      #   
-                      #   ),
-                      # shinyjs::hidden(
-                      #   div(
-                      #     id = "thankyou_msg",
-                      #     h3("Thanks, your response was submitted successfully!"),
-                      #     actionLink("submit_another", "Submit another response")
-                      #   )
-                      # )
-      )
+                    )
       )
       
     )
     do.call(tabItems, items)
   })
-  
-  # lapply(1:length(centers), function(t) {
-  #   output[[paste(centers[t], '_infobox')]] <- renderbs4InfoBox({
-  #     bs4InfoBox(
-  #        title='View Data',
-  #        tabName = paste0('sub_', centers[i]),
-  #        gradientColor = 'primary',
-  #        width=3,
-  #        icon='chart-bar'
-  #     )
-  #   })
-  # })
-  
-  
+
   lapply(1:length(centers), function(i) {
     cleaned_data <- cleaned_data %>% filter(SiteID == centers[i])
     
@@ -407,18 +281,6 @@ function(input, output, session) {
     ggplotly(ggplot(grouped.race.data, aes(x=Race, y=Count)) + geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ coord_flip() + ylab("Count") + xlab("Racial Breakdown")+ ggtitle("Racial Breakdown of All Centers") + theme(axis.title.x = element_text(margin = margin(l = 20)))) 
     
     
-    # race.break <- data %>% unite('Race.Breakdown', Race...American.Indian.or.Alaska.Native:Race...White.or.Caucasian, na.rm = TRUE, remove=TRUE)
-    # grouped.by.race <- race.break %>% group_by(Race.Breakdown) %>% summarise(count=n()) %>% filter((count > 5) & (Race.Breakdown != '')) %>% mutate(Race.Breakdown = reorder(Race.Breakdown,count))
-    
-    # count <- c()
-    # for(i in data[28:34]){
-    #   print(!is.na(i))
-    #   n <- sum(!is.na(i), na.rm = FALSE)
-    #   count <- c(count,n)
-    # }
-    # race.data <- data.frame('race' = colnames(data)[28:34], 'counts' = count)
-    # 
-    # ggplotly(ggplot(race.data, aes(x=race, y=counts)) + geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ coord_flip() + ylab("Count") + xlab("Racial Breakdown")+ ggtitle("Racial Breakdown of All Centers") + theme(axis.title.x = element_text(margin = margin(l = 20)))) 
   })
   
   

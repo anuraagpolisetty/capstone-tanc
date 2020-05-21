@@ -62,9 +62,11 @@ formData <- reactive({
 
 # action to take when submit button is pressed
 observeEvent(input$submit, {
-  saveData(formData(), columns = all.columns) # saves the data in function in Sheets.R
   shinyjs::reset("form")
   shinyjs::hide("form")
+  shinyjs::show("loading-content")
+  saveData(formData(), columns = all.columns) # saves the data in function in Sheets.R
+  shinyjs::hide("loading-content")
   shinyjs::show("thankyou_msg")
 })
 
