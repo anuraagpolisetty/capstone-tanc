@@ -13,6 +13,11 @@ library(googlesheets4)
 folder_url="https://drive.google.com/drive/folders/1VrhYtDr3awzLxH5HVkCz3pqXGZaxP8uj"
 
 drive_auth(cache = ".secrets", email = TRUE)
+gs4_auth(token = drive_token())
+total <- drive_get("total")
+total_google_id <<- unclass(as_sheets_id(total))
+total_data <- range_speedread(total_google_id)
+final_data <<- data.frame(total_data)
 
 folder_id <- "1VrhYtDr3awzLxH5HVkCz3pqXGZaxP8uj"
 folder <- drive_get(folder_url)
@@ -48,6 +53,7 @@ saveData <- function(data, columns) {
 
   # Finally, add df to the sheet id
   sheet_append(id, df)
+  sheet_append(total_google_id, df)
   
 }
 

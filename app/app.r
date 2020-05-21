@@ -1,7 +1,8 @@
 library(shiny)
 library(dplyr)
 library(ggplot2)
-data <- read.csv("./TOTAL.csv")
+data <- final_data
+#data <- read.csv("./TOTAL.csv")
 test <- unique(data$SiteID)
 filtered <- filter(data, SiteID == "GWP")
 View(filtered)

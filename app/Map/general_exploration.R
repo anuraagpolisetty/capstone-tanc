@@ -1,4 +1,5 @@
-all.data <- read.csv("./data/TOTAL.csv")
+all.data <- final_data
+#all.data <- read.csv("./data/TOTAL.csv")
 locations.data <- read.csv("data/Senior_Center_Locations_Cleaned.csv")
 
 column.names <- names(all.data)

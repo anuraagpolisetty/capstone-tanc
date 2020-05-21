@@ -9,10 +9,10 @@ library(googledrive)
 
 # If you would like to add a new center, add it to the end of this comma-seperated list.
 # Replace the "New Center" line with the name of the center and delete the '#' symbol
-centers <<- c("ACRS", "Ballard", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", 
-              "Wallingford", "West Seattle", "CISC", "South Park", "GWP", "Southeast"
-              ,"New_Center"
-              )
+centers <<- c("Asian Counseling and Referral Service", "Greenwood", "International Drop-In Center", "Pike Market Senior Center", "Sunshine Garden", 
+              "Wallingford", "Sound Generations", "South Park", "Generations With Pride", "Southeast", "Central Area Senior Center"
+              # ,"New_Center"
+)
 
 # Adding a new center also requires a new image for that specific center. Otherwise,
 # the default image will show up in the home page next to the center name.
@@ -65,7 +65,6 @@ race_ethnicity <<- c("American Indian or Alaska Native",
                     "White or Caucasian",
                     "Two or More",
                     "N/A")
-
 
 # Keep all spreadsheet IDs and center names in a single globally-accessible dataframe
 # Updates google sheets even when a new center is added

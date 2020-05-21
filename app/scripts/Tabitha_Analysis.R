@@ -1,27 +1,29 @@
 library(dplyr)
 library(ggplot2)
 library(tidyverse)
-data <- read.csv(file="./data/TOTAL.csv", stringsAsFactors=FALSE)
+
+data <- final_data
+#data <- read.csv(file="./data/TOTAL.csv", stringsAsFactors=FALSE)
 
 
 # Gets the data ready for a single center
-data_single_center <- data %>% filter(SiteID == 'ACRS')
-bar_data <- data_single_center  
+#data_single_center <- data %>% filter(SiteID == 'ACRS')
+#bar_data <- data_single_center  
 # Clean the data for the visuals
 
-column.names <- names(data)
-questions <- column.names[12:25]
+#column.names <- names(data)
+questions <- column.names[4:17]
 
 
-for (question in questions) {
-  data_single_center[is.na(data_single_center[question]), question] <- '0'
-  data_single_center[data_single_center[question] == 'Not Applicable',question] <- '0'
-  data_single_center[data_single_center[question] == 'Almost Never',question] <- '1'
-  data_single_center[data_single_center[question] == 'Sometimes',question] <- '2'
-  data_single_center[data_single_center[question] == 'Most of the Time',question] <- '3'
-  data_single_center[question] <- as.numeric(data_single_center[[question]])
+#for (question in questions) {
+#  data_single_center[is.na(data_single_center[question]), question] <- '0'
+#  data_single_center[data_single_center[question] == 'Not Applicable',question] <- '0'
+#  data_single_center[data_single_center[question] == 'Almost Never',question] <- '1'
+#  data_single_center[data_single_center[question] == 'Sometimes',question] <- '2'
+#  data_single_center[data_single_center[question] == 'Most of the Time',question] <- '3'
+#  data_single_center[question] <- as.numeric(data_single_center[[question]])
   
-}
+#}
   
 #Visualization #1 Changes Over Time (Line or scatter plot)
 
@@ -50,7 +52,7 @@ cleaned_data <- data
 # Clean the data for the visuals
 
 column.names <- names(cleaned_data)
-questions <- column.names[12:25]
+questions <- column.names[4:17]
 
 
 for (question in questions) {
