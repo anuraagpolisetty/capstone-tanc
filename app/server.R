@@ -7,9 +7,11 @@ library(ggplot2)
 library(ISOcodes)
 library(bs4Dash)
 library(rsconnect)
+library(shinyalert)
 source('scripts/Tabitha_Analysis.R')
 source('scripts/GaugeChart.R')
 source('Map/MapPlot.R')
+# source('Survey/Survey.R')
 
 appCSS <- ".mandatory_star { color: red;)"
 
@@ -258,6 +260,7 @@ function(input, output, session) {
   output$map <- renderPlotly({
     ggplotly(p, tooltip = 'text')
   })
+  
   
   output$race <- renderPlotly({
     race.break <- data %>% unite('Race.Breakdown', Race...American.Indian.or.Alaska.Native:Race...White.or.Caucasian, na.rm = TRUE, remove=FALSE)

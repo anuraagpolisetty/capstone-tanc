@@ -11,7 +11,7 @@ library(googledrive)
 # Replace the "New Center" line with the name of the center and delete the '#' symbol
 centers <<- c("ACRS", "Ballard", "Greenwood", "IDIC", "PMSC", "Sunshine Garden", 
               "Wallingford", "West Seattle", "CISC", "South Park", "GWP", "Southeast"
-              ,"New_Center"
+              # ,"New_Center"
               )
 
 # Adding a new center also requires a new image for that specific center. Otherwise,

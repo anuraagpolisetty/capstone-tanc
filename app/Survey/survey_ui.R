@@ -65,14 +65,14 @@ list(
   shinyjs::hidden(
     div(
       id = "loading-content",
-      h3("Loading...")
+      h2("Loading...")
     )
   ),
   shinyjs::hidden(
     div(
       id = "thankyou_msg",
-      h3("Thanks, your response was submitted successfully!"),
-      actionLink("submit_another", "Submit another response")
+      h3("Your response has been submitted. Thank you for your filling out our survey!"),
+      actionLink("submit_another", "Click here to submit another response")
     )
   )
   
