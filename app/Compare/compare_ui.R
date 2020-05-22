@@ -25,7 +25,8 @@ list(
       )),
     column(
       width = 8,
-      plotlyOutput("bar")
+      plotlyOutput("bar")  %>% 
+        withSpinner(type = 3, color="lightgreen", color.background = "rgb(245,245,245)")
     )
   )
 )

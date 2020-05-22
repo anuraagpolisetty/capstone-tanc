@@ -38,7 +38,8 @@ function(input, output, session) {
                      bs4Card(title = h1(centers[k]), collapsible = FALSE, closable=FALSE, width = 12,
                              selectInput(paste0(gsub(' ', '', centers[k]), '_answer'),
                                          label = h3('Pick a Sector to Evaluate'),
-                                         choices = sectors)),
+                                         choices = sectors,
+                                         selected = sectors[1])),
                      
                      bs4Card(
                        title = "Mean Index Over Time",
@@ -48,7 +49,7 @@ function(input, output, session) {
                        column(
                          width=12,
                          plotlyOutput(paste0(gsub(' ', '', centers[k]), '_timeplot')) %>% 
-                            withSpinner(type = 1, color="#0275d8", color.background = "#fff"))
+                            withSpinner(type = 3, color="lightgreen", color.background = "#fff"))
                        ),
                      bs4Card(
                        title = "Response For Sector",
@@ -58,7 +59,7 @@ function(input, output, session) {
                        column(
                          width = 12,
                          plotlyOutput(paste0(gsub(' ', '', centers[k]), '_bar')) %>% 
-                           withSpinner(type = 1, color="#0275d8", color.background = "#fff"))
+                           withSpinner(type = 3, color="lightgreen", color.background = "#fff"))
                        )
                    ),
                    column(
@@ -74,13 +75,19 @@ function(input, output, session) {
                              column(
                                width = 10,
                                plotlyOutput(paste0("Social_", gsub(' ', '', centers[k]))) %>% 
-                                 withSpinner(type = 3, color = "lightgreen", color.background = "#fff")
-                             ),
-                             plotlyOutput(paste0("Physical_", gsub(' ', '', centers[k]))),
-                             plotlyOutput(paste0("Positivity_", gsub(' ', '', centers[k]))),
-                             plotlyOutput(paste0("Services_", gsub(' ', '', centers[k]))),
-                             plotlyOutput(paste0("Independence_", gsub(' ', '', centers[k]))),
-                             plotlyOutput(paste0("Overall_", gsub(' ', '', centers[k])))
+                                 withSpinner(type = 3, color = "lightgreen", color.background = "#fff"),
+                             
+                             plotlyOutput(paste0("Physical_", gsub(' ', '', centers[k])))%>% 
+                               withSpinner(type = 3, color = "lightgreen", color.background = "#fff"),
+                             plotlyOutput(paste0("Positivity_", gsub(' ', '', centers[k])))%>% 
+                               withSpinner(type = 3, color = "lightgreen", color.background = "#fff"),
+                             plotlyOutput(paste0("Services_", gsub(' ', '', centers[k])))%>% 
+                               withSpinner(type = 3, color = "lightgreen", color.background = "#fff"),
+                             plotlyOutput(paste0("Independence_", gsub(' ', '', centers[k])))%>% 
+                               withSpinner(type = 3, color = "lightgreen", color.background = "#fff"),
+                             plotlyOutput(paste0("Overall_", gsub(' ', '', centers[k])))%>% 
+                               withSpinner(type = 3, color = "lightgreen", color.background = "#fff")
+                             )
                      )
                    )
                  )
@@ -157,9 +164,9 @@ function(input, output, session) {
                       br(),
                       mainPanel(
                         width = 12,
-                        plotlyOutput("race"),
+                        plotlyOutput("race") %>% withSpinner(type = 3, color='lightgreen', color.background = "rgb(245,245,245)"),
                         br(),
-                        plotlyOutput("map")
+                        plotlyOutput("map")  %>% withSpinner(type = 3, color='lightgreen', color.background = "rgb(245,245,245)")
                       )
       )),
       list(bs4TabItem('survey',
@@ -219,7 +226,7 @@ function(input, output, session) {
         time.data$total_mean <- social.life.means
       }
       time.data <- time.data %>% mutate(Mean = round(total_mean, digits=2))
-      ggplot(time.data, aes(x=Batch, y=Mean, group = 1)) + geom_point(color='#0275d8') + geom_line(color='#0275d8') + ylim(1,3) + ylab('Mean Index')
+      ggplotly(ggplot(time.data, aes(x=Batch, y=Mean, group = 1)) + geom_point(color='#0275d8') + geom_line(color='#0275d8') + ylim(1,3) + ylab('Mean Index'))
     })
     
     bar_data <- data %>% filter(SiteID == centers[i])
@@ -263,7 +270,7 @@ function(input, output, session) {
         names(sum1)[1] <- 'categories'
       }
       sum1 <- sum1 %>% drop_na() %>% mutate(Categories = fct_reorder(categories, -total_count), Count = total_count)
-      ggplot(sum1, aes(x=Categories,y=Count))+geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ xlab('Survey Responses') + ylab('Count')
+      ggplotly(ggplot(sum1, aes(x=Categories,y=Count))+geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ xlab('Survey Responses') + ylab('Count'))
     })
   })
   # })
