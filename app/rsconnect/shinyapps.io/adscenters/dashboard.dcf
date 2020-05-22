@@ -5,8 +5,9 @@ account: adscenters
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2335175
-bundleId: 3175532
+bundleId: 3180263
 url: https://adscenters.shinyapps.io/dashboard/
-when: 1590079042.83588
+when: 1590186992.10847
 asMultiple: FALSE
 asStatic: FALSE
+ignoredFiles: imgs/pike2.jpg

@@ -46,7 +46,7 @@ or use this video to follow along with my video of making a change to a center h
 			  token='7557947F76FE11F9A4ED09991C85B528',
 			  secret='4am+/2rBfNN1r/pXDgHAjsEsGTn0eUCA9M5NPkv9')): 
     + Log into shinyapps.io
-    + Login: adscentersdata@gmail.com
+    + Login: adscenterdata@gmail.com
     + Password: Kingcounty1
     + Click the accounts image icon in the top right corner and select Tokens
     + Click the Show button and then the Show Secret button

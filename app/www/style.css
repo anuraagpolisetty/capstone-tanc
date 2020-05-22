@@ -548,6 +548,11 @@
                       z-index: 1;
                   }
                   
+                  #tab-survey {
+                      background-color: #C2C7D0;
+                      color: #212529
+                  }
+                  
                   /* #SingleCenters g.gauge-outline path {
                       stroke: white !important;
                   } */
