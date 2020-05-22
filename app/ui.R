@@ -6,7 +6,7 @@ library(OpenImageR)
 library(shinyalert)
 
 answers <- c("Almost Never", "Sometimes", "Most of the Time", "Not applicable")
-source('constants.R')
+source('constants.R') 
 
 
 labelMandatory <- function(label) {

@@ -45,15 +45,21 @@ function(input, output, session) {
                        width = 14,
                        collapsible = TRUE,
                        closable = FALSE,
-                       plotlyOutput(paste0(gsub(' ', '', centers[k]), '_timeplot'))
-                     ),
+                       column(
+                         width=12,
+                         plotlyOutput(paste0(gsub(' ', '', centers[k]), '_timeplot')) %>% 
+                            withSpinner(type = 1, color="#0275d8", color.background = "#fff"))
+                       ),
                      bs4Card(
                        title = "Response For Sector",
                        width = 14,
                        collapsible=TRUE,
                        closable=FALSE,
-                       plotlyOutput(paste0(gsub(' ', '', centers[k]), '_bar'))
-                     )
+                       column(
+                         width = 12,
+                         plotlyOutput(paste0(gsub(' ', '', centers[k]), '_bar')) %>% 
+                           withSpinner(type = 1, color="#0275d8", color.background = "#fff"))
+                       )
                    ),
                    column(
                      width= 4,
@@ -65,8 +71,11 @@ function(input, output, session) {
                              closable=FALSE,
                              collapsible = FALSE,
                              width=10,
-                             plotlyOutput(paste0("Social_", gsub(' ', '', centers[k]))),
-                             plotlyOutput(paste0("Social_", gsub(' ', '', centers[k]))),
+                             column(
+                               width = 10,
+                               plotlyOutput(paste0("Social_", gsub(' ', '', centers[k]))) %>% 
+                                 withSpinner(type = 3, color = "lightgreen", color.background = "#fff")
+                             ),
                              plotlyOutput(paste0("Physical_", gsub(' ', '', centers[k]))),
                              plotlyOutput(paste0("Positivity_", gsub(' ', '', centers[k]))),
                              plotlyOutput(paste0("Services_", gsub(' ', '', centers[k]))),
@@ -102,8 +111,8 @@ function(input, output, session) {
                 collapsible = FALSE,
                 column(
                   width = 10,
-                  plotlyOutput(paste0(gsub(' ', '', centers[i]), "_gauge")) 
-                            %>% withSpinner(type = 3, color="lightgreen", color.background = "#fff"),
+                  plotlyOutput(paste0(gsub(' ', '', centers[i]), "_gauge")) %>% 
+                            withSpinner(type = 3, color="lightgreen", color.background = "#fff")
                 ),
                 bs4InfoBox(title='View Data',
                            tabName = paste0('sub_', gsub(' ', '', centers[i])),
@@ -166,15 +175,16 @@ function(input, output, session) {
     
     output[[(paste0(gsub(' ', '', centers[i]), '_gauge'))]] <- renderPlotly({
       cleaned.data.2019 <- data.2019 %>% filter(SiteID == centers[i])
-      GaugeChart(cleaned_data, OverallIndex, "all", "2019-2", 'rgb(255,255,255)', 'Overall Index', centers[i])
-    })
+      GaugeChart(cleaned_data, OverallIndex, "all", "2019-2", 'rgb(255,255,255)', 'Overall Index', centers[i]) 
+    }) #%>%  withSpinner(type = 3, color="lightgreen", color.background = "#fff")
+
     lapply(1:length(sectors), function(j) {
       sector.center <- paste0(sectors[j], '_', gsub(' ', '', centers[i]))
       selected.batch <- paste0(gsub(' ', '', centers[i]), '_gauge')
       output[[sector.center]] <- renderPlotly({
         filtered.by.batch <- cleaned_data %>% filter(Batch == input[[selected.batch]])
         GaugeChart(filtered.by.batch, get(index[j]), 'all', input[[selected.batch]], 'rgb(255, 255, 255)', sectors[j], centers[i])
-      })
+      }) #%>% withSpinner(type = 3, color="lightgreen", color.background = "#fff")
     })
     
     output[[(paste0(gsub(' ', '', centers[i]), '_timeplot'))]] <- renderPlotly({

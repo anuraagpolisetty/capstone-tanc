@@ -1,5 +1,6 @@
 library(plotly)
 source("./IndexData.R")
+library(shinycssloaders)
 #allData <- final_data
 allData <- read.csv(file="./data/TOTAL.csv", stringsAsFactors=FALSE)
 
@@ -58,7 +59,9 @@ GaugeChart <- function(data, FUN, site, year, colored, title, chosen.center) {
   #   layout(margin = list(l=20,r=30),
   #          autosize = F, width = '250', height = '190') %>% 
   #   #layout(plot_bgcolor='rgb(254, 247, 234)') 
-    layout(paper_bgcolor=colored)
+    layout(paper_bgcolor=colored)# %>% 
+    # withSpinner(type = 3, color="lightgreen", color.background = "#fff") 
+
   return(fig)
 }
 
