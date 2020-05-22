@@ -8,10 +8,11 @@ library(ISOcodes)
 library(bs4Dash)
 library(rsconnect)
 library(shinyalert)
+library(shinycssloaders)
 source('scripts/Tabitha_Analysis.R')
 source('scripts/GaugeChart.R')
 source('Map/MapPlot.R')
-# source('Survey/Survey.R')
+
 
 appCSS <- ".mandatory_star { color: red;)"
 
@@ -58,12 +59,13 @@ function(input, output, session) {
                      width= 4,
                      bs4Card(inputId = 'Indices',
                              title = 
-                               selectInput(label = paste("Mean Index for Each Sector"),paste0(gsub(' ', '', centers[k]),"_gauge"),
+                               selectInput(label = paste("Average Index"),paste0(gsub(' ', '', centers[k]),"_gauge"),
                                            #choices = batches[k]),
                                            choices = cleaned_data %>% filter(SiteID == centers[k]) %>% group_by(Batch) %>% summarise(count = n()) %>% pull(Batch)), 
                              closable=FALSE,
                              collapsible = FALSE,
                              width=10,
+                             plotlyOutput(paste0("Social_", gsub(' ', '', centers[k]))),
                              plotlyOutput(paste0("Social_", gsub(' ', '', centers[k]))),
                              plotlyOutput(paste0("Physical_", gsub(' ', '', centers[k]))),
                              plotlyOutput(paste0("Positivity_", gsub(' ', '', centers[k]))),
@@ -98,7 +100,11 @@ function(input, output, session) {
                 headerBorder = FALSE,
                 closable = FALSE,
                 collapsible = FALSE,
-                plotlyOutput(paste0(gsub(' ', '', centers[i]), "_gauge")),
+                column(
+                  width = 10,
+                  plotlyOutput(paste0(gsub(' ', '', centers[i]), "_gauge")) 
+                            %>% withSpinner(type = 3, color="lightgreen", color.background = "#fff"),
+                ),
                 bs4InfoBox(title='View Data',
                            tabName = paste0('sub_', gsub(' ', '', centers[i])),
                            gradientColor = 'primary',
@@ -262,8 +268,21 @@ function(input, output, session) {
   
   output$race <- renderPlotly({
     
-    grouped.race.data <- data %>% group_by(Race) %>% summarise(Count = n()) %>% filter((Race == 'White or Caucasian') | (Race == 'American Indian or Alaska Native') | (Race == 'Asian, Asian-American') | (Race == 'Hispanic, Latino') | (Race == 'Black, African-American, Other African') | (Race == 'Other') | (Race == 'Two or More') | (Race == 'Hawaiian Native or Pacific Islander')) %>% mutate(Race = reorder(Race,Count))
-    ggplotly(ggplot(grouped.race.data, aes(x=Race, y=Count)) + geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ coord_flip() + ylab("Count") + xlab("Racial Breakdown")+ ggtitle("Racial Breakdown of All Centers") + theme(axis.title.x = element_text(margin = margin(l = 20)))) 
+    grouped.race.data <- data %>% group_by(Race)  %>% summarise(Count = n()) %>% 
+                            filter((Race == 'White or Caucasian') | 
+                                     (Race == 'American Indian or Alaska Native') | 
+                                     (Race == 'Asian, Asian-American') | 
+                                     (Race == 'Hispanic, Latino') | 
+                                     (Race == 'Black, African-American, Other African') | 
+                                     (Race == 'Other') | 
+                                     (Race == 'Two or More') | 
+                                     (Race == 'Hawaiian Native or Pacific Islander')) %>% 
+                            mutate(Race = reorder(Race,Count))
+    ggplotly(ggplot(grouped.race.data, aes(x=Race, y=Count)) + 
+               geom_bar(stat="identity", color = '#0275d8', fill='#0275d8')+ 
+               coord_flip() + ylab("Count") + xlab("Racial Breakdown") + 
+               ggtitle("Racial Breakdown of All Centers") + 
+               theme(axis.title.x = element_text(margin = margin(l = 20)))) 
     
   })
   

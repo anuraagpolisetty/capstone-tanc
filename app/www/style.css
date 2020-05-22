@@ -348,7 +348,6 @@
                     top: 2rem;
                     left: -4.5rem;
                     padding:0rem;
-                    box-shadow: None !important;
                     width: 200px;
                   }
                   
@@ -456,7 +455,11 @@
 
                     label:not(.form-check-label):not(.custom-file-label)  {
                         font-weight: 500;
-                        width: 100%;
+                    }
+                    
+                    #form label:not(.form-check-label):not(.custom-file-label)  {
+                        font-weight: 500;
+                        width: 190%;
                     }
 
                     .shiny-input-container:not(.shiny-input-container-inline) {
@@ -464,7 +467,8 @@
                     }
 
                     #SingleCenters .shiny-input-container:not(.shiny-input-container-inline) {
-                      width: 300px;
+                      width: 225px;
+                      text-align: center;
                     }
                     
                     #form label.control-label {
@@ -482,4 +486,21 @@
                       text-align: center;
                       color: #FFFFFF;
                     }
+                    
+                    #form .selectize-input, #form .form-control {
+                      width: 120%;
+                    }
+                    
+                    .info-box.bg-gradient-primary:hover {
+                      box-shadow: 1px 2px #888888;
+                      cursor: pointer;
+                  }
+                  
+                  .shiny-spinner-hidden {
+                      position: absolute;
+                      top: 100px;
+                      right: 35%;
+                      z-index: 1;
+                      /* visibility: hidden; */
+                  }
                     
