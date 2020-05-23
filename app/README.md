@@ -36,7 +36,7 @@ When a change is made in the **constants.R** file, the page will need to be re-d
 
 Follow along this Youtube video to help with the deployment process: https://www.youtube.com/watch?v=ZKWLfW4zBYs
 
-or use this video to follow along with my video of making a change to a center here: https://www.youtube.com/watch?v=oCdbAPjAEz8
+or use this video to follow along with my video of making a change to a center here: https://www.youtube.com/watch?v=oCdbAPjAEz8&t=37s
 
 1. In the top right corner of these files, there should be a round bluish icon. When you click on the arrow to its right, the click the Publish Application button. 
 2. It will then prompt you to install the required packages needed to publish. Click Yes.
