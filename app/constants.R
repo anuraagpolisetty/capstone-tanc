@@ -11,7 +11,7 @@
 # Replace the "New Center" line with the name of the center and delete the '#' symbol
 centers <<- c("ACRS", "Greenwood", "IDIC", "Pike Market", "Sunshine Garden", 
               "Wallingford", "Sound Generations", "South Park", "Generations With Pride", "Southeast", "Central Area Senior Center"
-              # , "New_center"
+               # , "New_center"
 
 )
 # Add new survey questions by adding it to the end of this comma-seperated list

@@ -1,0 +1,12 @@
+name: TestDashboard
+title: TestDashboard
+username:
+account: adscenters
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2343560
+bundleId: 3179886
+url: https://adscenters.shinyapps.io/TestDashboard/
+when: 1590178442.4744
+asMultiple: FALSE
+asStatic: FALSE
